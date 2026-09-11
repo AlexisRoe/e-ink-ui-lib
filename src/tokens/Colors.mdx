@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import "../components/theme/theme.css";
+
+<Meta title="Tokens/Colors" />
+
+# Colors
+
+Color tokens are defined on `:root` in `src/components/theme/theme.css`.
+Every color anywhere in the tree is forced to greyscale by the theme
+(`#root { filter: grayscale(100%); }`), so the palette itself is grey-based
+even where hex values imply color.
+
+## Core
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16, marginTop: 16 }}>
+  {[
+    { name: "--eink-color-primary", hex: "#000000" },
+    { name: "--eink-color-secondary", hex: "#ffffff" },
+    { name: "--eink-color-background", hex: "#ffffff" },
+  ].map((token) => (
+    <div key={token.name} style={{ border: "1px solid #ccc" }}>
+      <div style={{ height: 64, background: token.hex, border: "1px solid #ccc" }} />
+      <div style={{ padding: 8 }}>
+        <code>{token.name}</code>
+        <div style={{ fontSize: 12, color: "#666" }}>{token.hex}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Greyscale
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16, marginTop: 16 }}>
+  {[
+    { name: "--eink-color-grey-10", hex: "#1a1a1a" },
+    { name: "--eink-color-grey-20", hex: "#333333" },
+    { name: "--eink-color-grey-30", hex: "#4d4d4d" },
+    { name: "--eink-color-grey-40", hex: "#666666" },
+    { name: "--eink-color-grey-50", hex: "#808080" },
+    { name: "--eink-color-grey-60", hex: "#999999" },
+    { name: "--eink-color-grey-70", hex: "#b3b3b3" },
+    { name: "--eink-color-grey-80", hex: "#cccccc" },
+    { name: "--eink-color-grey-90", hex: "#e6e6e6" },
+    { name: "--eink-color-grey-100", hex: "#ffffff" },
+  ].map((token) => (
+    <div key={token.name} style={{ border: "1px solid #ccc" }}>
+      <div style={{ height: 64, background: token.hex, border: "1px solid #ccc" }} />
+      <div style={{ padding: 8 }}>
+        <code>{token.name}</code>
+        <div style={{ fontSize: 12, color: "#666" }}>{token.hex}</div>
+      </div>
+    </div>
+  ))}
+</div>
