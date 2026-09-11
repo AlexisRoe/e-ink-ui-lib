@@ -9,6 +9,8 @@ const meta = {
   argTypes: {
     iconLeft: { control: "select", options: [undefined, ...iconNames] },
     iconRight: { control: "select", options: [undefined, ...iconNames] },
+    loading: { control: "boolean" },
+    flipIntervalMs: { control: "number" },
   },
 } satisfies Meta<typeof Button>;
 
@@ -70,5 +72,35 @@ export const Disabled: Story = {
   args: {
     children: "Disabled button",
     disabled: true,
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    children: "Loading",
+    loading: true,
+  },
+};
+
+export const LoadingOutlined: Story = {
+  render: (args) => <Button.Outlined {...args} />,
+  args: {
+    children: "Loading",
+    loading: true,
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    children: "Full width button",
+    fullWidth: true,
+  },
+};
+
+export const FullWidthOutlined: Story = {
+  render: (args) => <Button.Outlined {...args} />,
+  args: {
+    children: "Full width outlined button",
+    fullWidth: true,
   },
 };

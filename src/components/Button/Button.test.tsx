@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { act, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Button } from "./Button";
 
 describe("Button", () => {
@@ -34,12 +34,93 @@ describe("Button", () => {
     render(<Button disabled>Click me</Button>);
     expect(screen.getByRole("button")).toBeDisabled();
   });
+
+  it("applies the full-width modifier class when fullWidth is true", () => {
+    render(<Button fullWidth>Click me</Button>);
+    expect(screen.getByRole("button")).toHaveClass("eink-button--full-width");
+  });
+
+  it("omits the full-width modifier class by default", () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole("button")).not.toHaveClass("eink-button--full-width");
+  });
+
+  it("shows the hourglass icon and disables the button when loading", () => {
+    render(<Button loading>Saving</Button>);
+    const button = screen.getByRole("button", { name: "Saving" });
+    expect(button).toHaveClass("eink-button--loading");
+    expect(button).toBeDisabled();
+    expect(button.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("allows overriding disabled while loading", () => {
+    render(
+      <Button loading disabled={false}>
+        Saving
+      </Button>,
+    );
+    expect(screen.getByRole("button", { name: "Saving" })).not.toBeDisabled();
+  });
+
+  it("flips the loading icon 180 degrees every 2 seconds by default", () => {
+    vi.useFakeTimers();
+    try {
+      render(<Button loading>Saving</Button>);
+      const icon = screen.getByRole("button", { name: "Saving" }).querySelector("svg");
+      expect(icon).toHaveStyle({ transform: "rotate(0deg)" });
+
+      act(() => {
+        vi.advanceTimersByTime(2000);
+      });
+      expect(icon).toHaveStyle({ transform: "rotate(180deg)" });
+
+      act(() => {
+        vi.advanceTimersByTime(2000);
+      });
+      expect(icon).toHaveStyle({ transform: "rotate(0deg)" });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("allows overriding the flip interval while loading", () => {
+    vi.useFakeTimers();
+    try {
+      render(
+        <Button loading flipIntervalMs={500}>
+          Saving
+        </Button>,
+      );
+      const icon = screen.getByRole("button", { name: "Saving" }).querySelector("svg");
+      expect(icon).toHaveStyle({ transform: "rotate(0deg)" });
+
+      act(() => {
+        vi.advanceTimersByTime(500);
+      });
+      expect(icon).toHaveStyle({ transform: "rotate(180deg)" });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });
 
 describe("Button.Outlined", () => {
   it("applies the outlined variant class", () => {
     render(<Button.Outlined>Outlined</Button.Outlined>);
     expect(screen.getByRole("button")).toHaveClass("eink-button--outlined");
+  });
+
+  it("applies the full-width modifier class when fullWidth is true", () => {
+    render(<Button.Outlined fullWidth>Outlined</Button.Outlined>);
+    expect(screen.getByRole("button")).toHaveClass("eink-button--full-width");
+  });
+
+  it("shows the hourglass icon and disables the button when loading", () => {
+    render(<Button.Outlined loading>Saving</Button.Outlined>);
+    const button = screen.getByRole("button", { name: "Saving" });
+    expect(button).toHaveClass("eink-button--outlined", "eink-button--loading");
+    expect(button).toBeDisabled();
+    expect(button.querySelector("svg")).toBeInTheDocument();
   });
 });
 
@@ -76,3 +157,4 @@ describe("Button.IconNaked", () => {
     expect(button).toHaveClass("eink-button--naked", "eink-button--icon");
   });
 });
+

@@ -65,9 +65,26 @@
   color: var(--eink-color-secondary);
 }
 
+/* ---------------- Full width ---------------- */
+
+.eink-button--full-width {
+  display: flex;
+  width: 100%;
+}
+
 /* ---------------- Icon-only ---------------- */
 
 .eink-button--icon {
   padding: var(--eink-size-8);
   gap: 0;
+}
+
+/* ---------------- Loading ---------------- */
+
+.eink-button--loading {
+  cursor: progress;
+}
+
+.eink-button--loading:disabled {
+  opacity: 1;
 }
