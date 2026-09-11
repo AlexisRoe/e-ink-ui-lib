@@ -1,9 +1,8 @@
 import type { HTMLAttributes } from "react";
 import { Children, isValidElement } from "react";
-
+import { cx } from "../../utils/cx.utils";
 import type { ButtonProps } from "../button/button.component";
 import { Button } from "../button/button.component";
-import { cx } from "../theme/theme.provider";
 
 import "./card.component.css";
 

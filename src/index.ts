@@ -88,6 +88,6 @@ export { Space } from "./components/space/space.component";
 export type { TextAs, TextProps } from "./components/text/text.component";
 export { Text } from "./components/text/text.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
-export { cx, ThemeProvider, useTheme } from "./components/theme/theme.provider";
+export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
 export type { TitleProps, TitleSize } from "./components/title/title.component";
 export { Title } from "./components/title/title.component";

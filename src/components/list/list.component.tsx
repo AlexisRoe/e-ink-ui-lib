@@ -1,6 +1,6 @@
 import type { HTMLAttributes, LiHTMLAttributes, ReactNode } from "react";
 
-import { cx } from "../theme/theme.provider";
+import { cx } from "../../utils/cx.utils";
 
 import "./list.component.css";
 

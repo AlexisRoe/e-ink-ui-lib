@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-import { cx } from "../theme/theme.provider";
+import { cx } from "../../utils/cx.utils";
 
 import "./avatar.component.css";
 

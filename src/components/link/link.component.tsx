@@ -1,7 +1,6 @@
 import type { AnchorHTMLAttributes } from "react";
-
+import { cx } from "../../utils/cx.utils";
 import { Icon } from "../icons/icon";
-import { cx } from "../theme/theme.provider";
 
 import "./link.component.css";
 

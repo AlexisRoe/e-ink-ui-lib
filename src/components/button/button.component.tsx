@@ -1,9 +1,8 @@
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 import { useEffect, useState } from "react";
-
+import { cx } from "../../utils/cx.utils";
 import { Icon } from "../icons/icon";
 import type { IconName } from "../icons/icons";
-import { cx } from "../theme/theme.provider";
 import "./button.component.css";
 
 /**
