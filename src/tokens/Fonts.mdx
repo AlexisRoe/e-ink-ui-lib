@@ -1,0 +1,77 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import "../components/theme/theme.css";
+
+<Meta title="Tokens/Fonts" />
+
+# Fonts
+
+Two variable font families are loaded via `@font-face` in
+`src/components/theme/theme.css`, each with regular and italic faces
+spanning their full weight range. Font tokens select between them and set
+the base size.
+
+| Token | Value | Use for |
+| --- | --- | --- |
+| `--eink-font-family-main` | `"JetBrains Mono", monospace` | Default UI font — body text, buttons, form controls, anything read on the e-ink display. Monospace keeps character widths predictable, which matters for e-ink's slow, flicker-prone redraws. |
+| `--eink-font-family-secondary` | `"Inter", sans-serif` | Secondary/supporting text where a proportional, higher-density sans-serif reads better, e.g. long-form prose or dense data labels. |
+| `--eink-font-size-default` | `var(--eink-size-16)` (16px) | Base body font size, applied to `body`. |
+
+`body` sets `font-family: var(--eink-font-family-main)` and
+`font-size: var(--eink-font-size-default)` by default, so components inherit
+the main font unless they opt into the secondary one.
+
+## JetBrains Mono — `--eink-font-family-main`
+
+Default for all interactive UI: buttons, inputs, labels, navigation.
+
+<div style={{ border: "1px solid #ccc", padding: 16, marginTop: 12 }}>
+  <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 20, margin: 0 }}>
+    The quick brown fox jumps over the lazy dog — 0123456789
+  </p>
+  <p style={{ fontFamily: '"JetBrains Mono", monospace', fontStyle: "italic", fontSize: 20, margin: "8px 0 0" }}>
+    Italic: The quick brown fox jumps over the lazy dog
+  </p>
+</div>
+
+**Example usage — a button label:**
+
+<div style={{ marginTop: 12 }}>
+  <button
+    type="button"
+    style={{
+      fontFamily: '"JetBrains Mono", monospace',
+      fontSize: 16,
+      padding: "8px 16px",
+      border: "2px solid #000",
+      background: "#fff",
+    }}
+  >
+    Confirm order
+  </button>
+</div>
+
+## Inter — `--eink-font-family-secondary`
+
+Use for supporting or informational text that benefits from a proportional
+typeface, such as body copy or descriptions inside a card.
+
+<div style={{ border: "1px solid #ccc", padding: 16, marginTop: 12 }}>
+  <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 20, margin: 0 }}>
+    The quick brown fox jumps over the lazy dog — 0123456789
+  </p>
+  <p style={{ fontFamily: '"Inter", sans-serif', fontStyle: "italic", fontSize: 20, margin: "8px 0 0" }}>
+    Italic: The quick brown fox jumps over the lazy dog
+  </p>
+</div>
+
+**Example usage — a description paragraph:**
+
+<div style={{ border: "1px solid #ccc", padding: 16, marginTop: 12, maxWidth: 480 }}>
+  <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, fontWeight: 700, margin: 0 }}>
+    Battery status
+  </p>
+  <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 14, margin: "4px 0 0", color: "#333" }}>
+    Your device is fully charged and ready for offline reading. Estimated
+    battery life: 3 weeks at typical usage.
+  </p>
+</div>

@@ -1,0 +1,70 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import "../components/theme/theme.css";
+
+<Meta title="Tokens/Sizes" />
+
+# Sizes
+
+Spacing, sizing, and border tokens follow a fixed scale, defined on `:root`
+in `src/components/theme/theme.css`. Use these instead of hardcoded pixel
+values wherever possible.
+
+## Scale
+
+<div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 16, maxWidth: 480 }}>
+  {[2, 4, 6, 8, 10, 12, 14, 16, 20, 24, 36, 48, 64, 128].map((size) => (
+    <div
+      key={size}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 16,
+        padding: "8px 12px",
+        border: "1px solid #ccc",
+      }}
+    >
+      <div
+        style={{
+          width: `var(--eink-size-${size})`,
+          height: `var(--eink-size-${size})`,
+          minWidth: `var(--eink-size-${size})`,
+          background: "#000",
+        }}
+      />
+      <code style={{ flex: 1 }}>--eink-size-{size}</code>
+      <span style={{ fontSize: 12, color: "#666" }}>{size}px</span>
+    </div>
+  ))}
+</div>
+
+## Border widths
+
+<div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 16, maxWidth: 480 }}>
+  {[
+    { name: "--eink-border-width-thin", value: "1px" },
+    { name: "--eink-border-width-medium", value: "2px" },
+    { name: "--eink-border-width-thick", value: "4px" },
+  ].map((token) => (
+    <div
+      key={token.name}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 16,
+        padding: "8px 12px",
+        border: "1px solid #ccc",
+      }}
+    >
+      <div style={{ width: 32, borderBottom: `var(${token.name}) solid #000` }} />
+      <code style={{ flex: 1 }}>{token.name}</code>
+      <span style={{ fontSize: 12, color: "#666" }}>{token.value}</span>
+    </div>
+  ))}
+</div>
+
+## Composite border tokens
+
+`--eink-border-thin`, `--eink-border-medium`, and `--eink-border-thick`
+combine a width, `--eink-border-style` (`solid`), and `--eink-border-color`
+(`var(--eink-color-primary)`) into a single shorthand, e.g.
+`border: var(--eink-border-thin);`.
