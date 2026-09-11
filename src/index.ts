@@ -1,5 +1,15 @@
 export type { ButtonIconSlotProps, ButtonProps, IconButtonProps } from "./components/Button/Button";
 export { Button } from "./components/Button/Button";
+export type {
+  CardActionProps,
+  CardContentProps,
+  CardHeaderProps,
+  CardProps,
+  CardRibbonProps,
+  CardSubtitleProps,
+  CardTitleProps,
+} from "./components/Card/Card";
+export { Card } from "./components/Card/Card";
 export type { IconProps } from "./components/icons/Icon";
 export { Icon } from "./components/icons/Icon";
 export type { IconName } from "./components/icons/icons";

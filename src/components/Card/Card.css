@@ -1,0 +1,60 @@
+.eink-card {
+  position: relative;
+  border: var(--eink-border-medium);
+  padding: var(--eink-size-16);
+}
+
+.eink-card__ribbon {
+  position: absolute;
+  top: var(--eink-size-16);
+  right: 0;
+  transform: translateX(50%);
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+  font-family: inherit;
+  font-size: var(--eink-size-12);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: var(--eink-size-4) var(--eink-size-8);
+}
+
+.eink-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--eink-size-16);
+}
+
+.eink-card__header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-4);
+}
+
+.eink-card__header-action {
+  flex-shrink: 0;
+}
+
+.eink-card__title {
+  font-family: inherit;
+  font-size: var(--eink-size-20);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.eink-card__subtitle {
+  font-family: inherit;
+  font-size: var(--eink-size-14);
+  margin: 0;
+}
+
+.eink-card__content {
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+}
+
+.eink-card__header + .eink-card__content {
+  margin-top: var(--eink-size-24);
+}
