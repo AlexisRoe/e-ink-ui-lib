@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Counter } from "./Counter";
 
 const meta = {
-  title: "Components/Counter",
+  title: "Components/Data Display/Counter",
   component: Counter,
   tags: ["autodocs"],
   args: {

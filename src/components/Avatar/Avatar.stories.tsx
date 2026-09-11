@@ -4,7 +4,7 @@ import profilePhoto2 from "../../assets/profile_photos/profile_2.png";
 import { Avatar } from "./Avatar";
 
 const meta = {
-  title: "Components/Avatar",
+  title: "Components/Data Display/Avatar",
   component: Avatar,
   tags: ["autodocs"],
   args: {

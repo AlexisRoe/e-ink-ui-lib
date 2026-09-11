@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Space } from "./Space";
 
 const meta = {
-  title: "Components/Space",
+  title: "Components/Layout/Space",
   component: Space,
   tags: ["autodocs"],
   argTypes: {
