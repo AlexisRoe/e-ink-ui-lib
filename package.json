@@ -1,0 +1,83 @@
+{
+  "name": "e-ink-ui-lib",
+  "version": "0.1.0",
+  "description": "UI library for e-ink screens and tablets",
+  "keywords": [
+    "react",
+    "vite",
+    "e-ink",
+    "ui-lib",
+    "biome"
+  ],
+  "homepage": "https://github.com/AlexisRoe/e-ink-ui-lib#readme",
+  "bugs": {
+    "url": "https://github.com/AlexisRoe/e-ink-ui-lib/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexisRoe/e-ink-ui-lib.git"
+  },
+  "license": "MIT",
+  "author": "Alexis Roehrling",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/e-ink-ui-lib.cjs",
+  "module": "./dist/e-ink-ui-lib.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/e-ink-ui-lib.js",
+      "require": "./dist/e-ink-ui-lib.cjs"
+    },
+    "./style.css": "./dist/e-ink-ui-lib.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.build.json && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "deploy-storybook": "npm run build-storybook && wrangler deploy",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@storybook/addon-a11y": "10.6.0",
+    "@storybook/addon-docs": "10.6.0",
+    "@storybook/react-vite": "10.6.0",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@types/node": "22.20.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "@vitest/coverage-v8": "5.0.0",
+    "jsdom": "30.0.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "storybook": "10.6.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.0",
+    "vite-plugin-dts": "5.1.0",
+    "vitest": "5.0.0",
+    "wrangler": "4.131.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
