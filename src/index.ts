@@ -75,6 +75,8 @@ export {
 } from "./components/icons/icons";
 export type { LabelProps } from "./components/Label/Label";
 export { Label } from "./components/Label/Label";
+export type { LinkProps } from "./components/Link/Link";
+export { Link } from "./components/Link/Link";
 export type { ListAs, ListItemProps, ListProps } from "./components/List/List";
 export { List, ListItem } from "./components/List/List";
 export type { SpaceProps, SpaceSize } from "./components/Space/Space";

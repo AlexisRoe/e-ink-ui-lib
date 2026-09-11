@@ -1,0 +1,20 @@
+.eink-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eink-size-4);
+  vertical-align: middle;
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: var(--eink-size-4);
+}
+
+.eink-link--clicked {
+  color: var(--eink-color-grey-40);
+}
+
+.eink-link__icon {
+  flex-shrink: 0;
+}
