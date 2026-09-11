@@ -8,20 +8,34 @@ export interface ThemeContextValue {
   /** Whether the e-ink theme has been applied to the current subtree. */
   themeApplied: boolean;
   /**
-   * Conditionally joins a base class name with a modifier class name.
+   * Joins an optional base class name with any number of conditional class
+   * names, each paired with its own boolean.
    *
-   * @param baseClassName - Class name that is always applied.
-   * @param condition - When `true`, `activeClassName` is appended.
-   * @param activeClassName - Class name applied only when `condition` is `true`.
-   * @returns The resulting class name string, with any falsy parts removed.
+   * @param base - Class name that is always applied, or `undefined` to omit a base.
+   * @param conditions - `[className, condition]` tuples; `className` is included only when `condition` is `true`.
+   * @returns The resulting class name string, with falsy parts removed.
    *
    * @example
    * ```tsx
    * const { cx } = useTheme();
-   * <button className={cx("eink-button", isPressed, "eink-button--pressed")} />
+   * // single conditional class, no base
+   * <button className={cx(undefined, ["eink-button--pressed", isPressed])} />
+   * // base + one conditional class
+   * <button className={cx("eink-button", ["eink-button--pressed", isPressed])} />
+   * // base + multiple conditional classes
+   * <button
+   *   className={cx(
+   *     "eink-button",
+   *     ["eink-button--pressed", isPressed],
+   *     ["eink-button--disabled", isDisabled],
+   *   )}
+   * />
    * ```
    */
-  cx: (baseClassName: string, condition: boolean, activeClassName: string) => string;
+  cx: (
+    base: string | undefined,
+    ...conditions: Array<[className: string, condition: boolean]>
+  ) => string;
 }
 
 /**
@@ -40,15 +54,20 @@ export interface ThemeProviderProps {
 }
 
 /**
- * Joins a base class name with a conditional modifier class name.
+ * Joins an optional base class name with any number of conditional class
+ * names, each paired with its own boolean.
  *
- * @param baseClassName - Class name that is always applied.
- * @param condition - When `true`, `activeClassName` is appended.
- * @param activeClassName - Class name applied only when `condition` is `true`.
- * @returns The resulting class name string, with any falsy parts removed.
+ * @param base - Class name that is always applied, or `undefined` to omit a base.
+ * @param conditions - `[className, condition]` tuples; `className` is included only when `condition` is `true`.
+ * @returns The resulting class name string, with falsy parts removed.
  */
-function cx(baseClassName: string, condition: boolean, activeClassName: string): string {
-  return [baseClassName, condition ? activeClassName : null].filter(Boolean).join(" ");
+function cx(
+  base: string | undefined,
+  ...conditions: Array<[className: string, condition: boolean]>
+): string {
+  return [base, ...conditions.map(([className, condition]) => (condition ? className : null))]
+    .filter(Boolean)
+    .join(" ");
 }
 
 /**
