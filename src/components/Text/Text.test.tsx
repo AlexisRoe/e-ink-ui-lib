@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Text } from "./Text";
+import { Text } from "./Text.component";
 
 describe("Text", () => {
   it("renders a paragraph by default", () => {

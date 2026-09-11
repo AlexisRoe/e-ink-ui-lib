@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import "./Text.css";
+import "./Text.component.css";
 
 /** HTML element rendered by {@link Text}. Defaults to `"p"`. */
 export type TextAs = "p" | "span";

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Label } from "./Label";
+import { Label } from "./Label.component";
 
 const meta = {
   title: "Components/Typography/Label",

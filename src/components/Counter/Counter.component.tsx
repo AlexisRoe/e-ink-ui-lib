@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import "./Counter.css";
+import "./Counter.component.css";
 
 /** Sizes accepted by {@link Counter}. Defaults to `"md"`. */
 export type CounterSize = "sm" | "md" | "xl";
@@ -47,7 +47,9 @@ export function Counter({ className, label, size = "md", count, dot, ...rest }: 
   return (
     <div className={buildClassName([size], className)} {...rest}>
       <span className="eink-counter__label">{label}</span>
-      {dot ? <span className="eink-counter__badge eink-counter__badge--dot" aria-hidden="true" /> : null}
+      {dot ? (
+        <span className="eink-counter__badge eink-counter__badge--dot" aria-hidden="true" />
+      ) : null}
       {hasCount ? <span className="eink-counter__badge">{formatCount(count)}</span> : null}
     </div>
   );

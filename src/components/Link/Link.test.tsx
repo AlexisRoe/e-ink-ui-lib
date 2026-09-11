@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Link } from "./Link";
+import { Link } from "./Link.component";
 
 describe("Link", () => {
   it("renders the children", () => {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Space } from "./Space";
+import { Space } from "./Space.component";
 
 const meta = {
   title: "Components/Layout/Space",

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import profilePhoto1 from "../../assets/profile_photos/profile_1.png";
 import profilePhoto2 from "../../assets/profile_photos/profile_2.png";
-import { Avatar } from "./Avatar";
+import { Avatar } from "./Avatar.component";
 
 const meta = {
   title: "Components/Data Display/Avatar",

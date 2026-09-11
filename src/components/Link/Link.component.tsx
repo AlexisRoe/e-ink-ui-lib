@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes } from "react";
 import { Icon } from "../icons/Icon";
-import "./Link.css";
+import "./Link.component.css";
 
 /** Props accepted by {@link Link}. */
 export interface LinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "target" | "rel"> {
@@ -29,15 +29,25 @@ export interface LinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>,
  * <Link href="/about" alreadyClicked>About</Link>
  * ```
  */
-export function Link({ className, children, external = false, alreadyClicked = false, ...rest }: LinkProps) {
+export function Link({
+  className,
+  children,
+  external = false,
+  alreadyClicked = false,
+  ...rest
+}: LinkProps) {
   return (
     <a
-      className={["eink-link", alreadyClicked ? "eink-link--clicked" : null, className].filter(Boolean).join(" ")}
+      className={["eink-link", alreadyClicked ? "eink-link--clicked" : null, className]
+        .filter(Boolean)
+        .join(" ")}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       {...rest}
     >
-      {external ? <Icon name="external-link" size={18} className="eink-link__icon" aria-hidden="true" /> : null}
+      {external ? (
+        <Icon name="external-link" size={18} className="eink-link__icon" aria-hidden="true" />
+      ) : null}
       {children}
     </a>
   );

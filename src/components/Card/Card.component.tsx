@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
 import { Children, isValidElement } from "react";
-import type { ButtonProps } from "../Button/Button";
-import { Button } from "../Button/Button";
-import "./Card.css";
+import type { ButtonProps } from "../Button/Button.component";
+import { Button } from "../Button/Button.component";
+import "./Card.component.css";
 
 /** Props accepted by {@link Card}. */
 export type CardProps = HTMLAttributes<HTMLDivElement>;

@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import "./Title.css";
+import "./Title.component.css";
 
 /** Heading level accepted by {@link Title}, mapping 1:1 to `<h1>`–`<h6>`. */
 export type TitleSize = 1 | 2 | 3 | 4 | 5 | 6;

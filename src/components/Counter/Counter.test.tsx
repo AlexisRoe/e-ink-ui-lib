@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Counter } from "./Counter";
+import { Counter } from "./Counter.component";
 
 describe("Counter", () => {
   it("renders the label", () => {

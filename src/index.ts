@@ -1,7 +1,11 @@
-export type { AvatarProps, AvatarSize } from "./components/Avatar/Avatar";
-export { Avatar } from "./components/Avatar/Avatar";
-export type { ButtonIconSlotProps, ButtonProps, IconButtonProps } from "./components/Button/Button";
-export { Button } from "./components/Button/Button";
+export type { AvatarProps, AvatarSize } from "./components/Avatar/Avatar.component";
+export { Avatar } from "./components/Avatar/Avatar.component";
+export type {
+  ButtonIconSlotProps,
+  ButtonProps,
+  IconButtonProps,
+} from "./components/Button/Button.component";
+export { Button } from "./components/Button/Button.component";
 export type {
   CardActionProps,
   CardContentProps,
@@ -10,12 +14,12 @@ export type {
   CardRibbonProps,
   CardSubtitleProps,
   CardTitleProps,
-} from "./components/Card/Card";
-export { Card } from "./components/Card/Card";
-export type { CounterProps, CounterSize } from "./components/Counter/Counter";
-export { Counter } from "./components/Counter/Counter";
-export type { DividerProps } from "./components/Divider/Divider";
-export { Divider } from "./components/Divider/Divider";
+} from "./components/Card/Card.component";
+export { Card } from "./components/Card/Card.component";
+export type { CounterProps, CounterSize } from "./components/Counter/Counter.component";
+export { Counter } from "./components/Counter/Counter.component";
+export type { DividerProps } from "./components/Divider/Divider.component";
+export { Divider } from "./components/Divider/Divider.component";
 export type { IconProps } from "./components/icons/Icon";
 export { Icon } from "./components/icons/Icon";
 export type { IconName } from "./components/icons/icons";
@@ -73,17 +77,17 @@ export {
   iconNames,
   iconRegistry,
 } from "./components/icons/icons";
-export type { LabelProps } from "./components/Label/Label";
-export { Label } from "./components/Label/Label";
-export type { LinkProps } from "./components/Link/Link";
-export { Link } from "./components/Link/Link";
-export type { ListAs, ListItemProps, ListProps } from "./components/List/List";
-export { List, ListItem } from "./components/List/List";
-export type { SpaceProps, SpaceSize } from "./components/Space/Space";
-export { Space } from "./components/Space/Space";
-export type { TextAs, TextProps } from "./components/Text/Text";
-export { Text } from "./components/Text/Text";
-export type { TitleProps, TitleSize } from "./components/Title/Title";
-export { Title } from "./components/Title/Title";
+export type { LabelProps } from "./components/Label/Label.component";
+export { Label } from "./components/Label/Label.component";
+export type { LinkProps } from "./components/Link/Link.component";
+export { Link } from "./components/Link/Link.component";
+export type { ListAs, ListItemProps, ListProps } from "./components/List/List.component";
+export { List, ListItem } from "./components/List/List.component";
+export type { SpaceProps, SpaceSize } from "./components/Space/Space.component";
+export { Space } from "./components/Space/Space.component";
+export type { TextAs, TextProps } from "./components/Text/Text.component";
+export { Text } from "./components/Text/Text.component";
+export type { TitleProps, TitleSize } from "./components/Title/Title.component";
+export { Title } from "./components/Title/Title.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";

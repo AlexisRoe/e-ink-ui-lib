@@ -1,5 +1,5 @@
 import type { HTMLAttributes, LiHTMLAttributes, ReactNode } from "react";
-import "./List.css";
+import "./List.component.css";
 
 /**
  * List style rendered by {@link List}. `"unordered"` renders a `<ul>` with

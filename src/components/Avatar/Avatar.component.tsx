@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import "./Avatar.css";
+import "./Avatar.component.css";
 
 /** Sizes accepted by {@link Avatar}. Defaults to `"md"`. */
 export type AvatarSize = "sm" | "md" | "xl";
@@ -50,7 +50,14 @@ function buildClassName(modifiers: string[], className: string | undefined) {
  * <Avatar userName="Ada Lovelace" size="xl" notification />
  * ```
  */
-export function Avatar({ className, userName, src, size = "md", notification, ...rest }: AvatarProps) {
+export function Avatar({
+  className,
+  userName,
+  src,
+  size = "md",
+  notification,
+  ...rest
+}: AvatarProps) {
   return (
     <div className={buildClassName([size, src ? "image" : "initials"], className)} {...rest}>
       {src ? (

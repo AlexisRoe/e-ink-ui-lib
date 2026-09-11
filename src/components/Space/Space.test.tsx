@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Space } from "./Space";
+import { Space } from "./Space.component";
 
 describe("Space", () => {
   it("defaults to size 16", () => {

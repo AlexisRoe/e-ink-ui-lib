@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import "./Divider.css";
+import "./Divider.component.css";
 
 /** Props accepted by {@link Divider}. */
 export type DividerProps = HTMLAttributes<HTMLHRElement>;

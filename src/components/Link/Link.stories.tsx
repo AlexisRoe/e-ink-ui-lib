@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Link } from "./Link";
+import { Link } from "./Link.component";
 
 const meta = {
   title: "Components/Actions/Link",
@@ -43,8 +43,8 @@ export const InParagraph: Story = {
       <Link href={href} external>
         {children}
       </Link>{" "}
-      right in the middle of the sentence, so you can check that the external-link icon lines up with the
-      surrounding text instead of pushing it out of line.
+      right in the middle of the sentence, so you can check that the external-link icon lines up
+      with the surrounding text instead of pushing it out of line.
     </p>
   ),
   parameters: {

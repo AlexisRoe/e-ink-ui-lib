@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { Icon } from "../icons/Icon";
 import type { IconName } from "../icons/icons";
-import "./Button.css";
+import "./Button.component.css";
 
 /**
  * Icon slot props shared by the text button variants ({@link Button},
@@ -85,11 +85,23 @@ function renderContent({
   return (
     <>
       {iconLeft ? (
-        <Icon name={iconLeft} size={iconSize} className={iconClasses} style={iconStyle} aria-hidden="true" />
+        <Icon
+          name={iconLeft}
+          size={iconSize}
+          className={iconClasses}
+          style={iconStyle}
+          aria-hidden="true"
+        />
       ) : null}
       <span className="eink-button__label">{children}</span>
       {iconRight ? (
-        <Icon name={iconRight} size={iconSize} className={iconClasses} style={iconStyle} aria-hidden="true" />
+        <Icon
+          name={iconRight}
+          size={iconSize}
+          className={iconClasses}
+          style={iconStyle}
+          aria-hidden="true"
+        />
       ) : null}
     </>
   );
@@ -230,7 +242,14 @@ function Outlined({
  *
  * Accepts an optional `size` — see {@link Button}.
  */
-function Naked({ className, children, iconLeft, iconRight, size = "md", ...rest }: ButtonVariantProps) {
+function Naked({
+  className,
+  children,
+  iconLeft,
+  iconRight,
+  size = "md",
+  ...rest
+}: ButtonVariantProps) {
   return (
     <button type="button" className={buildClassName(["naked", size], className)} {...rest}>
       {renderContent({ iconLeft, iconRight, iconSize: ICON_SIZES[size], children })}
@@ -250,7 +269,11 @@ function IconButton({ className, icon, size = "md", ...rest }: IconButtonProps) 
 /** Icon-only outlined button. Requires an accessible `aria-label`. Accepts an optional `size`. */
 function IconOutlined({ className, icon, size = "md", ...rest }: IconButtonProps) {
   return (
-    <button type="button" className={buildClassName(["outlined", "icon", size], className)} {...rest}>
+    <button
+      type="button"
+      className={buildClassName(["outlined", "icon", size], className)}
+      {...rest}
+    >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
     </button>
   );

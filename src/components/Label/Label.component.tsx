@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import "./Label.css";
+import "./Label.component.css";
 
 /** Props accepted by {@link Label}. */
 export type LabelProps = HTMLAttributes<HTMLSpanElement>;

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Avatar } from "./Avatar";
+import { Avatar } from "./Avatar.component";
 
 describe("Avatar", () => {
   it("renders up to two uppercase initials from userName", () => {
