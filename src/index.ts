@@ -1,3 +1,5 @@
+export type { AvatarProps, AvatarSize } from "./components/Avatar/Avatar";
+export { Avatar } from "./components/Avatar/Avatar";
 export type { ButtonIconSlotProps, ButtonProps, IconButtonProps } from "./components/Button/Button";
 export { Button } from "./components/Button/Button";
 export type {
@@ -10,6 +12,8 @@ export type {
   CardTitleProps,
 } from "./components/Card/Card";
 export { Card } from "./components/Card/Card";
+export type { DividerProps } from "./components/Divider/Divider";
+export { Divider } from "./components/Divider/Divider";
 export type { IconProps } from "./components/icons/Icon";
 export { Icon } from "./components/icons/Icon";
 export type { IconName } from "./components/icons/icons";
