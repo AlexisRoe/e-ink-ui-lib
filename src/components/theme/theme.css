@@ -1,0 +1,198 @@
+/* ---------------- Font faces ---------------- */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../assets/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------------- Tokens  ---------------- */
+
+:root {
+  --eink-size-2: 2px;
+  --eink-size-4: 4px;
+  --eink-size-6: 6px;
+  --eink-size-8: 8px;
+  --eink-size-10: 10px;
+  --eink-size-12: 12px;
+  --eink-size-14: 14px;
+  --eink-size-16: 16px;
+  --eink-size-20: 20px;
+  --eink-size-24: 24px;
+  --eink-size-36: 36px;
+  --eink-size-48: 48px;
+  --eink-size-64: 64px;
+  --eink-size-128: 128px;
+
+  --eink-color-primary: #000000;
+  --eink-color-secondary: #ffffff;
+  --eink-color-background: #ffffff;
+
+  --eink-color-grey-10: #1a1a1a;
+  --eink-color-grey-20: #333333;
+  --eink-color-grey-30: #4d4d4d;
+  --eink-color-grey-40: #666666;
+  --eink-color-grey-50: #808080;
+  --eink-color-grey-60: #999999;
+  --eink-color-grey-70: #b3b3b3;
+  --eink-color-grey-80: #cccccc;
+  --eink-color-grey-90: #e6e6e6;
+  --eink-color-grey-100: #ffffff;
+
+  --eink-font-family-main: "JetBrains Mono", monospace;
+  --eink-font-family-secondary: "Inter", sans-serif;
+  --eink-font-size-default: var(--eink-size-16);
+
+  --eink-border-width-thin: 1px;
+  --eink-border-width-medium: 2px;
+  --eink-border-width-thick: 4px;
+  --eink-border-style: solid;
+  --eink-border-color: var(--eink-color-primary);
+  --eink-border-thin: var(--eink-border-width-thin) var(--eink-border-style) var(--eink-border-color);
+  --eink-border-medium: var(--eink-border-width-medium) var(--eink-border-style) var(--eink-border-color);
+  --eink-border-thick: var(--eink-border-width-thick) var(--eink-border-style) var(--eink-border-color);
+}
+
+/* ---------------- Base setup ---------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: none !important;
+  background-image: none !important;
+  image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+*:focus,
+*:focus-visible,
+*:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Force every color anywhere in the tree to greyscale, no matter what's authored */
+#root {
+  filter: grayscale(100%);
+}
+
+body {
+  font-family: var(--eink-font-family-main);
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+  background-color: var(--eink-color-background);
+}
+
+/* ---------------- Form control resets ---------------- */
+
+button,
+input,
+select,
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  color: inherit;
+  font: inherit;
+  border: var(--eink-border-thin);
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--eink-color-secondary);
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+  background-color: var(--eink-color-secondary);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: var(--eink-size-16);
+  height: var(--eink-size-16);
+}
+
+::placeholder {
+  color: var(--eink-color-grey-60);
+  opacity: 1;
+}
+
+/* ---------------- Util classes ---------------- */
+
+.eink-invert-colors {
+  filter: invert(100%);
+}
+
+/* Double-invert media so photos and videos look normal */
+.eink-invert-colors img,
+.eink-invert-colors video,
+.eink-invert-colors iframe,
+.eink-invert-colors .preserve-color {
+  filter: invert(100%);
+}
