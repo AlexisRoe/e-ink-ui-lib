@@ -1,0 +1,44 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Icon } from "../components/icons/Icon";
+import { iconNames } from "../components/icons/icons";
+import "../components/theme/theme.css";
+
+<Meta title="Tokens/Icons" />
+
+# Icons
+
+The library ships the 50 most commonly used icons from [Tabler Icons](https://tabler.io/icons),
+registered under stable, kebab-case names in `src/components/icons/icons.ts`.
+
+Components that accept an icon — such as `Button` — take one of these names as a
+prop (for example `iconLeft="search"`) instead of a component import, so
+consumers never need to depend on `@tabler/icons-react` directly.
+
+Use the standalone `<Icon name="..." />` component to render an icon anywhere else.
+
+```tsx
+import { Icon } from "e-ink-ui-lib";
+
+<Icon name="search" size={20} />
+```
+
+## All icons
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 16, marginTop: 16 }}>
+  {iconNames.map((name) => (
+    <div
+      key={name}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 8,
+        padding: 12,
+        border: "1px solid #ccc",
+      }}
+    >
+      <Icon name={name} size={24} />
+      <code style={{ fontSize: 12 }}>{name}</code>
+    </div>
+  ))}
+</div>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { iconNames } from "../icons/icons";
 import { Button } from "./Button";
 
 const meta = {
@@ -6,26 +7,68 @@ const meta = {
   component: Button,
   tags: ["autodocs"],
   argTypes: {
-    variant: {
-      control: "select",
-      options: ["primary", "secondary"],
-    },
+    iconLeft: { control: "select", options: [undefined, ...iconNames] },
+    iconRight: { control: "select", options: [undefined, ...iconNames] },
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Filled: Story = {
   args: {
-    variant: "primary",
-    children: "Primary button",
+    children: "Filled button",
   },
 };
 
-export const Secondary: Story = {
+export const FilledWithLeftIcon: Story = {
   args: {
-    variant: "secondary",
-    children: "Secondary button",
+    children: "Save",
+    iconLeft: "check",
+  },
+};
+
+export const FilledWithRightIcon: Story = {
+  args: {
+    children: "Next",
+    iconRight: "arrow-right",
+  },
+};
+
+export const Outlined: Story = {
+  render: (args) => <Button.Outlined {...args} />,
+  args: {
+    children: "Outlined button",
+    iconLeft: "download",
+  },
+};
+
+export const Naked: Story = {
+  render: (args) => <Button.Naked {...args} />,
+  args: {
+    children: "Naked button",
+    iconLeft: "external-link",
+  },
+};
+
+export const IconOnly: Story = {
+  args: { children: "" },
+  render: () => <Button.Icon icon="trash" aria-label="Delete" />,
+};
+
+export const IconOnlyOutlined: Story = {
+  args: { children: "" },
+  render: () => <Button.IconOutlined icon="edit" aria-label="Edit" />,
+};
+
+export const IconOnlyNaked: Story = {
+  args: { children: "" },
+  render: () => <Button.IconNaked icon="close" aria-label="Close" />,
+};
+
+export const Disabled: Story = {
+  args: {
+    children: "Disabled button",
+    disabled: true,
   },
 };
