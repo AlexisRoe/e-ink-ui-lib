@@ -1,0 +1,6 @@
+.eink-label {
+  display: inline-block;
+  font-family: var(--eink-font-family-secondary);
+  font-size: var(--eink-size-8);
+  text-transform: uppercase;
+}

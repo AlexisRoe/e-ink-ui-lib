@@ -1,0 +1,6 @@
+.eink-text {
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  line-height: 1.4;
+  margin: 0;
+}

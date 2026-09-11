@@ -57,5 +57,13 @@ export {
   iconNames,
   iconRegistry,
 } from "./components/icons/icons";
+export type { LabelProps } from "./components/Label/Label";
+export { Label } from "./components/Label/Label";
+export type { ListAs, ListItemProps, ListProps } from "./components/List/List";
+export { List, ListItem } from "./components/List/List";
+export type { TextAs, TextProps } from "./components/Text/Text";
+export { Text } from "./components/Text/Text";
+export type { TitleProps, TitleSize } from "./components/Title/Title";
+export { Title } from "./components/Title/Title";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";

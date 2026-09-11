@@ -1,0 +1,30 @@
+.eink-title {
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.eink-title--1 {
+  font-size: var(--eink-size-36);
+}
+
+.eink-title--2 {
+  font-size: var(--eink-size-24);
+}
+
+.eink-title--3 {
+  font-size: var(--eink-size-20);
+}
+
+.eink-title--4 {
+  font-size: var(--eink-font-size-default);
+}
+
+.eink-title--5 {
+  font-size: var(--eink-size-14);
+}
+
+.eink-title--6 {
+  font-size: var(--eink-size-12);
+}
