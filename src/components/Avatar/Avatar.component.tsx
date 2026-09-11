@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+
 import "./Avatar.component.css";
 
 /** Sizes accepted by {@link Avatar}. Defaults to `"md"`. */
