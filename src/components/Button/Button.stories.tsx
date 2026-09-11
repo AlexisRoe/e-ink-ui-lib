@@ -11,6 +11,7 @@ const meta = {
     iconRight: { control: "select", options: [undefined, ...iconNames] },
     loading: { control: "boolean" },
     flipIntervalMs: { control: "number" },
+    size: { control: "select", options: ["sm", "md", "xl"] },
   },
 } satisfies Meta<typeof Button>;
 
@@ -103,4 +104,15 @@ export const FullWidthOutlined: Story = {
     children: "Full width outlined button",
     fullWidth: true,
   },
+};
+
+export const Sizes: Story = {
+  args: { children: "" },
+  render: () => (
+    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <Button size="sm">Small</Button>
+      <Button size="md">Medium</Button>
+      <Button size="xl">Extra large</Button>
+    </div>
+  ),
 };

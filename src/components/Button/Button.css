@@ -3,9 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--eink-size-8);
-  padding: var(--eink-size-8) var(--eink-size-16);
   font-family: inherit;
-  font-size: var(--eink-font-size-default);
   line-height: 1;
   cursor: pointer;
   border-radius: 0;
@@ -57,12 +55,40 @@
   background-color: transparent;
   color: var(--eink-color-primary);
   border: none;
-  padding-inline: var(--eink-size-8);
 }
 
 .eink-button--naked:active:not(:disabled) {
   background-color: var(--eink-color-primary);
   color: var(--eink-color-secondary);
+}
+
+/* ---------------- Sizes ---------------- */
+
+.eink-button--sm {
+  padding: var(--eink-size-4) var(--eink-size-8);
+  font-size: var(--eink-size-12);
+}
+
+.eink-button--md {
+  padding: var(--eink-size-8) var(--eink-size-16);
+  font-size: var(--eink-font-size-default);
+}
+
+.eink-button--xl {
+  padding: var(--eink-size-12) var(--eink-size-24);
+  font-size: var(--eink-size-20);
+}
+
+.eink-button--naked.eink-button--sm {
+  padding: 0 var(--eink-size-4);
+}
+
+.eink-button--naked.eink-button--md {
+  padding: 0 var(--eink-size-8);
+}
+
+.eink-button--naked.eink-button--xl {
+  padding: 0 var(--eink-size-16);
 }
 
 /* ---------------- Full width ---------------- */
@@ -74,8 +100,18 @@
 
 /* ---------------- Icon-only ---------------- */
 
-.eink-button--icon {
+.eink-button--icon.eink-button--sm {
+  padding: var(--eink-size-4);
+  gap: 0;
+}
+
+.eink-button--icon.eink-button--md {
   padding: var(--eink-size-8);
+  gap: 0;
+}
+
+.eink-button--icon.eink-button--xl {
+  padding: var(--eink-size-12);
   gap: 0;
 }
 

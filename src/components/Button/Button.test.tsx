@@ -45,6 +45,16 @@ describe("Button", () => {
     expect(screen.getByRole("button")).not.toHaveClass("eink-button--full-width");
   });
 
+  it("applies the md size modifier class by default", () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole("button")).toHaveClass("eink-button--md");
+  });
+
+  it("applies the requested size modifier class", () => {
+    render(<Button size="sm">Click me</Button>);
+    expect(screen.getByRole("button")).toHaveClass("eink-button--sm");
+  });
+
   it("shows the hourglass icon and disables the button when loading", () => {
     render(<Button loading>Saving</Button>);
     const button = screen.getByRole("button", { name: "Saving" });
@@ -129,16 +139,31 @@ describe("Button.Naked", () => {
     render(<Button.Naked>Naked</Button.Naked>);
     expect(screen.getByRole("button")).toHaveClass("eink-button--naked");
   });
+
+  it("applies the md size modifier class by default", () => {
+    render(<Button.Naked>Naked</Button.Naked>);
+    expect(screen.getByRole("button")).toHaveClass("eink-button--md");
+  });
+
+  it("applies the requested size modifier class", () => {
+    render(<Button.Naked size="xl">Naked</Button.Naked>);
+    expect(screen.getByRole("button")).toHaveClass("eink-button--xl");
+  });
 });
 
 describe("Button.Icon", () => {
   it("renders an icon-only filled button with an accessible label", () => {
     render(<Button.Icon icon="trash" aria-label="Delete" />);
     const button = screen.getByRole("button", { name: "Delete" });
-    expect(button).toHaveClass("eink-button--filled", "eink-button--icon");
+    expect(button).toHaveClass("eink-button--filled", "eink-button--icon", "eink-button--md");
     const icon = button.querySelector("svg");
     expect(icon).toBeInTheDocument();
     expect(icon).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("applies the requested size modifier class", () => {
+    render(<Button.Icon icon="trash" aria-label="Delete" size="sm" />);
+    expect(screen.getByRole("button", { name: "Delete" })).toHaveClass("eink-button--sm");
   });
 });
 
@@ -146,7 +171,7 @@ describe("Button.IconOutlined", () => {
   it("renders an icon-only outlined button", () => {
     render(<Button.IconOutlined icon="edit" aria-label="Edit" />);
     const button = screen.getByRole("button", { name: "Edit" });
-    expect(button).toHaveClass("eink-button--outlined", "eink-button--icon");
+    expect(button).toHaveClass("eink-button--outlined", "eink-button--icon", "eink-button--md");
   });
 });
 
@@ -154,7 +179,7 @@ describe("Button.IconNaked", () => {
   it("renders an icon-only naked button", () => {
     render(<Button.IconNaked icon="close" aria-label="Close" />);
     const button = screen.getByRole("button", { name: "Close" });
-    expect(button).toHaveClass("eink-button--naked", "eink-button--icon");
+    expect(button).toHaveClass("eink-button--naked", "eink-button--icon", "eink-button--md");
   });
 });
 
