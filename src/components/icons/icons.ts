@@ -27,6 +27,7 @@ import {
   IconHeart,
   IconHelpCircle,
   IconHome,
+  IconHourglassHigh,
   IconInfoCircle,
   IconLayoutGrid,
   IconList,
@@ -63,6 +64,7 @@ import type { ComponentProps } from "react";
  */
 export const iconRegistry = {
   home: IconHome,
+  "hourglass-high": IconHourglassHigh,
   search: IconSearch,
   settings: IconSettings,
   user: IconUser,
@@ -160,6 +162,7 @@ export {
   IconHeart,
   IconHelpCircle,
   IconHome,
+  IconHourglassHigh,
   IconInfoCircle,
   IconLayoutGrid,
   IconList,
