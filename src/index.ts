@@ -71,6 +71,8 @@ export type { LabelProps } from "./components/Label/Label";
 export { Label } from "./components/Label/Label";
 export type { ListAs, ListItemProps, ListProps } from "./components/List/List";
 export { List, ListItem } from "./components/List/List";
+export type { SpaceProps, SpaceSize } from "./components/Space/Space";
+export { Space } from "./components/Space/Space";
 export type { TextAs, TextProps } from "./components/Text/Text";
 export { Text } from "./components/Text/Text";
 export type { TitleProps, TitleSize } from "./components/Title/Title";
