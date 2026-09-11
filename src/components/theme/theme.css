@@ -131,6 +131,13 @@ body,
   filter: grayscale(100%);
 }
 
+/* Belt-and-braces: force images to greyscale even outside #root (e.g. Storybook docs canvas) */
+img,
+video,
+svg image {
+  filter: grayscale(100%) !important;
+}
+
 body {
   font-family: var(--eink-font-family-main);
   font-size: var(--eink-font-size-default);
