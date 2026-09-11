@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../theme/theme.provider";
 import "./Divider.component.css";
 
 /** Props accepted by {@link Divider}. */
@@ -13,5 +14,5 @@ export type DividerProps = HTMLAttributes<HTMLHRElement>;
  * ```
  */
 export function Divider({ className, ...rest }: DividerProps) {
-  return <hr className={["eink-divider", className].filter(Boolean).join(" ")} {...rest} />;
+  return <hr className={cx("eink-divider", [className ?? "", !!className])} {...rest} />;
 }

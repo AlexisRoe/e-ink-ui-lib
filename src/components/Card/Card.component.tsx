@@ -2,6 +2,7 @@ import type { HTMLAttributes } from "react";
 import { Children, isValidElement } from "react";
 import type { ButtonProps } from "../Button/Button.component";
 import { Button } from "../Button/Button.component";
+import { cx } from "../theme/theme.provider";
 import "./Card.component.css";
 
 /** Props accepted by {@link Card}. */
@@ -25,10 +26,6 @@ export type CardActionProps = ButtonProps;
 /** Props accepted by {@link Card.Ribbon}. */
 export type CardRibbonProps = HTMLAttributes<HTMLDivElement>;
 
-function buildClassName(base: string, className: string | undefined) {
-  return [base, className].filter(Boolean).join(" ");
-}
-
 /**
  * Header section of {@link Card}, holding {@link Card.Title} and
  * {@link Card.Subtitle} on the left. A {@link Card.Action}, if provided, is
@@ -42,7 +39,7 @@ function Header({ className, children, ...rest }: CardHeaderProps) {
   const text = items.filter((child) => !isAction(child));
 
   return (
-    <div className={buildClassName("eink-card__header", className)} {...rest}>
+    <div className={cx("eink-card__header", [className ?? "", !!className])} {...rest}>
       <div className="eink-card__header-text">{text}</div>
       {actions.length > 0 ? <div className="eink-card__header-action">{actions}</div> : null}
     </div>
@@ -52,7 +49,7 @@ function Header({ className, children, ...rest }: CardHeaderProps) {
 /** Title text of a {@link Card.Header}. */
 function Title({ className, children, ...rest }: CardTitleProps) {
   return (
-    <h3 className={buildClassName("eink-card__title", className)} {...rest}>
+    <h3 className={cx("eink-card__title", [className ?? "", !!className])} {...rest}>
       {children}
     </h3>
   );
@@ -61,7 +58,7 @@ function Title({ className, children, ...rest }: CardTitleProps) {
 /** Subtitle text of a {@link Card.Header}. */
 function Subtitle({ className, children, ...rest }: CardSubtitleProps) {
   return (
-    <p className={buildClassName("eink-card__subtitle", className)} {...rest}>
+    <p className={cx("eink-card__subtitle", [className ?? "", !!className])} {...rest}>
       {children}
     </p>
   );
@@ -70,7 +67,7 @@ function Subtitle({ className, children, ...rest }: CardSubtitleProps) {
 /** Body section of {@link Card}. */
 function Content({ className, children, ...rest }: CardContentProps) {
   return (
-    <div className={buildClassName("eink-card__content", className)} {...rest}>
+    <div className={cx("eink-card__content", [className ?? "", !!className])} {...rest}>
       {children}
     </div>
   );
@@ -91,7 +88,7 @@ function Action(props: CardActionProps) {
  */
 function Ribbon({ className, children, ...rest }: CardRibbonProps) {
   return (
-    <div className={buildClassName("eink-card__ribbon", className)} {...rest}>
+    <div className={cx("eink-card__ribbon", [className ?? "", !!className])} {...rest}>
       {children}
     </div>
   );
@@ -121,7 +118,7 @@ function Ribbon({ className, children, ...rest }: CardRibbonProps) {
  */
 export function Card({ className, children, ...rest }: CardProps) {
   return (
-    <div className={buildClassName("eink-card", className)} {...rest}>
+    <div className={cx("eink-card", [className ?? "", !!className])} {...rest}>
       {children}
     </div>
   );

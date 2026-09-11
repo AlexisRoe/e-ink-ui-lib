@@ -1,4 +1,5 @@
 import type { HTMLAttributes, LiHTMLAttributes, ReactNode } from "react";
+import { cx } from "../theme/theme.provider";
 import "./List.component.css";
 
 /**
@@ -50,7 +51,7 @@ export function List({ as = "unordered", className, children, ...rest }: ListPro
 
   return (
     <Tag
-      className={["eink-list", `eink-list--${as}`, className].filter(Boolean).join(" ")}
+      className={cx(`eink-list eink-list--${as}`, [className ?? "", !!className])}
       {...(rest as HTMLAttributes<HTMLUListElement & HTMLOListElement>)}
     >
       {children}
@@ -61,7 +62,7 @@ export function List({ as = "unordered", className, children, ...rest }: ListPro
 /** List item, used inside {@link List}. Also available as {@link List.Item}. */
 export function ListItem({ className, children, title, description, ...rest }: ListItemProps) {
   return (
-    <li className={["eink-list__item", className].filter(Boolean).join(" ")} {...rest}>
+    <li className={cx("eink-list__item", [className ?? "", !!className])} {...rest}>
       {title !== undefined || description !== undefined ? (
         <span className="eink-list__item-content">
           {title !== undefined ? <span className="eink-list__item-title">{title}</span> : null}

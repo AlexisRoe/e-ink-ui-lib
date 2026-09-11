@@ -1,4 +1,6 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../theme/theme.provider";
+
 import "./Space.component.css";
 
 /** Size scale rendered by {@link Space}, mapped to `--eink-size-*` tokens. Defaults to `16`. */
@@ -21,7 +23,7 @@ export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
 export function Space({ size = 16, className, style, ...rest }: SpaceProps) {
   return (
     <div
-      className={["eink-space", className].filter(Boolean).join(" ")}
+      className={cx("eink-space", [className ?? "", !!className])}
       style={{ ["--eink-space-size" as string]: `var(--eink-size-${size})`, ...style }}
       {...rest}
     />

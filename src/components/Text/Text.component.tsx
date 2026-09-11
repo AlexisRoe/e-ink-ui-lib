@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../theme/theme.provider";
 import "./Text.component.css";
 
 /** HTML element rendered by {@link Text}. Defaults to `"p"`. */
@@ -23,7 +24,7 @@ export function Text({ as = "p", className, children, ...rest }: TextProps) {
   const Tag = as;
 
   return (
-    <Tag className={["eink-text", className].filter(Boolean).join(" ")} {...rest}>
+    <Tag className={cx("eink-text", [className ?? "", !!className])} {...rest}>
       {children}
     </Tag>
   );

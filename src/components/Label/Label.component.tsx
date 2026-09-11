@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../theme/theme.provider";
 import "./Label.component.css";
 
 /** Props accepted by {@link Label}. */
@@ -14,7 +15,7 @@ export type LabelProps = HTMLAttributes<HTMLSpanElement>;
  */
 export function Label({ className, children, ...rest }: LabelProps) {
   return (
-    <span className={["eink-label", className].filter(Boolean).join(" ")} {...rest}>
+    <span className={cx("eink-label", [className ?? "", !!className])} {...rest}>
       {children}
     </span>
   );

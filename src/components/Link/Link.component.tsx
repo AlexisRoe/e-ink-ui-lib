@@ -1,5 +1,6 @@
 import type { AnchorHTMLAttributes } from "react";
 import { Icon } from "../icons/Icon";
+import { cx } from "../theme/theme.provider";
 import "./Link.component.css";
 
 /** Props accepted by {@link Link}. */
@@ -38,9 +39,11 @@ export function Link({
 }: LinkProps) {
   return (
     <a
-      className={["eink-link", alreadyClicked ? "eink-link--clicked" : null, className]
-        .filter(Boolean)
-        .join(" ")}
+      className={cx(
+        "eink-link",
+        ["eink-link--clicked", alreadyClicked],
+        [className ?? "", !!className],
+      )}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       {...rest}

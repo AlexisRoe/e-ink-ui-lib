@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../theme/theme.provider";
 import "./Counter.component.css";
 
 /** Sizes accepted by {@link Counter}. Defaults to `"md"`. */
@@ -17,12 +18,6 @@ interface CounterBaseProps extends Omit<HTMLAttributes<HTMLDivElement>, "childre
  */
 export type CounterProps = CounterBaseProps &
   ({ count?: number; dot?: never } | { dot?: boolean; count?: never });
-
-function buildClassName(modifiers: string[], className: string | undefined) {
-  return ["eink-counter", ...modifiers.map((modifier) => `eink-counter--${modifier}`), className]
-    .filter(Boolean)
-    .join(" ");
-}
 
 function formatCount(count: number): string {
   return count > 99 ? "99+" : String(count);
@@ -45,7 +40,10 @@ export function Counter({ className, label, size = "md", count, dot, ...rest }: 
   const hasCount = typeof count === "number";
 
   return (
-    <div className={buildClassName([size], className)} {...rest}>
+    <div
+      className={cx(`eink-counter eink-counter--${size}`, [className ?? "", !!className])}
+      {...rest}
+    >
       <span className="eink-counter__label">{label}</span>
       {dot ? (
         <span className="eink-counter__badge eink-counter__badge--dot" aria-hidden="true" />

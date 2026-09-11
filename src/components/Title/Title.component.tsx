@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import { cx } from "../theme/theme.provider";
 import "./Title.component.css";
 
 /** Heading level accepted by {@link Title}, mapping 1:1 to `<h1>`–`<h6>`. */
@@ -25,10 +26,7 @@ export function Title({ size = 1, className, children, ...rest }: TitleProps) {
   const Tag = TAGS[size - 1];
 
   return (
-    <Tag
-      className={["eink-title", `eink-title--${size}`, className].filter(Boolean).join(" ")}
-      {...rest}
-    >
+    <Tag className={cx(`eink-title eink-title--${size}`, [className ?? "", !!className])} {...rest}>
       {children}
     </Tag>
   );

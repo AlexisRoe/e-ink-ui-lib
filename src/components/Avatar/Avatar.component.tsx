@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-
+import { cx } from "../theme/theme.provider";
 import "./Avatar.component.css";
 
 /** Sizes accepted by {@link Avatar}. Defaults to `"md"`. */
@@ -29,12 +29,6 @@ function getInitials(userName: string): string {
     .join("");
 }
 
-function buildClassName(modifiers: string[], className: string | undefined) {
-  return ["eink-avatar", ...modifiers.map((modifier) => `eink-avatar--${modifier}`), className]
-    .filter(Boolean)
-    .join(" ");
-}
-
 /**
  * Square avatar, either initials on a black background or a bordered image.
  *
@@ -60,7 +54,13 @@ export function Avatar({
   ...rest
 }: AvatarProps) {
   return (
-    <div className={buildClassName([size, src ? "image" : "initials"], className)} {...rest}>
+    <div
+      className={cx(`eink-avatar eink-avatar--${size} eink-avatar--${src ? "image" : "initials"}`, [
+        className ?? "",
+        !!className,
+      ])}
+      {...rest}
+    >
       {src ? (
         <img className="eink-avatar__image" src={src} alt={userName} />
       ) : (

@@ -90,4 +90,4 @@ export { Text } from "./components/Text/Text.component";
 export type { TitleProps, TitleSize } from "./components/Title/Title.component";
 export { Title } from "./components/Title/Title.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
-export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
+export { cx, ThemeProvider, useTheme } from "./components/theme/theme.provider";

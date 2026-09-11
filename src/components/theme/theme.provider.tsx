@@ -62,7 +62,7 @@ export interface ThemeProviderProps {
  * @param conditions - `[className, condition]` tuples; `className` is included only when `condition` is `true`.
  * @returns The resulting class name string, with falsy parts removed.
  */
-function cx(
+export function cx(
   base: string | undefined,
   ...conditions: Array<[className: string, condition: boolean]>
 ): string {
