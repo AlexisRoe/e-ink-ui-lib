@@ -120,6 +120,8 @@ export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
 export type { StrokeProps } from "./components/stroke/stroke.component";
 export { Stroke } from "./components/stroke/stroke.component";
+export type { TabsContentProps, TabsItemProps, TabsProps } from "./components/tabs/tabs.component";
+export { Tabs } from "./components/tabs/tabs.component";
 export type { TextAs, TextProps } from "./components/text/text.component";
 export { Text } from "./components/text/text.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
