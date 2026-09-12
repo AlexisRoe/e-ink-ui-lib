@@ -108,6 +108,8 @@ export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
+export type { StrokeProps } from "./components/stroke/stroke.component";
+export { Stroke } from "./components/stroke/stroke.component";
 export type { TextAs, TextProps } from "./components/text/text.component";
 export { Text } from "./components/text/text.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";

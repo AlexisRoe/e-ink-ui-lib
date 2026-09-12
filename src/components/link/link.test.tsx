@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Link } from "./link.component";
 
 describe("Link", () => {
@@ -57,6 +57,51 @@ describe("Link", () => {
       </Link>,
     );
     expect(getByText("About").closest("a")).toHaveClass("eink-link--clicked");
+  });
+
+  it("does not apply the mono class by default", () => {
+    const { getByText } = render(<Link href="/about">About</Link>);
+    expect(getByText("About").closest("a")).not.toHaveClass("eink-link--mono");
+  });
+
+  it("applies the mono class when mono is true", () => {
+    const { getByText } = render(
+      <Link href="/about" alreadyClicked mono>
+        About
+      </Link>,
+    );
+    expect(getByText("About").closest("a")).toHaveClass("eink-link--mono");
+  });
+
+  it("is not disabled by default", () => {
+    const { getByText } = render(<Link href="/about">About</Link>);
+    const anchor = getByText("About").closest("a");
+    expect(anchor).not.toHaveClass("eink-link--disabled");
+    expect(anchor).toHaveAttribute("href", "/about");
+  });
+
+  it("applies the disabled modifier class and removes href when disabled", () => {
+    const { getByText } = render(
+      <Link href="/about" disabled>
+        About
+      </Link>,
+    );
+    const anchor = getByText("About").closest("a");
+    expect(anchor).toHaveClass("eink-link--disabled");
+    expect(anchor).not.toHaveAttribute("href");
+    expect(anchor).toHaveAttribute("aria-disabled", "true");
+    expect(anchor).toHaveAttribute("tabIndex", "-1");
+  });
+
+  it("prevents onClick from firing when disabled", () => {
+    const onClick = vi.fn();
+    const { getByText } = render(
+      <Link href="/about" disabled onClick={onClick}>
+        About
+      </Link>,
+    );
+    fireEvent.click(getByText("About"));
+    expect(onClick).not.toHaveBeenCalled();
   });
 
   it("merges a custom className", () => {
