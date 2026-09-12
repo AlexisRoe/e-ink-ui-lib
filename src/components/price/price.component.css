@@ -1,0 +1,46 @@
+.eink-price {
+  display: inline-flex;
+  align-items: flex-start;
+  font-family: var(--eink-font-family-main);
+  font-weight: 700;
+  color: var(--eink-color-primary);
+}
+
+.eink-price__sign,
+.eink-price__integer {
+  line-height: 1;
+}
+
+.eink-price__superscript {
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------- Sizes ---------------- */
+
+.eink-price--sm .eink-price__sign,
+.eink-price--sm .eink-price__integer {
+  font-size: var(--eink-size-24);
+}
+
+.eink-price--sm .eink-price__superscript {
+  font-size: var(--eink-size-12);
+}
+
+.eink-price--md .eink-price__sign,
+.eink-price--md .eink-price__integer {
+  font-size: var(--eink-size-48);
+}
+
+.eink-price--md .eink-price__superscript {
+  font-size: var(--eink-size-20);
+}
+
+.eink-price--xl .eink-price__sign,
+.eink-price--xl .eink-price__integer {
+  font-size: var(--eink-size-128);
+}
+
+.eink-price--xl .eink-price__superscript {
+  font-size: var(--eink-size-36);
+}

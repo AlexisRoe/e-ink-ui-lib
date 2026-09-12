@@ -93,6 +93,13 @@ export type {
   NumberSeparatorStyle,
 } from "./components/number/number.component";
 export { Number } from "./components/number/number.component";
+export type {
+  PriceGroupingBy,
+  PriceProps,
+  PriceSeparatorStyle,
+  PriceSize,
+} from "./components/price/price.component";
+export { Price } from "./components/price/price.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
