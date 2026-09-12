@@ -25,10 +25,21 @@ type ButtonSizeProps = {
   size?: ButtonSize;
 };
 
+/** Props shared by every button variant, for the optional disabled `mono` rendering. */
+type ButtonMonoProps = {
+  /**
+   * When true and the button is `disabled`, renders it in black and white
+   * with a diagonal black stripe overlay instead of the default grey
+   * disabled look. Has no effect when the button is not disabled.
+   */
+  mono?: boolean;
+};
+
 /** Props shared by every text button variant. */
 type ButtonVariantProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> &
   ButtonIconSlotProps &
-  ButtonSizeProps & {
+  ButtonSizeProps &
+  ButtonMonoProps & {
     children: ReactNode;
   };
 
@@ -50,7 +61,8 @@ export type ButtonProps = ButtonVariantProps & {
 /** Props shared by every icon-only button variant. */
 export interface IconButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">,
-    ButtonSizeProps {
+    ButtonSizeProps,
+    ButtonMonoProps {
   /** Name of the icon to render, from the {@link IconName} registry. */
   icon: IconName;
   /** Accessible label; required since icon-only buttons have no text content. */
@@ -136,9 +148,12 @@ function useLoadingFlipStyle(loading: boolean, flipIntervalMs: number): CSSPrope
  * Accepts an optional icon on the left or right via `iconLeft` /
  * `iconRight` (only one at a time — see {@link ButtonIconSlotProps}), an
  * optional `size` (`"sm"` | `"md"` | `"xl"`, defaults to `"md"`), an
- * optional `fullWidth` to stretch the button to fill its container, and an
+ * optional `fullWidth` to stretch the button to fill its container, an
  * optional `loading` state that shows a flipping hourglass icon in front of
- * the label.
+ * the label, and a `disabled` state (greyed out, non-interactive, carries
+ * the native `disabled` HTML attribute). Combine `disabled` with `mono` to
+ * render the disabled state in black and white with a diagonal stripe
+ * overlay instead.
  *
  * Additional variants are available as static properties:
  * {@link Button.Outlined}, {@link Button.Naked}, {@link Button.Icon},
@@ -164,6 +179,7 @@ export function Button({
   loading = false,
   flipIntervalMs = DEFAULT_LOADING_FLIP_INTERVAL_MS,
   disabled,
+  mono,
   ...rest
 }: ButtonProps) {
   const iconStyle = useLoadingFlipStyle(loading, flipIntervalMs);
@@ -175,6 +191,7 @@ export function Button({
         `eink-button eink-button--filled eink-button--${size}`,
         ["eink-button--full-width", !!fullWidth],
         ["eink-button--loading", loading],
+        ["eink-button--mono", !!mono],
         [className ?? "", !!className],
       )}
       disabled={disabled ?? loading}
@@ -208,6 +225,7 @@ function Outlined({
   loading = false,
   flipIntervalMs = DEFAULT_LOADING_FLIP_INTERVAL_MS,
   disabled,
+  mono,
   ...rest
 }: ButtonProps) {
   const iconStyle = useLoadingFlipStyle(loading, flipIntervalMs);
@@ -219,6 +237,7 @@ function Outlined({
         `eink-button eink-button--outlined eink-button--${size}`,
         ["eink-button--full-width", !!fullWidth],
         ["eink-button--loading", loading],
+        ["eink-button--mono", !!mono],
         [className ?? "", !!className],
       )}
       disabled={disabled ?? loading}
@@ -247,15 +266,17 @@ function Naked({
   iconLeft,
   iconRight,
   size = "md",
+  mono,
   ...rest
 }: ButtonVariantProps) {
   return (
     <button
       type="button"
-      className={cx(`eink-button eink-button--naked eink-button--${size}`, [
-        className ?? "",
-        !!className,
-      ])}
+      className={cx(
+        `eink-button eink-button--naked eink-button--${size}`,
+        ["eink-button--mono", !!mono],
+        [className ?? "", !!className],
+      )}
       {...rest}
     >
       {renderContent({ iconLeft, iconRight, iconSize: ICON_SIZES[size], children })}
@@ -264,14 +285,15 @@ function Naked({
 }
 
 /** Icon-only filled button. Requires an accessible `aria-label`. Accepts an optional `size`. */
-function IconButton({ className, icon, size = "md", ...rest }: IconButtonProps) {
+function IconButton({ className, icon, size = "md", mono, ...rest }: IconButtonProps) {
   return (
     <button
       type="button"
-      className={cx(`eink-button eink-button--filled eink-button--icon eink-button--${size}`, [
-        className ?? "",
-        !!className,
-      ])}
+      className={cx(
+        `eink-button eink-button--filled eink-button--icon eink-button--${size}`,
+        ["eink-button--mono", !!mono],
+        [className ?? "", !!className],
+      )}
       {...rest}
     >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
@@ -280,14 +302,15 @@ function IconButton({ className, icon, size = "md", ...rest }: IconButtonProps) 
 }
 
 /** Icon-only outlined button. Requires an accessible `aria-label`. Accepts an optional `size`. */
-function IconOutlined({ className, icon, size = "md", ...rest }: IconButtonProps) {
+function IconOutlined({ className, icon, size = "md", mono, ...rest }: IconButtonProps) {
   return (
     <button
       type="button"
-      className={cx(`eink-button eink-button--outlined eink-button--icon eink-button--${size}`, [
-        className ?? "",
-        !!className,
-      ])}
+      className={cx(
+        `eink-button eink-button--outlined eink-button--icon eink-button--${size}`,
+        ["eink-button--mono", !!mono],
+        [className ?? "", !!className],
+      )}
       {...rest}
     >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
@@ -296,14 +319,15 @@ function IconOutlined({ className, icon, size = "md", ...rest }: IconButtonProps
 }
 
 /** Icon-only naked button. Requires an accessible `aria-label`. Accepts an optional `size`. */
-function IconNaked({ className, icon, size = "md", ...rest }: IconButtonProps) {
+function IconNaked({ className, icon, size = "md", mono, ...rest }: IconButtonProps) {
   return (
     <button
       type="button"
-      className={cx(`eink-button eink-button--naked eink-button--icon eink-button--${size}`, [
-        className ?? "",
-        !!className,
-      ])}
+      className={cx(
+        `eink-button eink-button--naked eink-button--icon eink-button--${size}`,
+        ["eink-button--mono", !!mono],
+        [className ?? "", !!className],
+      )}
       {...rest}
     >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
