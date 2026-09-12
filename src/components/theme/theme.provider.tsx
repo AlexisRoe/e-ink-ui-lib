@@ -1,5 +1,6 @@
 import { createContext, type ReactNode, useContext, useMemo } from "react";
 
+import { cx } from "../../utils/cx.utils";
 import "./theme.css";
 
 /**
@@ -52,23 +53,6 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export interface ThemeProviderProps {
   /** The subtree that should receive the e-ink theme. */
   children: ReactNode;
-}
-
-/**
- * Joins an optional base class name with any number of conditional class
- * names, each paired with its own boolean.
- *
- * @param base - Class name that is always applied, or `undefined` to omit a base.
- * @param conditions - `[className, condition]` tuples; `className` is included only when `condition` is `true`.
- * @returns The resulting class name string, with falsy parts removed.
- */
-function cx(
-  base: string | undefined,
-  ...conditions: Array<[className: string, condition: boolean]>
-): string {
-  return [base, ...conditions.map(([className, condition]) => (condition ? className : null))]
-    .filter(Boolean)
-    .join(" ");
 }
 
 /**

@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
+import "../src/components/theme/theme.css";
 
 const preview: Preview = {
   parameters: {
@@ -14,6 +15,12 @@ const preview: Preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: "todo",
+    },
+
+    options: {
+      storySort: {
+        method: "alphabetical",
+      },
     },
   },
 };

@@ -1,6 +1,6 @@
 import { act, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { Button } from "./Button";
+import { Button } from "./button.component";
 
 describe("Button", () => {
   it("renders children", () => {
@@ -182,4 +182,3 @@ describe("Button.IconNaked", () => {
     expect(button).toHaveClass("eink-button--naked", "eink-button--icon", "eink-button--md");
   });
 });
-

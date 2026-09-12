@@ -1,0 +1,28 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="About" />
+
+# e-ink UI Lib
+
+A React component library built for e-ink screen tablets and devices.
+
+E-ink displays refresh slowly and render only greys, so components in this
+library are designed around those constraints: no color-dependent state,
+no reliance on hover/transition effects, and a theme (`src/components/theme/theme.css`)
+that forces the entire tree to greyscale (`filter: grayscale(100%)`) so
+components look correct even before an e-ink panel converts them.
+
+## What's in here
+
+- **Components** — the actual UI primitives (`Components/Actions`, `Components/Data Display`,
+  `Components/Layout`, `Components/Typography`), each with usage examples and tests.
+- **Tokens** — the shared design tokens (colors, sizes, fonts, icons) that back every component.
+- **Theme** — the `ThemeProvider` that applies the e-ink theme.
+
+## Conventions
+
+- One folder per component under `src/components/<Name>/`, each with its
+  implementation, styles, tests, and Storybook stories.
+- Components accept and forward native HTML attributes where it makes sense,
+  so they behave like the elements they wrap.
+- Everything is exported from `src/index.ts`.

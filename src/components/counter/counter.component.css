@@ -1,0 +1,95 @@
+.eink-counter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border: var(--eink-border-medium);
+}
+
+.eink-counter__label {
+  font-family: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.eink-counter__badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ---------------- Sizes ---------------- */
+
+.eink-counter--sm {
+  padding: var(--eink-size-8) var(--eink-size-12);
+}
+
+.eink-counter--sm .eink-counter__label {
+  font-size: var(--eink-size-14);
+}
+
+.eink-counter--sm .eink-counter__badge {
+  min-width: var(--eink-size-16);
+  height: var(--eink-size-16);
+  font-size: var(--eink-size-10);
+  padding: 0 var(--eink-size-4);
+}
+
+.eink-counter--sm .eink-counter__badge--dot {
+  min-width: var(--eink-size-8);
+  width: var(--eink-size-8);
+  height: var(--eink-size-8);
+  padding: 0;
+}
+
+.eink-counter--md {
+  padding: var(--eink-size-12) var(--eink-size-16);
+}
+
+.eink-counter--md .eink-counter__label {
+  font-size: var(--eink-size-16);
+}
+
+.eink-counter--md .eink-counter__badge {
+  min-width: var(--eink-size-20);
+  height: var(--eink-size-20);
+  font-size: var(--eink-size-12);
+  padding: 0 var(--eink-size-6);
+}
+
+.eink-counter--md .eink-counter__badge--dot {
+  min-width: var(--eink-size-10);
+  width: var(--eink-size-10);
+  height: var(--eink-size-10);
+  padding: 0;
+}
+
+.eink-counter--xl {
+  padding: var(--eink-size-16) var(--eink-size-24);
+}
+
+.eink-counter--xl .eink-counter__label {
+  font-size: var(--eink-size-20);
+}
+
+.eink-counter--xl .eink-counter__badge {
+  min-width: var(--eink-size-24);
+  height: var(--eink-size-24);
+  font-size: var(--eink-size-14);
+  padding: 0 var(--eink-size-8);
+}
+
+.eink-counter--xl .eink-counter__badge--dot {
+  min-width: var(--eink-size-12);
+  width: var(--eink-size-12);
+  height: var(--eink-size-12);
+  padding: 0;
+}

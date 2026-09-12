@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 import { useEffect, useState } from "react";
-import { Icon } from "../icons/Icon";
+import { cx } from "../../utils/cx.utils";
+import { Icon } from "../icons/icon";
 import type { IconName } from "../icons/icons";
-import "./Button.css";
+import "./button.component.css";
 
 /**
  * Icon slot props shared by the text button variants ({@link Button},
@@ -80,25 +81,31 @@ function renderContent({
   iconStyle?: CSSProperties;
   children: ReactNode;
 }) {
-  const iconClasses = ["eink-button__icon", iconClassName].filter(Boolean).join(" ");
+  const iconClasses = cx("eink-button__icon", [iconClassName ?? "", !!iconClassName]);
 
   return (
     <>
       {iconLeft ? (
-        <Icon name={iconLeft} size={iconSize} className={iconClasses} style={iconStyle} aria-hidden="true" />
+        <Icon
+          name={iconLeft}
+          size={iconSize}
+          className={iconClasses}
+          style={iconStyle}
+          aria-hidden="true"
+        />
       ) : null}
       <span className="eink-button__label">{children}</span>
       {iconRight ? (
-        <Icon name={iconRight} size={iconSize} className={iconClasses} style={iconStyle} aria-hidden="true" />
+        <Icon
+          name={iconRight}
+          size={iconSize}
+          className={iconClasses}
+          style={iconStyle}
+          aria-hidden="true"
+        />
       ) : null}
     </>
   );
-}
-
-function buildClassName(modifiers: string[], className: string | undefined) {
-  return ["eink-button", ...modifiers.map((modifier) => `eink-button--${modifier}`), className]
-    .filter(Boolean)
-    .join(" ");
 }
 
 /**
@@ -164,9 +171,11 @@ export function Button({
   return (
     <button
       type="button"
-      className={buildClassName(
-        ["filled", size, ...(fullWidth ? ["full-width"] : []), ...(loading ? ["loading"] : [])],
-        className,
+      className={cx(
+        `eink-button eink-button--filled eink-button--${size}`,
+        ["eink-button--full-width", !!fullWidth],
+        ["eink-button--loading", loading],
+        [className ?? "", !!className],
       )}
       disabled={disabled ?? loading}
       {...rest}
@@ -206,9 +215,11 @@ function Outlined({
   return (
     <button
       type="button"
-      className={buildClassName(
-        ["outlined", size, ...(fullWidth ? ["full-width"] : []), ...(loading ? ["loading"] : [])],
-        className,
+      className={cx(
+        `eink-button eink-button--outlined eink-button--${size}`,
+        ["eink-button--full-width", !!fullWidth],
+        ["eink-button--loading", loading],
+        [className ?? "", !!className],
       )}
       disabled={disabled ?? loading}
       {...rest}
@@ -230,9 +241,23 @@ function Outlined({
  *
  * Accepts an optional `size` — see {@link Button}.
  */
-function Naked({ className, children, iconLeft, iconRight, size = "md", ...rest }: ButtonVariantProps) {
+function Naked({
+  className,
+  children,
+  iconLeft,
+  iconRight,
+  size = "md",
+  ...rest
+}: ButtonVariantProps) {
   return (
-    <button type="button" className={buildClassName(["naked", size], className)} {...rest}>
+    <button
+      type="button"
+      className={cx(`eink-button eink-button--naked eink-button--${size}`, [
+        className ?? "",
+        !!className,
+      ])}
+      {...rest}
+    >
       {renderContent({ iconLeft, iconRight, iconSize: ICON_SIZES[size], children })}
     </button>
   );
@@ -241,7 +266,14 @@ function Naked({ className, children, iconLeft, iconRight, size = "md", ...rest 
 /** Icon-only filled button. Requires an accessible `aria-label`. Accepts an optional `size`. */
 function IconButton({ className, icon, size = "md", ...rest }: IconButtonProps) {
   return (
-    <button type="button" className={buildClassName(["filled", "icon", size], className)} {...rest}>
+    <button
+      type="button"
+      className={cx(`eink-button eink-button--filled eink-button--icon eink-button--${size}`, [
+        className ?? "",
+        !!className,
+      ])}
+      {...rest}
+    >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
     </button>
   );
@@ -250,7 +282,14 @@ function IconButton({ className, icon, size = "md", ...rest }: IconButtonProps) 
 /** Icon-only outlined button. Requires an accessible `aria-label`. Accepts an optional `size`. */
 function IconOutlined({ className, icon, size = "md", ...rest }: IconButtonProps) {
   return (
-    <button type="button" className={buildClassName(["outlined", "icon", size], className)} {...rest}>
+    <button
+      type="button"
+      className={cx(`eink-button eink-button--outlined eink-button--icon eink-button--${size}`, [
+        className ?? "",
+        !!className,
+      ])}
+      {...rest}
+    >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
     </button>
   );
@@ -259,7 +298,14 @@ function IconOutlined({ className, icon, size = "md", ...rest }: IconButtonProps
 /** Icon-only naked button. Requires an accessible `aria-label`. Accepts an optional `size`. */
 function IconNaked({ className, icon, size = "md", ...rest }: IconButtonProps) {
   return (
-    <button type="button" className={buildClassName(["naked", "icon", size], className)} {...rest}>
+    <button
+      type="button"
+      className={cx(`eink-button eink-button--naked eink-button--icon eink-button--${size}`, [
+        className ?? "",
+        !!className,
+      ])}
+      {...rest}
+    >
       <Icon name={icon} size={ICON_SIZES[size]} className="eink-button__icon" aria-hidden="true" />
     </button>
   );
