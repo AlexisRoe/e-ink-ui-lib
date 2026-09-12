@@ -20,6 +20,8 @@ export type { CounterProps, CounterSize } from "./components/counter/counter.com
 export { Counter } from "./components/counter/counter.component";
 export type { DividerProps } from "./components/divider/divider.component";
 export { Divider } from "./components/divider/divider.component";
+export type { HighlightProps } from "./components/highlight/highlight.component";
+export { Highlight } from "./components/highlight/highlight.component";
 export type { IconProps } from "./components/icons/icon";
 export { Icon } from "./components/icons/icon";
 export type { IconName } from "./components/icons/icons";

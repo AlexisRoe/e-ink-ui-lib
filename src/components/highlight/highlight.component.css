@@ -1,0 +1,17 @@
+.eink-highlight {
+  font-family: inherit;
+  color: inherit;
+}
+
+.eink-highlight--background {
+  background-color: var(--eink-color-grey-90);
+}
+
+.eink-highlight--mono {
+  background-color: transparent;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--eink-color-primary);
+  text-decoration-thickness: var(--eink-border-width-medium);
+  text-underline-offset: var(--eink-size-4);
+}
