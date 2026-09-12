@@ -16,6 +16,8 @@ export type {
   CardTitleProps,
 } from "./components/card/card.component";
 export { Card } from "./components/card/card.component";
+export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
+export { Code } from "./components/code/code.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
 export { Counter } from "./components/counter/counter.component";
 export type { DividerProps } from "./components/divider/divider.component";
