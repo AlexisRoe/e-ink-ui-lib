@@ -87,6 +87,12 @@ export type { LinkProps } from "./components/link/link.component";
 export { Link } from "./components/link/link.component";
 export type { ListAs, ListItemProps, ListProps } from "./components/list/list.component";
 export { List, ListItem } from "./components/list/list.component";
+export type {
+  NumberGroupingBy,
+  NumberProps,
+  NumberSeparatorStyle,
+} from "./components/number/number.component";
+export { Number } from "./components/number/number.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";

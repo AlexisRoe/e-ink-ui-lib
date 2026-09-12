@@ -1,0 +1,17 @@
+.eink-number {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--eink-size-4);
+  font-family: var(--eink-font-family-main);
+}
+
+.eink-number__value {
+  font-variant-numeric: tabular-nums;
+  color: var(--eink-color-primary);
+}
+
+.eink-number__prefix,
+.eink-number__suffix {
+  color: var(--eink-color-grey-40);
+  font-size: var(--eink-size-14);
+}
