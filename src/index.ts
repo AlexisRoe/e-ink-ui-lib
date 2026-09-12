@@ -1,4 +1,9 @@
 export type {
+  AccordionItemProps,
+  AccordionProps,
+} from "./components/accordion/accordion.component";
+export { Accordion } from "./components/accordion/accordion.component";
+export type {
   AvatarProfileProps,
   AvatarProps,
   AvatarSize,
