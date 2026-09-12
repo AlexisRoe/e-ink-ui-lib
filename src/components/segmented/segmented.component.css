@@ -11,23 +11,22 @@
 }
 
 .eink-segmented__list {
-  display: flex;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .eink-segmented--full-width .eink-segmented__list {
+  display: grid;
   width: 100%;
 }
 
 .eink-segmented__item-wrapper {
-  display: flex;
   border-right: var(--eink-border-medium);
-}
-
-.eink-segmented--full-width .eink-segmented__item-wrapper {
-  flex: 1 1 0%;
 }
 
 .eink-segmented__item-wrapper:last-child {
