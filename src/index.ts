@@ -51,6 +51,10 @@ export {
   IconChevronRight,
   IconChevronUp,
   IconCircleCheck,
+  IconCircleDashed,
+  IconCircleDot,
+  IconCircleHalf2,
+  IconCircleOff,
   IconCircleX,
   IconClock,
   IconCopy,
@@ -102,6 +106,8 @@ export type {
   NumberSeparatorStyle,
 } from "./components/number/number.component";
 export { Number } from "./components/number/number.component";
+export type { PillProps, PillSize } from "./components/pill/pill.component";
+export { Pill } from "./components/pill/pill.component";
 export type {
   PriceGroupingBy,
   PriceProps,
