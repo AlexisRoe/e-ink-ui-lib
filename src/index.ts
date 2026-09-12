@@ -116,6 +116,8 @@ export type {
   SegmentedProps,
 } from "./components/segmented/segmented.component";
 export { Segmented } from "./components/segmented/segmented.component";
+export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skeleton.component";
+export { Skeleton } from "./components/skeleton/skeleton.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
 export type { StrokeProps } from "./components/stroke/stroke.component";
