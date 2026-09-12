@@ -1,4 +1,8 @@
-export type { AvatarProps, AvatarSize } from "./components/avatar/avatar.component";
+export type {
+  AvatarProfileProps,
+  AvatarProps,
+  AvatarSize,
+} from "./components/avatar/avatar.component";
 export { Avatar } from "./components/avatar/avatar.component";
 export type {
   ButtonIconSlotProps,

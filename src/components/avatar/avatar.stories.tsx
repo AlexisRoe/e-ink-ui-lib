@@ -27,34 +27,42 @@ export const Sizes: Story = {
   ),
 };
 
-export const WithImage: Story = {
-  args: {
-    src: profilePhoto1,
-  },
-};
-
-export const ImageSizes: Story = {
-  render: (args) => (
-    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-      <Avatar {...args} size="sm" />
-      <Avatar {...args} size="md" />
-      <Avatar {...args} size="xl" />
-    </div>
-  ),
-  args: {
-    src: profilePhoto1,
-  },
-};
-
 export const WithNotification: Story = {
   args: {
     notification: true,
   },
 };
 
-export const ImageWithNotification: Story = {
+export const ProfileWithImage: Story = {
+  render: (args) => <Avatar.Profile {...args} src={profilePhoto1} />,
+};
+
+export const ProfileMono: Story = {
   args: {
-    src: profilePhoto2,
-    notification: true,
+    size: "sm",
   },
+
+  render: (args) => (
+    <div style={{ transform: "scale(3)", transformOrigin: "top left" }}>
+      <Avatar.Profile {...args} src={profilePhoto1} size="xl" mono />
+    </div>
+  ),
+};
+
+export const ProfileFallback: Story = {
+  render: (args) => <Avatar.Profile {...args} />,
+};
+
+export const ProfileSizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <Avatar.Profile {...args} src={profilePhoto1} size="sm" />
+      <Avatar.Profile {...args} src={profilePhoto1} size="md" />
+      <Avatar.Profile {...args} src={profilePhoto1} size="xl" />
+    </div>
+  ),
+};
+
+export const ProfileWithNotification: Story = {
+  render: (args) => <Avatar.Profile {...args} src={profilePhoto2} notification />,
 };
