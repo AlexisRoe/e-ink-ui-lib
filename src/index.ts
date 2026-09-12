@@ -111,6 +111,11 @@ export type {
 export { Price } from "./components/price/price.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
+export type {
+  SegmentedItemProps,
+  SegmentedProps,
+} from "./components/segmented/segmented.component";
+export { Segmented } from "./components/segmented/segmented.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
 export type { StrokeProps } from "./components/stroke/stroke.component";
