@@ -5,17 +5,10 @@ import type {
   ReactNode,
   ThHTMLAttributes,
 } from "react";
-import {
-  Children,
-  cloneElement,
-  createContext,
-  isValidElement,
-  useContext,
-  useId,
-  useState,
-} from "react";
+import { Children, cloneElement, createContext, isValidElement, useContext, useState } from "react";
 import { cx } from "../../utils/cx.utils";
 import { Icon } from "../icons/icon";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./table.component.css";
 
@@ -31,24 +24,14 @@ const TableContext = createContext<TableContextValue | null>(null);
  * {@link Table} has `mono` enabled.
  */
 function DiagonalStripes() {
-  const patternId = useId();
-
   return (
     <div className="eink-table-row__stripes" aria-hidden="true">
-      <svg className="eink-table-row__stripes-svg" role="presentation">
-        <defs>
-          <pattern
-            id={patternId}
-            width="4"
-            height="4"
-            patternTransform="rotate(45)"
-            patternUnits="userSpaceOnUse"
-          >
-            <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" strokeWidth="2" />
-          </pattern>
-        </defs>
-        <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`} />
-      </svg>
+      <PatternOverlay
+        className="eink-table-row__stripes-svg"
+        role="presentation"
+        size={4}
+        stroke="currentColor"
+      />
     </div>
   );
 }

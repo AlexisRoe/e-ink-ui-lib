@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
-import { useId } from "react";
 
 import { cx } from "../../utils/cx.utils";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./skeleton.component.css";
 
@@ -28,8 +28,6 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
  * ```
  */
 export function Skeleton({ className, variant = "rectangle", ...rest }: SkeletonProps) {
-  const patternId = useId();
-
   return (
     <div
       className={cx(`eink-skeleton eink-skeleton--${variant}`, [className ?? "", !!className])}
@@ -37,18 +35,7 @@ export function Skeleton({ className, variant = "rectangle", ...rest }: Skeleton
       aria-label="Loading"
       {...rest}
     >
-      <svg className="eink-skeleton__pattern" aria-hidden="true">
-        <pattern
-          id={patternId}
-          width="8"
-          height="8"
-          patternUnits="userSpaceOnUse"
-          patternTransform="rotate(45)"
-        >
-          <line x1="0" y1="0" x2="0" y2="8" stroke="black" strokeWidth="2" />
-        </pattern>
-        <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-      </svg>
+      <PatternOverlay />
     </div>
   );
 }

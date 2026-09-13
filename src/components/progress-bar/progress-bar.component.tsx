@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
-import { useId } from "react";
 
 import { cx } from "../../utils/cx.utils";
 import { Label } from "../label/label.component";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./progress-bar.component.css";
 
@@ -25,7 +25,6 @@ interface TrackProps extends HTMLAttributes<HTMLDivElement> {
 
 function Track({ className, value, diagonal, ...rest }: TrackProps) {
   const percent = clampPercent(value);
-  const patternId = useId();
 
   return (
     <div
@@ -40,20 +39,7 @@ function Track({ className, value, diagonal, ...rest }: TrackProps) {
         className={cx("eink-progress-bar__fill", ["eink-progress-bar__fill--diagonal", !!diagonal])}
         style={{ width: `${percent}%` }}
       >
-        {diagonal && (
-          <svg className="eink-progress-bar__pattern" aria-hidden="true">
-            <pattern
-              id={patternId}
-              width="8"
-              height="8"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(45)"
-            >
-              <line x1="0" y1="0" x2="0" y2="8" stroke="black" strokeWidth="2" />
-            </pattern>
-            <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-          </svg>
-        )}
+        {diagonal && <PatternOverlay />}
       </div>
     </div>
   );

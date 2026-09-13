@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { useId } from "react";
 
 import { cx } from "../../utils/cx.utils";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./last-updated.component.css";
 
@@ -99,7 +99,6 @@ export function LastUpdated({
 }: LastUpdatedProps) {
   const status = getStatus(date, stale, expired);
   const labels = { ...DEFAULT_STATUS_LABELS, ...statusLabels };
-  const patternId = useId();
 
   return (
     <div
@@ -116,18 +115,7 @@ export function LastUpdated({
         <div className={cx(`eink-last-updated__status eink-last-updated__status--${status}`)}>
           <span className="eink-last-updated__indicator" aria-hidden="true">
             {status === "stale" && (
-              <svg className="eink-last-updated__pattern" aria-hidden="true">
-                <pattern
-                  id={patternId}
-                  width="4"
-                  height="4"
-                  patternUnits="userSpaceOnUse"
-                  patternTransform="rotate(45)"
-                >
-                  <line x1="0" y1="0" x2="0" y2="4" stroke="black" strokeWidth="2" />
-                </pattern>
-                <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-              </svg>
+              <PatternOverlay className="eink-last-updated__pattern" size={4} />
             )}
           </span>
           <span className="eink-last-updated__label">{labels[status]}</span>

@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { useId } from "react";
 
 import { cx } from "../../utils/cx.utils";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./timeline.component.css";
 
@@ -27,37 +27,18 @@ export interface TimelineItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 
 }
 
 function TimelineMarker({ state }: { state: TimelineState }) {
-  const patternId = useId();
-
   if (state === "pending") {
     return (
-      <svg
+      <PatternOverlay
         className="eink-timeline-item__box eink-timeline-item__box--pending"
         viewBox="0 0 16 16"
         role="img"
         aria-label="pending"
-      >
-        <defs>
-          <pattern
-            id={patternId}
-            width="4"
-            height="4"
-            patternTransform="rotate(45)"
-            patternUnits="userSpaceOnUse"
-          >
-            <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" strokeWidth="2" />
-          </pattern>
-        </defs>
-        <rect
-          x="1"
-          y="1"
-          width="14"
-          height="14"
-          fill={`url(#${patternId})`}
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-      </svg>
+        size={4}
+        stroke="currentColor"
+        rectProps={{ x: 1, y: 1, width: 14, height: 14, stroke: "currentColor", strokeWidth: 2 }}
+        overlay={false}
+      />
     );
   }
 
