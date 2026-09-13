@@ -125,6 +125,16 @@ export { Link } from "./components/link/link.component";
 export type { ListAs, ListItemProps, ListProps } from "./components/list/list.component";
 export { List, ListItem } from "./components/list/list.component";
 export type {
+  ModalCloseProps,
+  ModalFooterButtonProps,
+  ModalOverlay,
+  ModalProps,
+  ModalSize,
+} from "./components/modal/modal.component";
+export { Modal } from "./components/modal/modal.component";
+export type { ModalProviderProps } from "./components/modal/modal.provider";
+export { ModalProvider, useModalContainer } from "./components/modal/modal.provider";
+export type {
   NumberGroupingBy,
   NumberProps,
   NumberSeparatorStyle,

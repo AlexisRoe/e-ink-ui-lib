@@ -51,10 +51,20 @@
   --eink-size-48: 48px;
   --eink-size-64: 64px;
   --eink-size-128: 128px;
+  --eink-size-320: 320px;
+  --eink-size-480: 480px;
+  --eink-size-720: 720px;
 
   --eink-color-primary: #000000;
   --eink-color-secondary: #ffffff;
   --eink-color-background: #ffffff;
+
+  --eink-color-overlay-white: var(--eink-color-secondary);
+  --eink-color-overlay-black: var(--eink-color-primary);
+  --eink-color-overlay-transparent: transparent;
+  --eink-color-overlay-semi-transparent: rgba(255, 255, 255, 0.7);
+
+  --eink-z-index-modal: 1000;
 
   --eink-color-grey-10: #1a1a1a;
   --eink-color-grey-20: #333333;
