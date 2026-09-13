@@ -1,0 +1,124 @@
+.eink-navigation {
+  display: inline-block;
+  box-sizing: border-box;
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+}
+
+.eink-navigation--no-border {
+  border: none;
+}
+
+.eink-navigation--full-width {
+  display: block;
+  width: 100%;
+}
+
+.eink-navigation__list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eink-navigation-item {
+  position: relative;
+}
+
+.eink-navigation-item__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--eink-size-8);
+  width: 100%;
+  border: none;
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  padding: var(--eink-size-12) var(--eink-size-16);
+  cursor: pointer;
+  text-align: left;
+}
+
+.eink-navigation-item__icon {
+  flex-shrink: 0;
+}
+
+.eink-navigation-item__label {
+  flex: 1;
+}
+
+.eink-navigation-item__chevron {
+  flex-shrink: 0;
+}
+
+.eink-navigation-item__submenu {
+  position: absolute;
+  z-index: var(--eink-z-index-modal);
+  min-width: var(--eink-size-320);
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+}
+
+/*
+ * In the vertical orientation, submenus unfold in place instead of flying
+ * out, indented to the right so nesting reads as an optical hierarchy.
+ */
+.eink-navigation-item__submenu--inline {
+  position: static;
+  z-index: auto;
+  min-width: 0;
+  margin-left: var(--eink-size-16);
+  border: none;
+  border-top: var(--eink-border-thin);
+}
+
+.eink-navigation-item__submenu-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eink-navigation--vertical > .eink-navigation__list {
+  flex-direction: column;
+}
+
+.eink-navigation--horizontal > .eink-navigation__list {
+  flex-direction: row;
+}
+
+.eink-navigation-item__trigger--open,
+.eink-navigation-item__trigger:focus-visible {
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+}
+
+.eink-navigation-item__submenu .eink-navigation-item__submenu {
+  top: calc(-1 * var(--eink-border-width-medium));
+  left: 100%;
+}
+
+.eink-navigation--vertical .eink-navigation-item + .eink-navigation-item {
+  border-top: var(--eink-border-thin);
+}
+
+.eink-navigation-item__submenu-list .eink-navigation-item + .eink-navigation-item {
+  border-top: var(--eink-border-thin);
+}
+
+.eink-navigation--horizontal
+  > .eink-navigation__list
+  > .eink-navigation-item
+  + .eink-navigation-item {
+  border-left: var(--eink-border-thin);
+}
+
+.eink-navigation--horizontal
+  > .eink-navigation__list
+  > .eink-navigation-item
+  > .eink-navigation-item__submenu {
+  top: 100%;
+  left: calc(-1 * var(--eink-border-width-medium));
+}

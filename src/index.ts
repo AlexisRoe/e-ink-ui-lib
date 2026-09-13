@@ -161,6 +161,12 @@ export type {
 export { Modal } from "./components/modal/modal.component";
 export type { ModalProviderProps } from "./components/modal/modal.provider";
 export { ModalProvider, useModalContainer } from "./components/modal/modal.provider";
+export type {
+  NavigationItemProps,
+  NavigationOrientation,
+  NavigationProps,
+} from "./components/navigation/navigation.component";
+export { Navigation } from "./components/navigation/navigation.component";
 export type { NotificationVariant } from "./components/notification/notification.component";
 export type { NotificationProviderProps } from "./components/notification/notification.provider";
 export {
