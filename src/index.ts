@@ -134,6 +134,12 @@ export type {
   PriceSize,
 } from "./components/price/price.component";
 export { Price } from "./components/price/price.component";
+export type {
+  ProgressBarNakedProps,
+  ProgressBarProps,
+  ProgressBarStepperProps,
+} from "./components/progress-bar/progress-bar.component";
+export { ProgressBar } from "./components/progress-bar/progress-bar.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
 export type {
