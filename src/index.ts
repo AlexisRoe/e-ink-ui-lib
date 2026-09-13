@@ -16,6 +16,11 @@ export { BarChart } from "./components/bar-chart/bar-chart.component";
 export type { BarcodeFormat, BarcodeProps } from "./components/barcode/barcode.component";
 export { Barcode } from "./components/barcode/barcode.component";
 export type {
+  BreadCrumbsItemProps,
+  BreadCrumbsProps,
+} from "./components/breadcrumbs/breadcrumbs.component";
+export { BreadCrumbs } from "./components/breadcrumbs/breadcrumbs.component";
+export type {
   ButtonIconSlotProps,
   ButtonProps,
   IconButtonProps,
