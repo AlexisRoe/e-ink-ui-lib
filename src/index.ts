@@ -128,6 +128,8 @@ export type { LinkProps } from "./components/link/link.component";
 export { Link } from "./components/link/link.component";
 export type { ListAs, ListItemProps, ListProps } from "./components/list/list.component";
 export { List, ListItem } from "./components/list/list.component";
+export type { LogItemProps, LogProps, LogState } from "./components/log/log.component";
+export { Log } from "./components/log/log.component";
 export type {
   ModalCloseProps,
   ModalFooterButtonProps,
