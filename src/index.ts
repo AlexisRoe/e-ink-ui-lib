@@ -3,6 +3,8 @@ export type {
   AccordionProps,
 } from "./components/accordion/accordion.component";
 export { Accordion } from "./components/accordion/accordion.component";
+export type { AlertProps, AlertVariant } from "./components/alert/alert.component";
+export { Alert } from "./components/alert/alert.component";
 export type {
   AvatarProfileProps,
   AvatarProps,
