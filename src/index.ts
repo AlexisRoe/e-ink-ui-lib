@@ -195,6 +195,12 @@ export { Timeline } from "./components/timeline/timeline.component";
 export type { TitleProps, TitleSize } from "./components/title/title.component";
 export { Title } from "./components/title/title.component";
 export type {
+  TodoItemIdentifier,
+  TodoItemProps,
+  TodoProps,
+} from "./components/todo/todo.component";
+export { Todo } from "./components/todo/todo.component";
+export type {
   TrendDirection,
   TrendFullProps,
   TrendProps,
