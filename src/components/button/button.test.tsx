@@ -35,6 +35,20 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toBeDisabled();
   });
 
+  it("does not apply the mono class by default", () => {
+    render(<Button disabled>Click me</Button>);
+    expect(screen.getByRole("button")).not.toHaveClass("eink-button--mono");
+  });
+
+  it("applies the mono class when mono is true and disabled", () => {
+    render(
+      <Button disabled mono>
+        Click me
+      </Button>,
+    );
+    expect(screen.getByRole("button")).toHaveClass("eink-button--mono");
+  });
+
   it("applies the full-width modifier class when fullWidth is true", () => {
     render(<Button fullWidth>Click me</Button>);
     expect(screen.getByRole("button")).toHaveClass("eink-button--full-width");
@@ -132,6 +146,20 @@ describe("Button.Outlined", () => {
     expect(button).toBeDisabled();
     expect(button.querySelector("svg")).toBeInTheDocument();
   });
+
+  it("forwards the disabled prop", () => {
+    render(<Button.Outlined disabled>Outlined</Button.Outlined>);
+    expect(screen.getByRole("button")).toBeDisabled();
+  });
+
+  it("applies the mono class when mono is true and disabled", () => {
+    render(
+      <Button.Outlined disabled mono>
+        Outlined
+      </Button.Outlined>,
+    );
+    expect(screen.getByRole("button")).toHaveClass("eink-button--mono");
+  });
 });
 
 describe("Button.Naked", () => {
@@ -149,6 +177,20 @@ describe("Button.Naked", () => {
     render(<Button.Naked size="xl">Naked</Button.Naked>);
     expect(screen.getByRole("button")).toHaveClass("eink-button--xl");
   });
+
+  it("forwards the disabled prop", () => {
+    render(<Button.Naked disabled>Naked</Button.Naked>);
+    expect(screen.getByRole("button")).toBeDisabled();
+  });
+
+  it("applies the mono class when mono is true and disabled", () => {
+    render(
+      <Button.Naked disabled mono>
+        Naked
+      </Button.Naked>,
+    );
+    expect(screen.getByRole("button")).toHaveClass("eink-button--mono");
+  });
 });
 
 describe("Button.Icon", () => {
@@ -164,6 +206,16 @@ describe("Button.Icon", () => {
   it("applies the requested size modifier class", () => {
     render(<Button.Icon icon="trash" aria-label="Delete" size="sm" />);
     expect(screen.getByRole("button", { name: "Delete" })).toHaveClass("eink-button--sm");
+  });
+
+  it("forwards the disabled prop", () => {
+    render(<Button.Icon icon="trash" aria-label="Delete" disabled />);
+    expect(screen.getByRole("button", { name: "Delete" })).toBeDisabled();
+  });
+
+  it("applies the mono class when mono is true and disabled", () => {
+    render(<Button.Icon icon="trash" aria-label="Delete" disabled mono />);
+    expect(screen.getByRole("button", { name: "Delete" })).toHaveClass("eink-button--mono");
   });
 });
 

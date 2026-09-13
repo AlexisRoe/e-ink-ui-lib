@@ -1,0 +1,43 @@
+.eink-code {
+  display: inline;
+  font-family: var(--eink-font-family-main);
+  font-size: var(--eink-font-size-default);
+  padding: var(--eink-size-2) var(--eink-size-6);
+  border: var(--eink-border-thin);
+  background-color: var(--eink-color-grey-90);
+  color: var(--eink-color-primary);
+}
+
+.eink-code--mono {
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+  border-color: var(--eink-color-primary);
+}
+
+.eink-code__block {
+  display: block;
+  margin: 0;
+  font-family: var(--eink-font-family-main);
+  font-size: var(--eink-font-size-default);
+  line-height: 1.6;
+  white-space: pre;
+  overflow-x: auto;
+  padding: var(--eink-size-12) var(--eink-size-16);
+  border: var(--eink-border-thin);
+  background-color: var(--eink-color-grey-90);
+  color: var(--eink-color-primary);
+}
+
+.eink-code__block--mono {
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+  border-color: var(--eink-color-primary);
+}
+
+.eink-code__block > code {
+  display: block;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}

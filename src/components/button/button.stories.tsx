@@ -12,6 +12,12 @@ const meta = {
     loading: { control: "boolean" },
     flipIntervalMs: { control: "number" },
     size: { control: "select", options: ["sm", "md", "xl"] },
+    disabled: { control: "boolean" },
+    mono: {
+      control: "boolean",
+      description:
+        "When combined with disabled, renders black and white with a diagonal stripe overlay.",
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -74,6 +80,40 @@ export const Disabled: Story = {
     children: "Disabled button",
     disabled: true,
   },
+};
+
+export const DisabledVariants: Story = {
+  args: { children: "" },
+  render: () => (
+    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <Button disabled>Filled</Button>
+      <Button.Outlined disabled>Outlined</Button.Outlined>
+      <Button.Naked disabled>Naked</Button.Naked>
+      <Button.Icon icon="trash" aria-label="Delete" disabled />
+      <Button.IconOutlined icon="edit" aria-label="Edit" disabled />
+      <Button.IconNaked icon="close" aria-label="Close" disabled />
+    </div>
+  ),
+};
+
+export const DisabledMono: Story = {
+  args: { children: "" },
+  render: () => (
+    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <Button disabled mono>
+        Filled
+      </Button>
+      <Button.Outlined disabled mono>
+        Outlined
+      </Button.Outlined>
+      <Button.Naked disabled mono>
+        Naked
+      </Button.Naked>
+      <Button.Icon icon="trash" aria-label="Delete" disabled mono />
+      <Button.IconOutlined icon="edit" aria-label="Edit" disabled mono />
+      <Button.IconNaked icon="close" aria-label="Close" disabled mono />
+    </div>
+  ),
 };
 
 export const Loading: Story = {

@@ -15,6 +15,18 @@
   color: var(--eink-color-grey-40);
 }
 
+.eink-link--mono.eink-link--clicked {
+  color: var(--eink-color-primary);
+  text-decoration-style: dashed;
+}
+
+.eink-link--disabled {
+  color: var(--eink-color-grey-50);
+  text-decoration-line: line-through;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .eink-link__icon {
   flex-shrink: 0;
 }

@@ -1,0 +1,14 @@
+.eink-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.eink-center--full-width {
+  width: 100%;
+}
+
+.eink-center--full-height {
+  height: 100%;
+}

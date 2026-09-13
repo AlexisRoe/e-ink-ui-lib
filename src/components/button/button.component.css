@@ -10,9 +10,48 @@
   box-sizing: border-box;
 }
 
-.eink-button:disabled {
+.eink-button:disabled:not(.eink-button--loading) {
   cursor: not-allowed;
-  opacity: 0.5;
+  background-color: var(--eink-color-grey-90);
+  color: var(--eink-color-grey-50);
+  border-color: var(--eink-color-grey-70);
+}
+
+.eink-button--mono:disabled:not(.eink-button--loading) {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  border-color: var(--eink-color-primary);
+}
+
+/*
+ * The theme forces `background-image: none !important` on every element (no
+ * images/gradients as backgrounds on e-ink), so the diagonal stripes are
+ * painted as a masked solid `background-color` layer instead: a black
+ * `::after` box (background-color, not background-image) clipped into
+ * stripes via `mask-image`, a property the global reset doesn't touch.
+ */
+.eink-button--mono:disabled:not(.eink-button--loading)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--eink-color-primary);
+  -webkit-mask-image: repeating-linear-gradient(
+    45deg,
+    black 0,
+    black 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  mask-image: repeating-linear-gradient(
+    45deg,
+    black 0,
+    black 1px,
+    transparent 1px,
+    transparent 6px
+  );
 }
 
 .eink-button__label {
@@ -21,6 +60,12 @@
 
 .eink-button__icon {
   flex-shrink: 0;
+}
+
+.eink-button--mono:disabled:not(.eink-button--loading) .eink-button__label,
+.eink-button--mono:disabled:not(.eink-button--loading) .eink-button__icon {
+  position: relative;
+  z-index: 1;
 }
 
 /* ---------------- Filled ---------------- */
@@ -119,8 +164,4 @@
 
 .eink-button--loading {
   cursor: progress;
-}
-
-.eink-button--loading:disabled {
-  opacity: 1;
 }

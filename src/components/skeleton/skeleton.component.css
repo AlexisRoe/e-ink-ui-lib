@@ -1,0 +1,34 @@
+.eink-skeleton {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+}
+
+.eink-skeleton--rectangle {
+  height: var(--eink-size-16);
+}
+
+.eink-skeleton--round {
+  height: var(--eink-size-48);
+  aspect-ratio: 1 / 1;
+  width: auto;
+  border-radius: 50%;
+}
+
+.eink-skeleton--square {
+  height: var(--eink-size-48);
+  aspect-ratio: 1 / 1;
+  width: auto;
+}
+
+.eink-skeleton__pattern {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}

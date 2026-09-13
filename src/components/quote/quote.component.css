@@ -1,0 +1,30 @@
+.eink-quote {
+  margin: 0;
+  padding: var(--eink-size-12) var(--eink-size-24);
+  border-left: var(--eink-border-thick);
+  background-color: var(--eink-color-grey-90);
+}
+
+.eink-quote__text {
+  margin: 0;
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+}
+
+.eink-quote--mono {
+  background-color: var(--eink-color-secondary);
+  border-left-color: var(--eink-color-primary);
+}
+
+.eink-quote__cite {
+  display: inline-block;
+  margin-top: var(--eink-size-8);
+  font-family: var(--eink-font-family-secondary);
+  font-size: var(--eink-size-14);
+  font-style: italic;
+  color: var(--eink-color-grey-40);
+}
+
+.eink-quote--mono .eink-quote__cite {
+  color: var(--eink-color-primary);
+}

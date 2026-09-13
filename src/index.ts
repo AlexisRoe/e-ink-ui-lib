@@ -1,4 +1,13 @@
-export type { AvatarProps, AvatarSize } from "./components/avatar/avatar.component";
+export type {
+  AccordionItemProps,
+  AccordionProps,
+} from "./components/accordion/accordion.component";
+export { Accordion } from "./components/accordion/accordion.component";
+export type {
+  AvatarProfileProps,
+  AvatarProps,
+  AvatarSize,
+} from "./components/avatar/avatar.component";
 export { Avatar } from "./components/avatar/avatar.component";
 export type {
   ButtonIconSlotProps,
@@ -16,10 +25,31 @@ export type {
   CardTitleProps,
 } from "./components/card/card.component";
 export { Card } from "./components/card/card.component";
+export type { CenterProps } from "./components/center/center.component";
+export { Center } from "./components/center/center.component";
+export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
+export { Code } from "./components/code/code.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
 export { Counter } from "./components/counter/counter.component";
 export type { DividerProps } from "./components/divider/divider.component";
 export { Divider } from "./components/divider/divider.component";
+export type {
+  FlexAlign,
+  FlexDirectionProps,
+  FlexGap,
+  FlexJustify,
+  FlexProps,
+} from "./components/flex/flex.component";
+export { Flex } from "./components/flex/flex.component";
+export type {
+  GridColumnsProps,
+  GridItemProps,
+  GridMasonryProps,
+  GridProps,
+} from "./components/grid/grid.component";
+export { Grid } from "./components/grid/grid.component";
+export type { HighlightProps } from "./components/highlight/highlight.component";
+export { Highlight } from "./components/highlight/highlight.component";
 export type { IconProps } from "./components/icons/icon";
 export { Icon } from "./components/icons/icon";
 export type { IconName } from "./components/icons/icons";
@@ -38,6 +68,10 @@ export {
   IconChevronRight,
   IconChevronUp,
   IconCircleCheck,
+  IconCircleDashed,
+  IconCircleDot,
+  IconCircleHalf2,
+  IconCircleOff,
   IconCircleX,
   IconClock,
   IconCopy,
@@ -83,8 +117,36 @@ export type { LinkProps } from "./components/link/link.component";
 export { Link } from "./components/link/link.component";
 export type { ListAs, ListItemProps, ListProps } from "./components/list/list.component";
 export { List, ListItem } from "./components/list/list.component";
+export type {
+  NumberGroupingBy,
+  NumberProps,
+  NumberSeparatorStyle,
+} from "./components/number/number.component";
+export { Number } from "./components/number/number.component";
+export type { PillProps, PillSize } from "./components/pill/pill.component";
+export { Pill } from "./components/pill/pill.component";
+export type {
+  PriceGroupingBy,
+  PriceProps,
+  PriceSeparatorStyle,
+  PriceSize,
+} from "./components/price/price.component";
+export { Price } from "./components/price/price.component";
+export type { QuoteProps } from "./components/quote/quote.component";
+export { Quote } from "./components/quote/quote.component";
+export type {
+  SegmentedItemProps,
+  SegmentedProps,
+} from "./components/segmented/segmented.component";
+export { Segmented } from "./components/segmented/segmented.component";
+export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skeleton.component";
+export { Skeleton } from "./components/skeleton/skeleton.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
+export type { StrokeProps } from "./components/stroke/stroke.component";
+export { Stroke } from "./components/stroke/stroke.component";
+export type { TabsContentProps, TabsItemProps, TabsProps } from "./components/tabs/tabs.component";
+export { Tabs } from "./components/tabs/tabs.component";
 export type { TextAs, TextProps } from "./components/text/text.component";
 export { Text } from "./components/text/text.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";

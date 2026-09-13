@@ -36,6 +36,19 @@ export const AlreadyClicked: Story = {
   },
 };
 
+export const AlreadyClickedMono: Story = {
+  args: {
+    alreadyClicked: true,
+    mono: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};
+
 export const InParagraph: Story = {
   render: ({ href, children }) => (
     <p style={{ maxWidth: 480, lineHeight: 1.6 }}>

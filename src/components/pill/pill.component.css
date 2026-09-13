@@ -1,0 +1,80 @@
+.eink-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eink-size-8);
+  box-sizing: border-box;
+  font-family: var(--eink-font-family-secondary);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  background-color: transparent;
+  color: var(--eink-color-primary);
+}
+
+.eink-pill__label {
+  display: inline-block;
+}
+
+.eink-pill__icon {
+  flex-shrink: 0;
+}
+
+/* ---------------- Border variants ---------------- */
+
+.eink-pill--solid {
+  border: var(--eink-border-medium);
+}
+
+.eink-pill--double {
+  border: var(--eink-border-width-thin) var(--eink-border-style) var(--eink-border-color);
+  outline: var(--eink-border-width-thin) var(--eink-border-style) var(--eink-border-color);
+  outline-offset: var(--eink-size-2);
+}
+
+.eink-pill--filled {
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+}
+
+.eink-pill--dashed {
+  border-width: var(--eink-border-width-medium);
+  border-style: dashed;
+  border-color: var(--eink-border-color);
+}
+
+.eink-pill--dotted {
+  border-width: var(--eink-border-width-medium);
+  border-style: dotted;
+  border-color: var(--eink-border-color);
+}
+
+/* ---------------- Sizes ---------------- */
+
+.eink-pill--sm {
+  padding: var(--eink-size-2) var(--eink-size-6);
+  font-size: var(--eink-size-8);
+}
+
+.eink-pill--md {
+  padding: var(--eink-size-2) var(--eink-size-8);
+  font-size: var(--eink-size-10);
+}
+
+.eink-pill--xl {
+  padding: var(--eink-size-4) var(--eink-size-10);
+  font-size: var(--eink-size-14);
+}
+
+.eink-pill--double.eink-pill--sm {
+  margin: var(--eink-size-2);
+}
+
+.eink-pill--double.eink-pill--md {
+  margin: var(--eink-size-2);
+}
+
+.eink-pill--double.eink-pill--xl {
+  margin: var(--eink-size-2);
+}
