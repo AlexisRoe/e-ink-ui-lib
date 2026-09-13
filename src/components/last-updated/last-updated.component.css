@@ -44,14 +44,6 @@
   background-color: var(--eink-color-secondary);
 }
 
-.eink-last-updated__pattern {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .eink-last-updated__status--expired .eink-last-updated__indicator {
   background-color: var(--eink-color-primary);
 }

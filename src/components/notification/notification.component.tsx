@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
-import { useId } from "react";
+
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./notification.component.css";
 
@@ -28,8 +29,6 @@ export function NotificationItem({
   variant = "info",
   offset,
 }: NotificationItemProps) {
-  const patternId = useId();
-
   return (
     <div
       className="eink-notification"
@@ -37,20 +36,7 @@ export function NotificationItem({
       style={{ "--eink-notification-offset": offset } as CSSProperties}
     >
       <div className={`eink-notification__bar eink-notification__bar--${variant}`}>
-        {variant === "warning" && (
-          <svg className="eink-notification__pattern" aria-hidden="true">
-            <pattern
-              id={patternId}
-              width="8"
-              height="8"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(45)"
-            >
-              <line x1="0" y1="0" x2="0" y2="8" stroke="black" strokeWidth="2" />
-            </pattern>
-            <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-          </svg>
-        )}
+        {variant === "warning" && <PatternOverlay />}
       </div>
       <div className="eink-notification__content">
         <div className="eink-notification__title">{title}</div>

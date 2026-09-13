@@ -30,14 +30,6 @@
   background-color: var(--eink-color-primary);
 }
 
-.eink-notification__pattern {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .eink-notification__content {
   padding: var(--eink-size-12) var(--eink-size-16);
 }

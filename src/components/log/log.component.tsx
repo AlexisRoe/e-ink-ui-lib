@@ -1,8 +1,8 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { useId } from "react";
 
 import { cx } from "../../utils/cx.utils";
 import { formatLogTimestamp } from "../../utils/log.utils";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./log.component.css";
 
@@ -22,28 +22,16 @@ const badgeGlyph: Record<LogState, string> = {
  * with diagonal black lines for `"critical"`.
  */
 function LogMarker({ state }: { state: LogState }) {
-  const patternId = useId();
-
   if (state === "critical") {
     return (
-      <svg
+      <PatternOverlay
         className="eink-log-item__marker eink-log-item__marker--critical"
         role="img"
         aria-label="critical"
-      >
-        <defs>
-          <pattern
-            id={patternId}
-            width="4"
-            height="4"
-            patternTransform="rotate(45)"
-            patternUnits="userSpaceOnUse"
-          >
-            <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" strokeWidth="2" />
-          </pattern>
-        </defs>
-        <rect x="0" y="0" width="100%" height="100%" fill={`url(#${patternId})`} />
-      </svg>
+        size={4}
+        stroke="currentColor"
+        overlay={false}
+      />
     );
   }
 

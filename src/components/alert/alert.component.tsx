@@ -1,8 +1,7 @@
-import { useId } from "react";
-
 import { cx } from "../../utils/cx.utils";
 import { Icon } from "../icons/icon";
 import type { IconName } from "../icons/icons";
+import { PatternOverlay } from "../pattern-overlay/pattern-overlay.component";
 
 import "./alert.component.css";
 
@@ -36,8 +35,6 @@ export interface AlertProps {
  * ```
  */
 export function Alert({ title, description, variant = "info", icon, className }: AlertProps) {
-  const patternId = useId();
-
   return (
     <div
       data-eink-component="alert"
@@ -45,20 +42,7 @@ export function Alert({ title, description, variant = "info", icon, className }:
       className={cx("eink-alert", [className ?? "", !!className])}
     >
       <div className={`eink-alert__bar eink-alert__bar--${variant}`}>
-        {variant === "warning" && (
-          <svg className="eink-alert__pattern" aria-hidden="true">
-            <pattern
-              id={patternId}
-              width="8"
-              height="8"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(45)"
-            >
-              <line x1="0" y1="0" x2="0" y2="8" stroke="black" strokeWidth="2" />
-            </pattern>
-            <rect width="100%" height="100%" fill={`url(#${patternId})`} />
-          </svg>
-        )}
+        {variant === "warning" && <PatternOverlay className="eink-alert__pattern" />}
       </div>
       <div className="eink-alert__content">
         <div className="eink-alert__title-row">
