@@ -43,6 +43,7 @@ import {
   IconMenu2,
   IconMinus,
   IconPhone,
+  IconPhotoAlt,
   IconPlus,
   IconPrinter,
   IconRefresh,
@@ -126,6 +127,7 @@ export const iconRegistry = {
   printer: IconPrinter,
   bug: IconBug,
   "device-ipad-horizontal-search": IconDeviceIpadHorizontalSearch,
+  "photo-alt": IconPhotoAlt,
 } as const;
 
 /** Names of every icon available in {@link iconRegistry}. */
@@ -190,6 +192,7 @@ export {
   IconMenu2,
   IconMinus,
   IconPhone,
+  IconPhotoAlt,
   IconPlus,
   IconPrinter,
   IconRefresh,

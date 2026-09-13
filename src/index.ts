@@ -99,6 +99,7 @@ export {
   IconMenu2,
   IconMinus,
   IconPhone,
+  IconPhotoAlt,
   IconPlus,
   IconPrinter,
   IconRefresh,
@@ -115,6 +116,8 @@ export {
   iconNames,
   iconRegistry,
 } from "./components/icons/icons";
+export type { ImageFit, ImageProps } from "./components/image/image.component";
+export { Image } from "./components/image/image.component";
 export type { LabelProps } from "./components/label/label.component";
 export { Label } from "./components/label/label.component";
 export type { LinkProps } from "./components/link/link.component";
