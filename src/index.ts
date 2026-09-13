@@ -35,6 +35,8 @@ export type { ContainerProps } from "./components/container/container.component"
 export { Container } from "./components/container/container.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
 export { Counter } from "./components/counter/counter.component";
+export type { DescriptionProps } from "./components/description/description.component";
+export { Description } from "./components/description/description.component";
 export type { DividerProps } from "./components/divider/divider.component";
 export { Divider } from "./components/divider/divider.component";
 export type {
