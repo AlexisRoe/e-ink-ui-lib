@@ -21,7 +21,7 @@
 }
 
 .eink-link--disabled {
-  color: var(--eink-color-grey-50);
+  color: var(--eink-color-disabled);
   text-decoration-line: line-through;
   pointer-events: none;
   cursor: not-allowed;

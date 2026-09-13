@@ -13,7 +13,7 @@
 .eink-button:disabled:not(.eink-button--loading) {
   cursor: not-allowed;
   background-color: var(--eink-color-grey-90);
-  color: var(--eink-color-grey-50);
+  color: var(--eink-color-disabled);
   border-color: var(--eink-color-grey-70);
 }
 

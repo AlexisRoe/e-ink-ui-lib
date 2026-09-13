@@ -1,0 +1,99 @@
+.eink-column-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-8);
+  font-family: var(--eink-font-family-main);
+  color: var(--eink-color-primary);
+}
+
+.eink-column-chart__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--eink-size-14);
+}
+
+.eink-column-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.eink-column-chart__axis {
+  stroke: var(--eink-color-primary);
+  stroke-width: var(--eink-border-width-thin);
+}
+
+.eink-column-chart__reference {
+  stroke: var(--eink-color-grey-50);
+  stroke-width: var(--eink-border-width-thin);
+  stroke-dasharray: 4 4;
+}
+
+.eink-column-chart__bar--solid {
+  fill: var(--eink-color-primary);
+}
+
+.eink-column-chart__bar--striped {
+  color: var(--eink-color-primary);
+  stroke: var(--eink-color-primary);
+  stroke-width: var(--eink-border-width-thin);
+}
+
+.eink-column-chart__bar--empty {
+  fill: var(--eink-color-background);
+  stroke: var(--eink-color-primary);
+  stroke-width: var(--eink-border-width-medium);
+}
+
+.eink-column-chart__category-label {
+  fill: var(--eink-color-primary);
+  font-family: var(--eink-font-family-main);
+  font-size: var(--eink-size-10);
+  text-anchor: middle;
+}
+
+.eink-column-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--eink-size-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--eink-size-12);
+}
+
+.eink-column-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--eink-size-6);
+}
+
+.eink-column-chart__legend-swatch {
+  width: var(--eink-size-16);
+  height: var(--eink-size-12);
+  border: var(--eink-border-width-thin) solid var(--eink-color-primary);
+}
+
+.eink-column-chart__legend-swatch--solid {
+  background: var(--eink-color-primary);
+}
+
+.eink-column-chart__legend-swatch--striped {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--eink-color-primary),
+    var(--eink-color-primary) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.eink-column-chart__legend-swatch--empty {
+  background: var(--eink-color-background);
+}
+
+.eink-column-chart__legend-swatch--reference {
+  height: 0;
+  border: none;
+  border-top: var(--eink-border-width-thin) dashed var(--eink-color-grey-50);
+}

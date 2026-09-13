@@ -1,0 +1,43 @@
+.eink-value {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--eink-font-family-main);
+  font-weight: 700;
+  color: var(--eink-color-primary);
+}
+
+.eink-value__value {
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.eink-value__unit {
+  line-height: 1;
+  margin-left: var(--eink-size-4);
+}
+
+/* ---------------- Sizes ---------------- */
+
+.eink-value--sm .eink-value__value {
+  font-size: var(--eink-size-24);
+}
+
+.eink-value--sm .eink-value__unit {
+  font-size: var(--eink-size-12);
+}
+
+.eink-value--md .eink-value__value {
+  font-size: var(--eink-size-48);
+}
+
+.eink-value--md .eink-value__unit {
+  font-size: var(--eink-size-20);
+}
+
+.eink-value--xl .eink-value__value {
+  font-size: var(--eink-size-128);
+}
+
+.eink-value--xl .eink-value__unit {
+  font-size: var(--eink-size-36);
+}

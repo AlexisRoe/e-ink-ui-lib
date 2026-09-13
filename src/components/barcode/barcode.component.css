@@ -1,0 +1,41 @@
+.eink-barcode {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--eink-size-8);
+  font-family: var(--eink-font-family-main);
+  color: var(--eink-color-primary);
+  background-color: var(--eink-color-background);
+}
+
+.eink-barcode__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  shape-rendering: crispEdges;
+}
+
+.eink-barcode__svg g {
+  fill: var(--eink-color-primary);
+}
+
+.eink-barcode__svg text {
+  fill: var(--eink-color-primary);
+  font-family: var(--eink-font-family-main);
+}
+
+.eink-barcode__label {
+  margin: 0;
+  font-size: var(--eink-size-12);
+  color: var(--eink-color-primary);
+  text-align: center;
+}
+
+.eink-barcode__error {
+  margin: 0;
+  padding: var(--eink-size-8);
+  border: var(--eink-border-width-thin) solid var(--eink-color-primary);
+  font-size: var(--eink-size-12);
+  color: var(--eink-color-primary);
+}

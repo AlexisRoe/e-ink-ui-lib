@@ -1,0 +1,17 @@
+.eink-description {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-4);
+}
+
+.eink-description + .eink-description {
+  margin-top: var(--eink-size-24);
+}
+
+.eink-description__label {
+  color: var(--eink-color-grey-50);
+}
+
+.eink-description__value {
+  margin: 0;
+}
