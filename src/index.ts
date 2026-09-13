@@ -186,6 +186,12 @@ export type { TextAs, TextProps } from "./components/text/text.component";
 export { Text } from "./components/text/text.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
+export type {
+  TimelineItemProps,
+  TimelineProps,
+  TimelineState,
+} from "./components/timeline/timeline.component";
+export { Timeline } from "./components/timeline/timeline.component";
 export type { TitleProps, TitleSize } from "./components/title/title.component";
 export { Title } from "./components/title/title.component";
 export type {
