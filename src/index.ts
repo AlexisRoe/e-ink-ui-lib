@@ -25,12 +25,29 @@ export type {
   CardTitleProps,
 } from "./components/card/card.component";
 export { Card } from "./components/card/card.component";
+export type { CenterProps } from "./components/center/center.component";
+export { Center } from "./components/center/center.component";
 export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
 export { Code } from "./components/code/code.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
 export { Counter } from "./components/counter/counter.component";
 export type { DividerProps } from "./components/divider/divider.component";
 export { Divider } from "./components/divider/divider.component";
+export type {
+  FlexAlign,
+  FlexDirectionProps,
+  FlexGap,
+  FlexJustify,
+  FlexProps,
+} from "./components/flex/flex.component";
+export { Flex } from "./components/flex/flex.component";
+export type {
+  GridColumnsProps,
+  GridItemProps,
+  GridMasonryProps,
+  GridProps,
+} from "./components/grid/grid.component";
+export { Grid } from "./components/grid/grid.component";
 export type { HighlightProps } from "./components/highlight/highlight.component";
 export { Highlight } from "./components/highlight/highlight.component";
 export type { IconProps } from "./components/icons/icon";

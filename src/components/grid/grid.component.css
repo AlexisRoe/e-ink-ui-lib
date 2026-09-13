@@ -1,0 +1,56 @@
+.eink-grid {
+  display: grid;
+  box-sizing: border-box;
+}
+
+.eink-grid--gap-sm {
+  gap: var(--eink-size-8);
+}
+
+.eink-grid--gap-md {
+  gap: var(--eink-size-16);
+}
+
+.eink-grid--gap-xl {
+  gap: var(--eink-size-24);
+}
+
+.eink-grid__item {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* ---------------- Masonry ---------------- */
+
+.eink-grid-masonry {
+  box-sizing: border-box;
+  column-width: var(--eink-grid-masonry-min-item-width);
+}
+
+.eink-grid-masonry__item {
+  break-inside: avoid;
+}
+
+.eink-grid-masonry--gap-sm {
+  column-gap: var(--eink-size-8);
+}
+
+.eink-grid-masonry--gap-sm .eink-grid-masonry__item {
+  margin-bottom: var(--eink-size-8);
+}
+
+.eink-grid-masonry--gap-md {
+  column-gap: var(--eink-size-16);
+}
+
+.eink-grid-masonry--gap-md .eink-grid-masonry__item {
+  margin-bottom: var(--eink-size-16);
+}
+
+.eink-grid-masonry--gap-xl {
+  column-gap: var(--eink-size-24);
+}
+
+.eink-grid-masonry--gap-xl .eink-grid-masonry__item {
+  margin-bottom: var(--eink-size-24);
+}

@@ -1,0 +1,29 @@
+.eink-flex {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.eink-flex--column {
+  flex-direction: column;
+}
+
+.eink-flex--wrap {
+  flex-wrap: wrap;
+}
+
+.eink-flex--inline {
+  display: inline-flex;
+}
+
+.eink-flex--gap-sm {
+  gap: var(--eink-size-8);
+}
+
+.eink-flex--gap-md {
+  gap: var(--eink-size-16);
+}
+
+.eink-flex--gap-xl {
+  gap: var(--eink-size-24);
+}
