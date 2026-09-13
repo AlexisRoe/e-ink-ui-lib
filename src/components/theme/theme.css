@@ -58,6 +58,7 @@
   --eink-color-primary: #000000;
   --eink-color-secondary: #ffffff;
   --eink-color-background: #ffffff;
+  --eink-color-disabled: #666666;
 
   --eink-color-overlay-white: var(--eink-color-secondary);
   --eink-color-overlay-black: var(--eink-color-primary);
