@@ -46,14 +46,27 @@ export const NoChange: Story = {
   },
 };
 
-export const Small: Story = {
-  args: {
-    size: "sm",
-  },
+export const Sizes: Story = {
+  render: ({ direction, children }) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+      <Trend direction={direction} size="sm">
+        {children}
+      </Trend>
+      <Trend direction={direction} size="md">
+        {children}
+      </Trend>
+      <Trend direction={direction} size="xl">
+        {children}
+      </Trend>
+    </div>
+  ),
 };
 
-export const ExtraLarge: Story = {
+export const Full: Story = {
+  render: (args) => (
+    <Trend.Full direction={args.direction}>Decreased by 1.60 from € 14.50</Trend.Full>
+  ),
   args: {
-    size: "xl",
+    direction: "down",
   },
 };

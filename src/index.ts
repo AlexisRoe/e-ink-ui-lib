@@ -188,7 +188,12 @@ export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/t
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
 export type { TitleProps, TitleSize } from "./components/title/title.component";
 export { Title } from "./components/title/title.component";
-export type { TrendDirection, TrendProps, TrendSize } from "./components/trend/trend.component";
+export type {
+  TrendDirection,
+  TrendFullProps,
+  TrendProps,
+  TrendSize,
+} from "./components/trend/trend.component";
 export { Trend } from "./components/trend/trend.component";
 export type { ValueProps, ValueSize } from "./components/value/value.component";
 export { Value } from "./components/value/value.component";

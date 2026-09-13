@@ -19,9 +19,18 @@ export interface TrendProps extends Omit<HTMLAttributes<HTMLSpanElement>, "child
   children: ReactNode;
 }
 
+/** Props accepted by {@link Trend.Full}. */
+export interface TrendFullProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  /** Direction of the change: `"up"`, `"down"`, or `"none"`. */
+  direction: TrendDirection;
+  /** Content rendered alongside the direction indicator, e.g. a description of the change. */
+  children: ReactNode;
+}
+
 /**
  * Displays a bordered square direction indicator (up/down/no-change triangle)
  * followed by arbitrary content, typically a value describing the change.
+ * Composes with {@link Trend.Full}, a full-bleed black banner variant.
  *
  * @example
  * ```tsx
@@ -42,3 +51,23 @@ export function Trend({ className, direction, size = "md", children, ...rest }: 
     </span>
   );
 }
+
+/**
+ * Full-bleed black banner variant of {@link Trend}, with a solid white
+ * direction indicator and uppercase content, for high-contrast e-ink alerts.
+ *
+ * @example
+ * ```tsx
+ * <Trend.Full direction="down">Decreased by 1.60 from € 14.50</Trend.Full>
+ * ```
+ */
+function Full({ className, direction, children, ...rest }: TrendFullProps) {
+  return (
+    <div className={cx("eink-trend-full", [className ?? "", !!className])} {...rest}>
+      <span className={`eink-trend-full__shape eink-trend-full__shape--${direction}`} />
+      <span className="eink-trend-full__content">{children}</span>
+    </div>
+  );
+}
+
+Trend.Full = Full;
