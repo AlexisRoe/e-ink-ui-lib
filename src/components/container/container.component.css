@@ -1,0 +1,22 @@
+.eink-container {
+  box-sizing: border-box;
+  padding: var(--eink-size-2);
+}
+
+.eink-container--border {
+  border: var(--eink-border-medium);
+}
+
+.eink-container--full-width {
+  width: 100%;
+}
+
+.eink-container--full-height {
+  height: 100%;
+}
+
+.eink-container--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

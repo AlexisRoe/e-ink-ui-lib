@@ -29,6 +29,8 @@ export type { CenterProps } from "./components/center/center.component";
 export { Center } from "./components/center/center.component";
 export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
 export { Code } from "./components/code/code.component";
+export type { ContainerProps } from "./components/container/container.component";
+export { Container } from "./components/container/container.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
 export { Counter } from "./components/counter/counter.component";
 export type { DividerProps } from "./components/divider/divider.component";
