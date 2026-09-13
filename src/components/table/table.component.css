@@ -1,0 +1,112 @@
+.eink-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+  border: var(--eink-border-medium);
+}
+
+.eink-table--empty {
+  border-bottom-style: dashed;
+  border-left-style: dashed;
+  border-right-style: dashed;
+}
+
+.eink-table-head {
+  background: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+}
+
+.eink-table--sticky-header .eink-table-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.eink-table-header-cell {
+  padding: var(--eink-size-12) var(--eink-size-16);
+  border-top: var(--eink-border-medium);
+  font-family: var(--eink-font-family-main);
+  font-weight: 700;
+  font-size: var(--eink-size-12);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* Keeps the header's own edge solid where it meets the table's outer border,
+   even when .eink-table--empty switches that border to dashed: solid outranks
+   dashed at a collapsed border segment, so only the body's edge is affected. */
+.eink-table-header-cell:first-child {
+  border-left: var(--eink-border-medium);
+}
+
+.eink-table-header-cell:last-child {
+  border-right: var(--eink-border-medium);
+}
+
+.eink-table-row {
+  position: relative;
+  background: var(--eink-color-background);
+  border-top: var(--eink-border-thin);
+}
+
+.eink-table-body .eink-table-row:first-child {
+  border-top: none;
+}
+
+.eink-table-row--selectable {
+  cursor: pointer;
+}
+
+.eink-table-row--disabled {
+  cursor: not-allowed;
+  color: var(--eink-color-disabled);
+  background: var(--eink-color-grey-90);
+}
+
+.eink-table-row--disabled-mono {
+  cursor: not-allowed;
+  color: var(--eink-color-disabled);
+}
+
+.eink-table-cell {
+  position: relative;
+  max-width: 0;
+  padding: var(--eink-size-12) var(--eink-size-16);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eink-table-cell--empty {
+  max-width: none;
+  overflow: visible;
+  white-space: normal;
+  text-align: center;
+  color: var(--eink-color-disabled);
+}
+
+.eink-table-cell__empty-icon {
+  width: var(--eink-size-24);
+  height: var(--eink-size-24);
+}
+
+.eink-table-row__stripes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.eink-table-row__stripes-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--eink-color-primary);
+}

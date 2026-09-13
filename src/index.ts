@@ -194,6 +194,15 @@ export type { StepperItemProps, StepperProps } from "./components/stepper/steppe
 export { Stepper } from "./components/stepper/stepper.component";
 export type { StrokeProps } from "./components/stroke/stroke.component";
 export { Stroke } from "./components/stroke/stroke.component";
+export type {
+  TableBodyProps,
+  TableCellProps,
+  TableHeaderCellProps,
+  TableHeadProps,
+  TableProps,
+  TableRowProps,
+} from "./components/table/table.component";
+export { Table } from "./components/table/table.component";
 export type { TabsContentProps, TabsItemProps, TabsProps } from "./components/tabs/tabs.component";
 export { Tabs } from "./components/tabs/tabs.component";
 export type { TextAs, TextProps } from "./components/text/text.component";
