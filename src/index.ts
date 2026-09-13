@@ -17,6 +17,8 @@ export type {
   IconButtonProps,
 } from "./components/button/button.component";
 export { Button } from "./components/button/button.component";
+export type { CalendarProps } from "./components/calendar/calendar.component";
+export { Calendar } from "./components/calendar/calendar.component";
 export type {
   CardActionProps,
   CardContentProps,
@@ -169,6 +171,8 @@ export type {
 export { ProgressBar } from "./components/progress-bar/progress-bar.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
+export type { ScheduleProps } from "./components/schedule/schedule.component";
+export { Schedule } from "./components/schedule/schedule.component";
 export type {
   SegmentedItemProps,
   SegmentedProps,
@@ -213,3 +217,4 @@ export type {
 export { Trend } from "./components/trend/trend.component";
 export type { ValueProps, ValueSize } from "./components/value/value.component";
 export { Value } from "./components/value/value.component";
+export type { CalendarAppointment } from "./utils/calendar.utils";
