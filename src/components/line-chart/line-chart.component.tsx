@@ -27,11 +27,11 @@ export interface LineChartProps {
   title?: string;
   /** Unit appended to {@link LineChartProps.title} (e.g. `"°C"`). Has no effect without a title. */
   unit?: string;
-  /** Whether the series/reference-line legend is rendered. Defaults to `true`. */
+  /** Whether the series/reference-line legend is rendered. Defaults to `false`. */
   withLegend?: boolean;
   /** Whether the x-axis baseline is rendered. Defaults to `true`. */
   withAxis?: boolean;
-  /** Whether category labels are rendered along the x-axis. Defaults to `true`. */
+  /** Whether category labels are rendered along the x-axis. Defaults to `false`. */
   withLabel?: boolean;
   /**
    * Draws a flat reference line at the median or average of all datasets'
@@ -68,9 +68,9 @@ export function LineChart({
   categories,
   title,
   unit,
-  withLegend = true,
+  withLegend = false,
   withAxis = true,
-  withLabel = true,
+  withLabel = false,
   referenceLine,
   width = 480,
   height = 160,

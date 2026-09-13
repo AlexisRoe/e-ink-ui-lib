@@ -22,11 +22,11 @@ export interface BarChartProps {
   title?: string;
   /** Unit appended to {@link BarChartProps.title} (e.g. `"kg"`). Has no effect without a title. */
   unit?: string;
-  /** Whether the series/reference-line legend is rendered. Defaults to `true`. */
+  /** Whether the series/reference-line legend is rendered. Defaults to `false`. */
   withLegend?: boolean;
   /** Whether the y-axis baseline is rendered. Defaults to `true`. */
   withAxis?: boolean;
-  /** Whether category labels are rendered beside the y-axis. Defaults to `true`. */
+  /** Whether category labels are rendered beside the y-axis. Defaults to `false`. */
   withLabel?: boolean;
   /**
    * Draws a flat reference line at the median or average of all datasets'
@@ -63,9 +63,9 @@ export function BarChart({
   categories,
   title,
   unit,
-  withLegend = true,
+  withLegend = false,
   withAxis = true,
-  withLabel = true,
+  withLabel = false,
   referenceLine,
   width = 480,
   height = 160,

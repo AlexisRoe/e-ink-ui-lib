@@ -37,20 +37,20 @@ describe("LineChart", () => {
     expect(getByText("Battery")).toBeInTheDocument();
   });
 
-  it("renders a legend by default", () => {
-    const { getByText } = render(<LineChart datasets={datasets} />);
+  it("hides the legend by default", () => {
+    const { queryByText } = render(<LineChart datasets={datasets} />);
+    expect(queryByText("Device A")).not.toBeInTheDocument();
+  });
+
+  it("renders the legend when withLegend is true", () => {
+    const { getByText } = render(<LineChart datasets={datasets} withLegend />);
     expect(getByText("Device A")).toBeInTheDocument();
     expect(getByText("Device B")).toBeInTheDocument();
   });
 
-  it("hides the legend when withLegend is false", () => {
-    const { queryByText } = render(<LineChart datasets={datasets} withLegend={false} />);
-    expect(queryByText("Device A")).not.toBeInTheDocument();
-  });
-
   it("renders a reference line and legend entry when requested", () => {
     const { container, getByText } = render(
-      <LineChart datasets={datasets} referenceLine="average" />,
+      <LineChart datasets={datasets} referenceLine="average" withLegend />,
     );
     expect(container.querySelector(".eink-line-chart__reference")).toBeInTheDocument();
     expect(getByText("Average")).toBeInTheDocument();
@@ -71,12 +71,19 @@ describe("LineChart", () => {
     expect(container.querySelector(".eink-line-chart__axis")).not.toBeInTheDocument();
   });
 
-  it("keeps the axis but hides category labels when withLabel is false", () => {
+  it("hides category labels by default", () => {
     const { container, queryByText } = render(
-      <LineChart datasets={datasets} categories={["Mon", "Tue", "Wed"]} withLabel={false} />,
+      <LineChart datasets={datasets} categories={["Mon", "Tue", "Wed"]} />,
     );
     expect(container.querySelector(".eink-line-chart__axis")).toBeInTheDocument();
     expect(queryByText("Mon")).not.toBeInTheDocument();
+  });
+
+  it("renders category labels when withLabel is true", () => {
+    const { getByText } = render(
+      <LineChart datasets={datasets} categories={["Mon", "Tue", "Wed"]} withLabel />,
+    );
+    expect(getByText("Mon")).toBeInTheDocument();
   });
 
   it("scales the y-axis to the data range, not forced through 0", () => {

@@ -32,25 +32,33 @@ describe("ColumnChart", () => {
     expect(getByText("Rainfall - mm")).toBeInTheDocument();
   });
 
-  it("renders category labels", () => {
-    const { getByText } = render(<ColumnChart datasets={datasets} categories={["Jan", "Feb"]} />);
+  it("hides category labels by default", () => {
+    const { queryByText } = render(<ColumnChart datasets={datasets} categories={["Jan", "Feb"]} />);
+    expect(queryByText("Jan")).not.toBeInTheDocument();
+    expect(queryByText("Feb")).not.toBeInTheDocument();
+  });
+
+  it("renders category labels when withLabel is true", () => {
+    const { getByText } = render(
+      <ColumnChart datasets={datasets} categories={["Jan", "Feb"]} withLabel />,
+    );
     expect(getByText("Jan")).toBeInTheDocument();
     expect(getByText("Feb")).toBeInTheDocument();
   });
 
-  it("renders a legend by default", () => {
-    const { getByText } = render(<ColumnChart datasets={datasets} />);
-    expect(getByText("2025")).toBeInTheDocument();
+  it("hides the legend by default", () => {
+    const { queryByText } = render(<ColumnChart datasets={datasets} />);
+    expect(queryByText("2025")).not.toBeInTheDocument();
   });
 
-  it("hides the legend when withLegend is false", () => {
-    const { queryByText } = render(<ColumnChart datasets={datasets} withLegend={false} />);
-    expect(queryByText("2025")).not.toBeInTheDocument();
+  it("renders the legend when withLegend is true", () => {
+    const { getByText } = render(<ColumnChart datasets={datasets} withLegend />);
+    expect(getByText("2025")).toBeInTheDocument();
   });
 
   it("renders a reference line when requested", () => {
     const { container, getByText } = render(
-      <ColumnChart datasets={datasets} referenceLine="average" />,
+      <ColumnChart datasets={datasets} referenceLine="average" withLegend />,
     );
     expect(container.querySelector(".eink-column-chart__reference")).toBeInTheDocument();
     expect(getByText("Average")).toBeInTheDocument();
@@ -63,7 +71,7 @@ describe("ColumnChart", () => {
 
   it("hides the axis and category labels when withAxis is false", () => {
     const { container, queryByText } = render(
-      <ColumnChart datasets={datasets} categories={["Jan", "Feb"]} withAxis={false} />,
+      <ColumnChart datasets={datasets} categories={["Jan", "Feb"]} withLabel withAxis={false} />,
     );
     expect(container.querySelector(".eink-column-chart__axis")).not.toBeInTheDocument();
     expect(queryByText("Jan")).not.toBeInTheDocument();

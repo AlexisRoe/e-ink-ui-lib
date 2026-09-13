@@ -57,6 +57,7 @@ export const WithReferenceLine: Story = {
       title="Rainfall"
       unit="mm"
       referenceLine="average"
+      withLegend
       categories={categories}
       datasets={[
         { label: "2025", data: [35, 48, 55, 44, 30] },
@@ -66,13 +67,13 @@ export const WithReferenceLine: Story = {
   ),
 };
 
-export const WithoutLegend: Story = {
+export const WithLegend: Story = {
   args: { datasets: [] },
   render: () => (
     <ColumnChart
       title="Rainfall"
       unit="mm"
-      withLegend={false}
+      withLegend
       categories={categories}
       datasets={[{ label: "2026", data: [40, 52, 61, 48, 33] }]}
     />
@@ -92,13 +93,13 @@ export const WithoutAxis: Story = {
   ),
 };
 
-export const WithoutLabel: Story = {
+export const WithLabel: Story = {
   args: { datasets: [] },
   render: () => (
     <ColumnChart
       title="Rainfall"
       unit="mm"
-      withLabel={false}
+      withLabel
       categories={categories}
       datasets={[{ label: "2026", data: [40, 52, 61, 48, 33] }]}
     />

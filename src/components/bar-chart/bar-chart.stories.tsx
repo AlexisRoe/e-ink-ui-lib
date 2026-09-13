@@ -57,6 +57,7 @@ export const WithReferenceLine: Story = {
       title="Throughput"
       unit="units/h"
       referenceLine="median"
+      withLegend
       categories={categories}
       datasets={[
         { label: "Shift A", data: [120, 98, 140, 110] },
@@ -66,13 +67,13 @@ export const WithReferenceLine: Story = {
   ),
 };
 
-export const WithoutLegend: Story = {
+export const WithLegend: Story = {
   args: { datasets: [] },
   render: () => (
     <BarChart
       title="Throughput"
       unit="units/h"
-      withLegend={false}
+      withLegend
       categories={categories}
       datasets={[{ label: "Shift A", data: [120, 98, 140, 110] }]}
     />
@@ -92,13 +93,13 @@ export const WithoutAxis: Story = {
   ),
 };
 
-export const WithoutLabel: Story = {
+export const WithLabel: Story = {
   args: { datasets: [] },
   render: () => (
     <BarChart
       title="Throughput"
       unit="units/h"
-      withLabel={false}
+      withLabel
       categories={categories}
       datasets={[{ label: "Shift A", data: [120, 98, 140, 110] }]}
     />

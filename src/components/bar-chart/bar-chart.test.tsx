@@ -32,27 +32,35 @@ describe("BarChart", () => {
     expect(getByText("Throughput - u/h")).toBeInTheDocument();
   });
 
-  it("renders category labels", () => {
-    const { getByText } = render(
+  it("hides category labels by default", () => {
+    const { queryByText } = render(
       <BarChart datasets={datasets} categories={["Line 1", "Line 2"]} />,
+    );
+    expect(queryByText("Line 1")).not.toBeInTheDocument();
+    expect(queryByText("Line 2")).not.toBeInTheDocument();
+  });
+
+  it("renders category labels when withLabel is true", () => {
+    const { getByText } = render(
+      <BarChart datasets={datasets} categories={["Line 1", "Line 2"]} withLabel />,
     );
     expect(getByText("Line 1")).toBeInTheDocument();
     expect(getByText("Line 2")).toBeInTheDocument();
   });
 
-  it("renders a legend by default", () => {
-    const { getByText } = render(<BarChart datasets={datasets} />);
-    expect(getByText("Shift A")).toBeInTheDocument();
+  it("hides the legend by default", () => {
+    const { queryByText } = render(<BarChart datasets={datasets} />);
+    expect(queryByText("Shift A")).not.toBeInTheDocument();
   });
 
-  it("hides the legend when withLegend is false", () => {
-    const { queryByText } = render(<BarChart datasets={datasets} withLegend={false} />);
-    expect(queryByText("Shift A")).not.toBeInTheDocument();
+  it("renders the legend when withLegend is true", () => {
+    const { getByText } = render(<BarChart datasets={datasets} withLegend />);
+    expect(getByText("Shift A")).toBeInTheDocument();
   });
 
   it("renders a reference line when requested", () => {
     const { container, getByText } = render(
-      <BarChart datasets={datasets} referenceLine="median" />,
+      <BarChart datasets={datasets} referenceLine="median" withLegend />,
     );
     expect(container.querySelector(".eink-bar-chart__reference")).toBeInTheDocument();
     expect(getByText("Median")).toBeInTheDocument();

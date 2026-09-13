@@ -57,6 +57,7 @@ export const WithReferenceLine: Story = {
       title="Battery level"
       unit="%"
       referenceLine="average"
+      withLegend
       categories={categories}
       datasets={[
         { label: "Device A", data: [82, 79, 76, 74, 70, 68, 65] },
@@ -66,13 +67,13 @@ export const WithReferenceLine: Story = {
   ),
 };
 
-export const WithoutLegend: Story = {
+export const WithLegend: Story = {
   args: { datasets: [] },
   render: () => (
     <LineChart
       title="Battery level"
       unit="%"
-      withLegend={false}
+      withLegend
       categories={categories}
       datasets={[{ label: "Device A", data: [82, 79, 76, 74, 70, 68, 65] }]}
     />
@@ -92,13 +93,13 @@ export const WithoutAxis: Story = {
   ),
 };
 
-export const WithoutLabel: Story = {
+export const WithLabel: Story = {
   args: { datasets: [] },
   render: () => (
     <LineChart
       title="Battery level"
       unit="%"
-      withLabel={false}
+      withLabel
       categories={categories}
       datasets={[{ label: "Device A", data: [82, 79, 76, 74, 70, 68, 65] }]}
     />
