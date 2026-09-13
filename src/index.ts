@@ -126,6 +126,12 @@ export type { ImageFit, ImageProps } from "./components/image/image.component";
 export { Image } from "./components/image/image.component";
 export type { LabelProps } from "./components/label/label.component";
 export { Label } from "./components/label/label.component";
+export type {
+  LastUpdatedProps,
+  LastUpdatedStatus,
+  LastUpdatedStatusLabels,
+} from "./components/last-updated/last-updated.component";
+export { LastUpdated } from "./components/last-updated/last-updated.component";
 export type { LinkProps } from "./components/link/link.component";
 export { Link } from "./components/link/link.component";
 export type { ListAs, ListItemProps, ListProps } from "./components/list/list.component";
