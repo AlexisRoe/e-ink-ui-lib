@@ -179,6 +179,11 @@ export type {
   NumberSeparatorStyle,
 } from "./components/number/number.component";
 export { Number } from "./components/number/number.component";
+export type {
+  PaginationItemProps,
+  PaginationProps,
+} from "./components/pagination/pagination.component";
+export { Pagination } from "./components/pagination/pagination.component";
 export type { PillProps, PillSize } from "./components/pill/pill.component";
 export { Pill } from "./components/pill/pill.component";
 export type {
