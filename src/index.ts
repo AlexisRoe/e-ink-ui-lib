@@ -178,6 +178,8 @@ export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
 export type { StateAction, StateVariantProps } from "./components/state/state.component";
 export { State } from "./components/state/state.component";
+export type { StepperItemProps, StepperProps } from "./components/stepper/stepper.component";
+export { Stepper } from "./components/stepper/stepper.component";
 export type { StrokeProps } from "./components/stroke/stroke.component";
 export { Stroke } from "./components/stroke/stroke.component";
 export type { TabsContentProps, TabsItemProps, TabsProps } from "./components/tabs/tabs.component";
