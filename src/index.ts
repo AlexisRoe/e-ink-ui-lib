@@ -11,6 +11,8 @@ export type {
   AvatarSize,
 } from "./components/avatar/avatar.component";
 export { Avatar } from "./components/avatar/avatar.component";
+export type { BarChartProps } from "./components/bar-chart/bar-chart.component";
+export { BarChart } from "./components/bar-chart/bar-chart.component";
 export type {
   ButtonIconSlotProps,
   ButtonProps,
@@ -33,6 +35,8 @@ export type { CenterProps } from "./components/center/center.component";
 export { Center } from "./components/center/center.component";
 export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
 export { Code } from "./components/code/code.component";
+export type { ColumnChartProps } from "./components/column-chart/column-chart.component";
+export { ColumnChart } from "./components/column-chart/column-chart.component";
 export type { ContainerProps } from "./components/container/container.component";
 export { Container } from "./components/container/container.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
@@ -132,6 +136,8 @@ export type {
   LastUpdatedStatusLabels,
 } from "./components/last-updated/last-updated.component";
 export { LastUpdated } from "./components/last-updated/last-updated.component";
+export type { LineChartProps } from "./components/line-chart/line-chart.component";
+export { LineChart } from "./components/line-chart/line-chart.component";
 export type { LinkProps } from "./components/link/link.component";
 export { Link } from "./components/link/link.component";
 export type { ListAs, ListItemProps, ListProps } from "./components/list/list.component";
@@ -235,3 +241,4 @@ export { Trend } from "./components/trend/trend.component";
 export type { ValueProps, ValueSize } from "./components/value/value.component";
 export { Value } from "./components/value/value.component";
 export type { CalendarAppointment } from "./utils/calendar.utils";
+export type { ChartDataset, ChartReferenceLine } from "./utils/chart.utils";
