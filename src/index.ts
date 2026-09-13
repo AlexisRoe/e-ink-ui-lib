@@ -63,6 +63,7 @@ export {
   IconArrowRight,
   IconArrowUp,
   IconBell,
+  IconBug,
   IconCalendar,
   IconCheck,
   IconChevronDown,
@@ -77,6 +78,7 @@ export {
   IconCircleX,
   IconClock,
   IconCopy,
+  IconDeviceIpadHorizontalSearch,
   IconDownload,
   IconEdit,
   IconExternalLink,
@@ -151,6 +153,8 @@ export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skele
 export { Skeleton } from "./components/skeleton/skeleton.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
+export type { StateAction, StateVariantProps } from "./components/state/state.component";
+export { State } from "./components/state/state.component";
 export type { StrokeProps } from "./components/stroke/stroke.component";
 export { Stroke } from "./components/stroke/stroke.component";
 export type { TabsContentProps, TabsItemProps, TabsProps } from "./components/tabs/tabs.component";

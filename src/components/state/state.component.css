@@ -1,0 +1,31 @@
+.eink-state__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--eink-size-8);
+  text-align: center;
+  padding: var(--eink-size-24);
+}
+
+.eink-state__icon {
+  width: var(--eink-size-64);
+  height: var(--eink-size-64);
+  color: var(--eink-color-primary);
+  margin-bottom: var(--eink-size-8);
+}
+
+.eink-state__title {
+  margin: 0;
+}
+
+.eink-state__subtitle {
+  color: var(--eink-color-grey-30);
+}
+
+.eink-state__description {
+  color: var(--eink-color-grey-40);
+}
+
+.eink-state__action {
+  margin-top: var(--eink-size-16);
+}

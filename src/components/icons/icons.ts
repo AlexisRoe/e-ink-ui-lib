@@ -6,6 +6,7 @@ import {
   IconArrowRight,
   IconArrowUp,
   IconBell,
+  IconBug,
   IconCalendar,
   IconCheck,
   IconChevronDown,
@@ -20,6 +21,7 @@ import {
   IconCircleX,
   IconClock,
   IconCopy,
+  IconDeviceIpadHorizontalSearch,
   IconDownload,
   IconEdit,
   IconExternalLink,
@@ -122,6 +124,8 @@ export const iconRegistry = {
   folder: IconFolder,
   file: IconFile,
   printer: IconPrinter,
+  bug: IconBug,
+  "device-ipad-horizontal-search": IconDeviceIpadHorizontalSearch,
 } as const;
 
 /** Names of every icon available in {@link iconRegistry}. */
@@ -149,6 +153,7 @@ export {
   IconArrowRight,
   IconArrowUp,
   IconBell,
+  IconBug,
   IconCalendar,
   IconCheck,
   IconChevronDown,
@@ -163,6 +168,7 @@ export {
   IconCircleX,
   IconClock,
   IconCopy,
+  IconDeviceIpadHorizontalSearch,
   IconDownload,
   IconEdit,
   IconExternalLink,
