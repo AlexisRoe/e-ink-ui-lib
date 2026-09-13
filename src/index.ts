@@ -13,6 +13,8 @@ export type {
 export { Avatar } from "./components/avatar/avatar.component";
 export type { BarChartProps } from "./components/bar-chart/bar-chart.component";
 export { BarChart } from "./components/bar-chart/bar-chart.component";
+export type { BarcodeFormat, BarcodeProps } from "./components/barcode/barcode.component";
+export { Barcode } from "./components/barcode/barcode.component";
 export type {
   ButtonIconSlotProps,
   ButtonProps,
@@ -181,6 +183,8 @@ export type {
   ProgressBarStepperProps,
 } from "./components/progress-bar/progress-bar.component";
 export { ProgressBar } from "./components/progress-bar/progress-bar.component";
+export type { QRCodeErrorCorrectionLevel, QRCodeProps } from "./components/qrcode/qrcode.component";
+export { QRCode } from "./components/qrcode/qrcode.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
 export type { ScheduleProps } from "./components/schedule/schedule.component";
@@ -242,3 +246,15 @@ export type { ValueProps, ValueSize } from "./components/value/value.component";
 export { Value } from "./components/value/value.component";
 export type { CalendarAppointment } from "./utils/calendar.utils";
 export type { ChartDataset, ChartReferenceLine } from "./utils/chart.utils";
+export type {
+  QRCodeContactValue,
+  QRCodeEmailValue,
+  QRCodeGeoValue,
+  QRCodePhoneValue,
+  QRCodeSmsValue,
+  QRCodeTextValue,
+  QRCodeTotpValue,
+  QRCodeUrlValue,
+  QRCodeValue,
+  QRCodeWifiValue,
+} from "./utils/qrcode-payload.utils";
