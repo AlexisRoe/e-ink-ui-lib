@@ -319,6 +319,8 @@ export interface NavigationProps
   orientation?: NavigationOrientation;
   /** Whether the outer container has a border. Defaults to `true`. */
   withBorder?: boolean;
+  /** Whether the outer container and its items have a background color. Defaults to `false`, rendering the navigation transparent. */
+  withBackground?: boolean;
   /** Whether the outer container stretches to fill its parent's width. Defaults to `true`. */
   fullWidth?: boolean;
   /** {@link Navigation.Item} elements making up the list. */
@@ -353,6 +355,7 @@ export function Navigation({
   className,
   orientation = "vertical",
   withBorder = true,
+  withBackground = false,
   fullWidth = true,
   onSelect,
   children,
@@ -364,6 +367,7 @@ export function Navigation({
         className={cx(
           `eink-navigation eink-navigation--${orientation}`,
           ["eink-navigation--no-border", !withBorder],
+          ["eink-navigation--with-background", withBackground],
           ["eink-navigation--full-width", fullWidth],
           [className ?? "", !!className],
         )}

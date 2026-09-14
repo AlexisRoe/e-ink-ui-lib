@@ -2,11 +2,15 @@
   display: inline-block;
   box-sizing: border-box;
   border: var(--eink-border-medium);
-  background-color: var(--eink-color-secondary);
+  background-color: transparent;
 }
 
 .eink-navigation--no-border {
   border: none;
+}
+
+.eink-navigation--with-background {
+  background-color: var(--eink-color-secondary);
 }
 
 .eink-navigation--full-width {
@@ -31,13 +35,17 @@
   gap: var(--eink-size-8);
   width: 100%;
   border: none;
-  background-color: var(--eink-color-secondary);
+  background-color: transparent;
   color: var(--eink-color-primary);
   font-family: inherit;
   font-size: var(--eink-font-size-default);
   padding: var(--eink-size-12) var(--eink-size-16);
   cursor: pointer;
   text-align: left;
+}
+
+.eink-navigation--with-background .eink-navigation-item__trigger {
+  background-color: var(--eink-color-secondary);
 }
 
 .eink-navigation-item__icon {

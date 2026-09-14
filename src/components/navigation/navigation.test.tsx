@@ -88,4 +88,24 @@ describe("Navigation", () => {
 
     expect(screen.getByText("Products").closest("button")).toHaveFocus();
   });
+
+  it("is transparent by default and gains a background with withBackground", () => {
+    const { container, rerender } = render(
+      <Navigation>
+        <Navigation.Item target="/" label="Home" />
+      </Navigation>,
+    );
+    expect(container.querySelector(".eink-navigation")).not.toHaveClass(
+      "eink-navigation--with-background",
+    );
+
+    rerender(
+      <Navigation withBackground>
+        <Navigation.Item target="/" label="Home" />
+      </Navigation>,
+    );
+    expect(container.querySelector(".eink-navigation")).toHaveClass(
+      "eink-navigation--with-background",
+    );
+  });
 });

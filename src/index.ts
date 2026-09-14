@@ -187,6 +187,18 @@ export type {
 } from "./components/number/number.component";
 export { Number } from "./components/number/number.component";
 export type {
+  PageBodyProps,
+  PageCollapsedMode,
+  PageFooterProps,
+  PageHeaderProps,
+  PageNavCloseButtonProps,
+  PageNavProps,
+  PageNavSide,
+  PageNavToggleProps,
+  PageProps,
+} from "./components/page/page.component";
+export { Page } from "./components/page/page.component";
+export type {
   PaginationItemProps,
   PaginationProps,
 } from "./components/pagination/pagination.component";
