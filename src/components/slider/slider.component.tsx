@@ -2,6 +2,7 @@ import type { ChangeEvent, InputHTMLAttributes, ReactNode } from "react";
 import { useContext, useId } from "react";
 import { cx } from "../../utils/cx.utils";
 import { FormContext } from "../form/form.context";
+import { Label } from "../label/label.component";
 import "./slider.component.css";
 
 /** Orientations accepted by {@link Slider}. Defaults to `"horizontal"`. */
@@ -99,14 +100,11 @@ export function Slider({
   };
 
   return (
-    <label
-      htmlFor={inputId}
-      className={cx(`eink-slider eink-slider--${orientation}`, [className ?? "", !!className])}
-    >
-      <span className="eink-slider__label">
+    <div className={cx(`eink-slider eink-slider--${orientation}`, [className ?? "", !!className])}>
+      <Label.Form htmlFor={inputId} className="eink-slider__label">
         {children}
         {required ? <span className="eink-slider__required">*</span> : null}
-      </span>
+      </Label.Form>
       <span className="eink-slider__control">
         <input
           {...rest}
@@ -136,6 +134,6 @@ export function Slider({
           ))}
         </span>
       </span>
-    </label>
+    </div>
   );
 }

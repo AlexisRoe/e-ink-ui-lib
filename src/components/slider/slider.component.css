@@ -14,10 +14,6 @@
   color: var(--eink-color-disabled);
 }
 
-.eink-slider__label {
-  display: inline-block;
-}
-
 .eink-slider__required {
   vertical-align: super;
   font-size: 0.75em;

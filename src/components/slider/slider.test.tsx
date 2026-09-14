@@ -72,7 +72,7 @@ describe("Slider", () => {
         Brightness
       </Slider>,
     );
-    expect(screen.getByRole("slider").closest("label")).toHaveTextContent("Brightness*");
+    expect(screen.getByRole("slider", { name: "Brightness*" })).toBeInTheDocument();
   });
 
   it("supports a vertical orientation", () => {
