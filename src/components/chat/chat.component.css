@@ -1,0 +1,94 @@
+.eink-chat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-16);
+  border: var(--eink-border-medium);
+  padding: var(--eink-size-16);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eink-chat__messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-16);
+}
+
+.eink-chat-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--eink-size-8);
+  max-width: 80%;
+}
+
+.eink-chat-message--ai {
+  align-self: flex-start;
+}
+
+.eink-chat-message--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.eink-chat-message__avatar {
+  margin-top: var(--eink-size-4);
+}
+
+.eink-chat-message__bubble {
+  border: var(--eink-border-medium);
+  padding: var(--eink-size-12) var(--eink-size-16);
+  min-width: 0;
+}
+
+.eink-chat-message--user .eink-chat-message__bubble {
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+}
+
+.eink-chat-message__header {
+  font-family: var(--eink-font-family-main);
+  font-size: var(--eink-size-12);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--eink-color-grey-40);
+  margin-bottom: var(--eink-size-8);
+}
+
+.eink-chat-message--user .eink-chat-message__header {
+  color: var(--eink-color-grey-70);
+}
+
+.eink-chat-message__content {
+  font-family: var(--eink-font-family-secondary);
+  font-size: var(--eink-font-size-default);
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.eink-chat__composer {
+  display: flex;
+  align-items: center;
+  gap: var(--eink-size-8);
+  border-top: var(--eink-border-thin);
+  padding-top: var(--eink-size-16);
+}
+
+.eink-chat__composer-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: var(--eink-border-medium);
+  padding: var(--eink-size-8) var(--eink-size-12);
+  font-family: var(--eink-font-family-secondary);
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+  background-color: var(--eink-color-background);
+}
+
+.eink-chat__composer-input::placeholder {
+  color: var(--eink-color-grey-50);
+}
+
+.eink-chat__composer-send {
+  flex-shrink: 0;
+}
