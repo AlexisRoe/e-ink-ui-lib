@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--eink-size-4);
+  gap: var(--eink-font-size-default);
   width: 100%;
 }
 

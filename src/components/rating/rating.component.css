@@ -12,7 +12,7 @@
 
 .eink-rating__label {
   padding: 0;
-  padding-bottom: 1rem;
+  padding-bottom: var(--eink-font-size-default);
 }
 
 .eink-rating__control {

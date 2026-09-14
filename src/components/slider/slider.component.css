@@ -2,7 +2,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: var(--eink-size-8);
+  gap: var(--eink-font-size-default);
   font-family: inherit;
   font-size: var(--eink-font-size-default);
   color: var(--eink-color-primary);

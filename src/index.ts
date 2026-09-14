@@ -200,6 +200,8 @@ export type {
   NumberSeparatorStyle,
 } from "./components/number/number.component";
 export { Number } from "./components/number/number.component";
+export type { NumberInputProps } from "./components/number-input/number-input.component";
+export { NumberInput } from "./components/number-input/number-input.component";
 export type {
   PageBodyProps,
   PageCollapsedMode,
