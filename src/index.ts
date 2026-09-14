@@ -97,6 +97,7 @@ export {
   IconArrowLeft,
   IconArrowRight,
   IconArrowUp,
+  IconBackspace,
   IconBell,
   IconBug,
   IconCalendar,
@@ -153,6 +154,8 @@ export {
 } from "./components/icons/icons";
 export type { ImageFit, ImageProps } from "./components/image/image.component";
 export { Image } from "./components/image/image.component";
+export type { KeypadProps } from "./components/keypad/keypad.component";
+export { Keypad } from "./components/keypad/keypad.component";
 export type { LabelProps } from "./components/label/label.component";
 export { Label } from "./components/label/label.component";
 export type {
