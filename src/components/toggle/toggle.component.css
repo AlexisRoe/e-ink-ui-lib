@@ -1,0 +1,89 @@
+.eink-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eink-size-8);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+  cursor: pointer;
+}
+
+.eink-toggle:has(.eink-toggle__input:disabled) {
+  cursor: not-allowed;
+  color: var(--eink-color-disabled);
+}
+
+.eink-toggle__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.eink-toggle__track {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--eink-size-36);
+  height: var(--eink-size-20);
+  box-sizing: border-box;
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+}
+
+.eink-toggle__input:focus-visible ~ .eink-toggle__track {
+  outline: var(--eink-border-medium);
+  outline-offset: var(--eink-size-2);
+}
+
+.eink-toggle__input:disabled ~ .eink-toggle__track {
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-90);
+}
+
+.eink-toggle__thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--eink-size-16);
+  height: 100%;
+  background-color: var(--eink-color-primary);
+  -webkit-mask-image: repeating-linear-gradient(
+    45deg,
+    black 0,
+    black 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mask-image: repeating-linear-gradient(
+    45deg,
+    black 0,
+    black 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.eink-toggle__input:checked ~ .eink-toggle__track .eink-toggle__thumb {
+  left: calc(100% - var(--eink-size-16));
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.eink-toggle__input:disabled ~ .eink-toggle__track .eink-toggle__thumb {
+  background-color: var(--eink-color-grey-70);
+}
+
+.eink-toggle__label {
+  display: inline-block;
+}
+
+.eink-toggle__required {
+  vertical-align: super;
+  font-size: 0.75em;
+  margin-left: var(--eink-size-2);
+}

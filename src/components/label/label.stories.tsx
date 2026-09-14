@@ -15,3 +15,10 @@ export const Default: Story = {
     children: "Battery status",
   },
 };
+
+export const Form: Story = {
+  args: {
+    children: "Email",
+  },
+  render: (args) => <Label.Form htmlFor="email">{args.children}</Label.Form>,
+};

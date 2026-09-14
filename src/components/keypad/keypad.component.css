@@ -1,0 +1,55 @@
+.eink-keypad {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-16);
+  width: fit-content;
+}
+
+.eink-keypad__display {
+  box-sizing: border-box;
+  min-height: var(--eink-size-48);
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  font-weight: 700;
+  padding: var(--eink-size-12) var(--eink-size-16);
+}
+
+.eink-keypad__grid {
+  display: grid;
+  grid-template-columns: repeat(3, var(--eink-size-64));
+  gap: var(--eink-size-8);
+}
+
+.eink-keypad__key {
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-size: var(--eink-size-20);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.eink-keypad__key:disabled {
+  cursor: not-allowed;
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-95);
+  color: var(--eink-color-disabled);
+}
+
+.eink-keypad__key--action {
+  font-size: var(--eink-size-16);
+}
+
+.eink-keypad__key--empty {
+  border: none;
+  background: none;
+}

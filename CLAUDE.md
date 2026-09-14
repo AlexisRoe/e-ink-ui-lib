@@ -45,7 +45,7 @@ Utility files use `<name>.utils.ts` and live in `src/utils/`, each with a co-loc
 ## Documentation
 
 - Every exported component/prop uses JSDoc (`/** ... */`) with a short description; non-trivial components include an `@example`.
-- Every component has a `.stories.tsx` with a `title` under `Components/<Group>/<Name>` (groups: Actions, Data Display, Layout, Typography), `tags: ["autodocs"]`, and `argTypes` for controllable props — Storybook autodocs is the primary rendered documentation, JSDoc is the primary in-editor documentation.
+- Every component has a `.stories.tsx` with a `title` under `Components/<Group>/<Name>` (groups: Actions, Data Display, Forms, Layout, Typography), `tags: ["autodocs"]`, and `argTypes` for controllable props — Storybook autodocs is the primary rendered documentation, JSDoc is the primary in-editor documentation.
 - `src/About.mdx` and `src/tokens/*.mdx` are hand-written Storybook doc pages (project overview, design tokens) rather than autodocs.
 
 ## CSS conventions

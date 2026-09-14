@@ -4,3 +4,7 @@
   font-size: var(--eink-size-8);
   text-transform: uppercase;
 }
+
+.eink-label--form {
+  font-size: var(--eink-size-14);
+}

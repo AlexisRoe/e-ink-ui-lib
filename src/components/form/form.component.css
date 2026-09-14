@@ -1,0 +1,5 @@
+.eink-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-2);
+}

@@ -1,0 +1,53 @@
+.eink-pin {
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-font-size-default);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+}
+
+.eink-pin:disabled {
+  color: var(--eink-color-disabled);
+}
+
+.eink-pin__label {
+  padding: 0;
+  padding-bottom: var(--eink-font-size-default);
+}
+
+.eink-pin__required {
+  vertical-align: super;
+  font-size: 0.75em;
+  margin-left: var(--eink-size-2);
+}
+
+.eink-pin__boxes {
+  display: flex;
+  gap: var(--eink-size-8);
+}
+
+.eink-pin__input {
+  box-sizing: border-box;
+  width: var(--eink-size-36);
+  height: var(--eink-size-48);
+  text-align: center;
+  font-family: inherit;
+  font-size: var(--eink-size-20);
+  border: var(--eink-border-medium);
+}
+
+.eink-pin__input:focus {
+  border: var(--eink-border-thick);
+}
+
+.eink-pin__input:disabled {
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-95);
+  color: var(--eink-color-disabled);
+  cursor: not-allowed;
+}
