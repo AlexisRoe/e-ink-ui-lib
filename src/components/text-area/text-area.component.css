@@ -27,7 +27,6 @@
 }
 
 .eink-text-area__counter {
-  font-size: var(--eink-size-12);
   color: var(--eink-color-grey-40);
   white-space: nowrap;
 }

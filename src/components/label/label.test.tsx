@@ -9,4 +9,15 @@ describe("Label", () => {
     expect(label.tagName).toBe("SPAN");
     expect(label).toHaveClass("eink-label");
   });
+
+  it("Label.Form renders a native label associated via htmlFor", () => {
+    render(
+      <>
+        <Label.Form htmlFor="email">Email</Label.Form>
+        <input id="email" />
+      </>,
+    );
+    expect(screen.getByLabelText("Email").tagName).toBe("INPUT");
+    expect(screen.getByText("Email")).toHaveClass("eink-label", "eink-label--form");
+  });
 });

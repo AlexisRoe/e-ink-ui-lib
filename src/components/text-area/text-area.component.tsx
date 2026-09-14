@@ -1,7 +1,8 @@
 import type { ChangeEvent, ReactNode, TextareaHTMLAttributes } from "react";
-import { useContext, useId } from "react";
+import { useCallback, useContext, useEffect, useId } from "react";
 import { cx } from "../../utils/cx.utils";
 import { FormContext } from "../form/form.context";
+import { Label } from "../label/label.component";
 import "./text-area.component.css";
 
 /** Props accepted by {@link TextArea}. */
@@ -49,7 +50,9 @@ export interface TextAreaProps
  * controlled component with `value`/`onChange`.
  *
  * Pass `required` to render a `*` after the label and mark the field as
- * required.
+ * required. When bound to a `<Form>` via `name`, the component also sets its
+ * own field error whenever `required` and empty, which keeps
+ * `Form.SubmitButton` disabled until a value has been entered.
  *
  * @example
  * ```tsx
@@ -73,26 +76,50 @@ export function TextArea({
   const inputId = useId();
   const currentValue = name && form ? String(form.getValue(name) ?? "") : (value ?? "");
 
-  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const next = maxCharacters ? event.target.value.slice(0, maxCharacters) : event.target.value;
+  const validate = useCallback(
+    (next: string) => (required && next.length === 0 ? "This field is required" : undefined),
+    [required],
+  );
+
+  const commit = (next: string) => {
     if (name && form) {
       form.setValue(name, next);
+      const nextError = validate(next);
+      if (form.getError(name) !== nextError) {
+        form.setError(name, nextError);
+      }
     } else {
       onChange?.(next);
     }
   };
 
+  // Validate the initial/prefilled value too, so a required-but-empty field
+  // blocks submission from the start rather than only after the first edit.
+  useEffect(() => {
+    if (name && form) {
+      const nextError = validate(currentValue);
+      if (form.getError(name) !== nextError) {
+        form.setError(name, nextError);
+      }
+    }
+  }, [name, form, currentValue, validate]);
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const next = maxCharacters ? event.target.value.slice(0, maxCharacters) : event.target.value;
+    commit(next);
+  };
+
   return (
     <div className={cx("eink-text-area", [className ?? "", !!className])}>
       <div className="eink-text-area__header">
-        <label htmlFor={inputId} className="eink-text-area__label">
+        <Label.Form htmlFor={inputId} className="eink-text-area__label">
           {children}
           {required ? <span className="eink-text-area__required">*</span> : null}
-        </label>
+        </Label.Form>
         {maxCharacters ? (
-          <span className="eink-text-area__counter" aria-live="polite">
+          <Label.Form className="eink-text-area__counter" aria-live="polite">
             {currentValue.length} / {maxCharacters}
-          </span>
+          </Label.Form>
         ) : null}
       </div>
       <textarea

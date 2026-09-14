@@ -98,4 +98,39 @@ describe("TextArea", () => {
     );
     expect(screen.getByLabelText("Bio")).toBeDisabled();
   });
+
+  it("keeps the form's submit button disabled until a required field has a value", () => {
+    const onSubmit = vi.fn();
+    render(
+      <Form initialValues={{ bio: "" }} onSubmit={onSubmit}>
+        <TextArea name="bio" required>
+          Bio
+        </TextArea>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    const submitButton = screen.getByRole("button", { name: "Save" });
+    expect(submitButton).toBeDisabled();
+
+    fireEvent.change(screen.getByLabelText(/Bio/), { target: { value: "Hello" } });
+    expect(submitButton).toBeEnabled();
+
+    fireEvent.click(submitButton);
+    expect(onSubmit).toHaveBeenCalledWith({ bio: "Hello" }, expect.anything());
+  });
+
+  it("re-disables the submit button if a required field is cleared after being filled", () => {
+    render(
+      <Form initialValues={{ bio: "Hello" }}>
+        <TextArea name="bio" required>
+          Bio
+        </TextArea>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Bio/), { target: { value: "" } });
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
+  });
 });

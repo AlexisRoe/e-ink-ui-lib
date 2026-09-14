@@ -9,6 +9,7 @@ import type {
 import { useCallback, useContext, useEffect, useRef } from "react";
 import { cx } from "../../utils/cx.utils";
 import { FormContext } from "../form/form.context";
+import "../label/label.component.css";
 import "./pin.component.css";
 
 /** Props accepted by {@link Pin}. */
@@ -189,7 +190,7 @@ export function Pin({
 
   return (
     <fieldset disabled={disabled} className={cx("eink-pin", [className ?? "", !!className])}>
-      <legend className="eink-pin__label">
+      <legend className="eink-label eink-label--form eink-pin__label">
         {children}
         {required ? <span className="eink-pin__required">*</span> : null}
       </legend>
