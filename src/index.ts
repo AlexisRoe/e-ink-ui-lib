@@ -40,6 +40,8 @@ export type {
 export { Card } from "./components/card/card.component";
 export type { CenterProps } from "./components/center/center.component";
 export { Center } from "./components/center/center.component";
+export type { ChipGroupProps, ChipProps } from "./components/chip/chip.component";
+export { Chip } from "./components/chip/chip.component";
 export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
 export { Code } from "./components/code/code.component";
 export type { ColumnChartProps } from "./components/column-chart/column-chart.component";
