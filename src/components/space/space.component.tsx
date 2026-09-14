@@ -10,7 +10,7 @@ export type SpaceSize = 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 | 20 | 24 | 36 | 48 | 
 /** Props accepted by {@link Space}. */
 export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
   /** Height of the space, in `--eink-size-*` steps. Defaults to `16`. */
-  size?: SpaceSize;
+  size?: `${SpaceSize}`;
 }
 
 /**
@@ -18,10 +18,10 @@ export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @example
  * ```tsx
- * <Space size={24} />
+ * <Space size="24" />
  * ```
  */
-export function Space({ size = 16, className, style, ...rest }: SpaceProps) {
+export function Space({ size = "16", className, style, ...rest }: SpaceProps) {
   return (
     <div
       className={cx("eink-space", [className ?? "", !!className])}

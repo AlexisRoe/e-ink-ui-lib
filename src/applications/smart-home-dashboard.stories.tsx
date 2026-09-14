@@ -46,13 +46,13 @@ function DashboardDemo() {
       <Title size={2} style={{ marginBottom: "var(--eink-size-md)" }}>
         Living Room
       </Title>
-      <Space size={16} />
+      <Space size="16" />
       <Segmented defaultId={scene} onChange={setScene} fullWidth>
         <Segmented.Item id="home">Home</Segmented.Item>
         <Segmented.Item id="away">Away</Segmented.Item>
         <Segmented.Item id="night">Night</Segmented.Item>
       </Segmented>
-      <Space size={48} />
+      <Space size="48" />
       <Grid columns={2} gap="md">
         <Grid.Item>
           <Card>
@@ -67,7 +67,7 @@ function DashboardDemo() {
               <Trend direction="up" size="sm">
                 +0.5° since morning
               </Trend>
-              <Space size={12} />
+              <Space size="12" />
               <LineChart
                 datasets={[{ label: "Temperature", data: TEMP_HISTORY }]}
                 withAxis={false}
@@ -91,7 +91,7 @@ function DashboardDemo() {
               <Trend direction="down" size="sm">
                 -3% since morning
               </Trend>
-              <Space size={12} />
+              <Space size="12" />
               <LineChart
                 datasets={[{ label: "Humidity", data: HUMIDITY_HISTORY }]}
                 withAxis={false}
@@ -132,8 +132,8 @@ function DashboardDemo() {
               <Card.Title>Thermostat</Card.Title>
             </Card.Header>
             <Card.Content>
-              <Space size={36} />
-              <Space size={10} />
+              <Space size="36" />
+              <Space size="10" />
               <Slider value={thermostat} onChange={setThermostat} min={16} max={28} step={1}>
                 Target temperature
               </Slider>

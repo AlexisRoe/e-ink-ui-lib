@@ -44,7 +44,7 @@ export const Default: Story = {
           <Stepper.Item title="In transit">DHL · 0034043471</Stepper.Item>
           <Stepper.Item title="Delivered">Against signature</Stepper.Item>
         </Stepper>
-        <Space size={64} />
+        <Space size="64" />
         <Timeline>
           <Timeline.Item time="28 Aug, 09:12" title="Order placed" state="done">
             Confirmed and sent to fulfillment
@@ -83,23 +83,17 @@ export const Step1Confirmation: Story = {
           <Stepper.Item title="In transit">DHL · 0034043471</Stepper.Item>
           <Stepper.Item title="Delivered">Against signature</Stepper.Item>
         </Stepper>
-        <Space size={48} />
+        <Space size="48" />
         <Flex column align="center" gap="md">
           <Icon name="circle-check" size={64} aria-hidden="true" />
           <Title size={2}>Thanks for your order!</Title>
           <Text>A confirmation email is on its way to you.</Text>
-          <Space size={8} />
-          <Flex gap="md" align="start">
-            <div>
-              <Description label="Ordered" value="28 Aug, 09:12" />
-            </div>
-            <div>
-              <Description label="Items" value="2" />
-            </div>
-            <div>
-              <Description label="Total" value="€54.80" />
-            </div>
-          </Flex>
+          <Space size="8" />
+          <Description.Group orientation="horizontal">
+            <Description label="Items" value="2" />
+            <Description label="Ordered" value="28 Aug, 09:12" />
+            <Description label="Total" value="€54.80" />
+          </Description.Group>
           <Pill icon="mail">Confirmation sent</Pill>
         </Flex>
       </Card.Content>
@@ -123,12 +117,12 @@ export const Step2Fulfillment: Story = {
           <Stepper.Item title="In transit">DHL · 0034043471</Stepper.Item>
           <Stepper.Item title="Delivered">Against signature</Stepper.Item>
         </Stepper>
-        <Space size={48} />
+        <Space size="48" />
         <Flex column align="center" gap="md">
           <Icon name="folder" size={64} aria-hidden="true" />
           <Title size={2}>Your order is being packed</Title>
           <Text>Fulfillment center, Leipzig</Text>
-          <Space size={8} />
+          <Space size="8" />
           <Timeline>
             <Timeline.Item time="09:12" title="Items picked" state="done">
               2 items retrieved from warehouse
@@ -162,7 +156,7 @@ export const Step4Signature: Story = {
           <Stepper.Item title="In transit">DHL · 0034043471</Stepper.Item>
           <Stepper.Item title="Delivered">Against signature</Stepper.Item>
         </Stepper>
-        <Space size={48} />
+        <Space size="48" />
         <Flex column align="center" gap="md">
           <Icon name="edit" size={48} aria-hidden="true" />
           <Title size={2}>Sign to confirm handover</Title>

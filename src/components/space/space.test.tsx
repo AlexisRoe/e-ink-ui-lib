@@ -10,7 +10,7 @@ describe("Space", () => {
   });
 
   it("applies the requested size token", () => {
-    const { container } = render(<Space size={64} />);
+    const { container } = render(<Space size="64" />);
     const space = container.firstChild as HTMLElement;
     expect(space.style.getPropertyValue("--eink-space-size")).toBe("var(--eink-size-64)");
   });
