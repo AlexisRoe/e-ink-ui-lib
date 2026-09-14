@@ -40,6 +40,8 @@ export type {
 export { Card } from "./components/card/card.component";
 export type { CenterProps } from "./components/center/center.component";
 export { Center } from "./components/center/center.component";
+export type { CheckboxGroupProps, CheckboxProps } from "./components/checkbox/checkbox.component";
+export { Checkbox } from "./components/checkbox/checkbox.component";
 export type { ChipGroupProps, ChipProps } from "./components/chip/chip.component";
 export { Chip } from "./components/chip/chip.component";
 export type { CodeBlockProps, CodeProps } from "./components/code/code.component";
@@ -240,6 +242,11 @@ export type { QRCodeErrorCorrectionLevel, QRCodeProps } from "./components/qrcod
 export { QRCode } from "./components/qrcode/qrcode.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
+export type {
+  RadioInputGroupProps,
+  RadioInputProps,
+} from "./components/radio-input/radio-input.component";
+export { RadioInput } from "./components/radio-input/radio-input.component";
 export type { RatingIcon, RatingProps } from "./components/rating/rating.component";
 export { Rating } from "./components/rating/rating.component";
 export type { ScheduleProps } from "./components/schedule/schedule.component";
