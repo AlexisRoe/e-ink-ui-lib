@@ -53,6 +53,13 @@ export { Description } from "./components/description/description.component";
 export type { DividerProps } from "./components/divider/divider.component";
 export { Divider } from "./components/divider/divider.component";
 export type {
+  DropdownMenuGroupProps,
+  DropdownMenuItemProps,
+  DropdownMenuProps,
+  DropdownMenuSide,
+} from "./components/dropdown-menu/dropdown-menu.component";
+export { DropdownMenu } from "./components/dropdown-menu/dropdown-menu.component";
+export type {
   FlexAlign,
   FlexDirectionProps,
   FlexGap,
