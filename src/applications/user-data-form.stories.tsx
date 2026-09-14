@@ -46,8 +46,8 @@ function UserDataFormDemo() {
 
   return (
     <Container withBorder style={{ width: 800, padding: "1rem" }}>
-      <Title size={3}>Your details</Title>
-      <Space size={16} />
+      <Title size="3">Your details</Title>
+      <Space size="16" />
       <Form<UserDataValues>
         initialValues={{
           firstName: "",
@@ -101,7 +101,7 @@ function UserDataFormDemo() {
       </Form>
       {saved ? (
         <>
-          <Space size={16} />
+          <Space size="16" />
           <Text>
             Saved: {saved.firstName} {saved.lastName} · {saved.email}
           </Text>

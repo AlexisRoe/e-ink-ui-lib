@@ -41,7 +41,7 @@ function TodoAppDemo() {
   return (
     <Container withBorder fullWidth style={{ maxWidth: 420, padding: "1rem" }}>
       <Flex column gap="md">
-        <Title size={3}>Today</Title>
+        <Title size="3">Today</Title>
         <Checkbox.Group label="Categories" value={categories} onChange={setCategories}>
           <Checkbox value="home">Home</Checkbox>
           <Checkbox value="errands">Errands</Checkbox>

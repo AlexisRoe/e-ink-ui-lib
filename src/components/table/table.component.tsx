@@ -23,16 +23,16 @@ const TableContext = createContext<TableContextValue | null>(null);
  * Diagonal black-stripe pattern painted over a disabled row when the parent
  * {@link Table} has `mono` enabled.
  */
-function DiagonalStripes() {
+function DiagonalStripes({ columnCount }: { columnCount: number }) {
   return (
-    <div className="eink-table-row__stripes" aria-hidden="true">
+    <td className="eink-table-row__stripes" aria-hidden="true" colSpan={columnCount}>
       <PatternOverlay
         className="eink-table-row__stripes-svg"
         role="presentation"
         size={4}
         stroke="currentColor"
       />
-    </div>
+    </td>
   );
 }
 
@@ -118,6 +118,7 @@ export interface TableRowProps extends Omit<HTMLAttributes<HTMLTableRowElement>,
 interface TableRowInternalProps extends TableRowProps {
   index?: number;
   mono?: boolean;
+  columnCount?: number;
 }
 
 /**
@@ -138,6 +139,7 @@ function TableRow({
   className,
   index = 0,
   mono = false,
+  columnCount = 1,
   selectable = true,
   disabled = false,
   children,
@@ -173,7 +175,7 @@ function TableRow({
       {...rest}
     >
       {children}
-      {disabled && mono && <DiagonalStripes />}
+      {disabled && mono && <DiagonalStripes columnCount={columnCount} />}
     </tr>
   );
 }
@@ -284,6 +286,7 @@ function processChildren(
       return cloneElement(child as ReactElement<TableRowInternalProps>, {
         index: counter.current++,
         mono,
+        columnCount,
       });
     }
     if (child.type === TableBody) {

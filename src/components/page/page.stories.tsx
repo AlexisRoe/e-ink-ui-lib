@@ -47,7 +47,7 @@ function ExamplePage() {
     <Page navSide="left">
       <Page.Header>
         <Page.NavToggle />
-        <Title size={2}>E-Ink Library</Title>
+        <Title size="2">E-Ink Library</Title>
       </Page.Header>
       <Page.Nav>
         <Page.NavCloseButton />
@@ -105,7 +105,7 @@ export const NavRightMono: Story = {
   render: () => (
     <Page navSide="right">
       <Page.Header>
-        <Title size={2}>E-Ink Library</Title>
+        <Title size="2">E-Ink Library</Title>
         <Page.NavToggle />
       </Page.Header>
       <Page.Nav mono>
@@ -142,7 +142,7 @@ export const CollapsedRail: Story = {
     <Page navSide="left" collapsedMode="rail" defaultNavOpen={false}>
       <Page.Header>
         <Page.NavToggle />
-        <Title size={2}>E-Ink Library</Title>
+        <Title size="2">E-Ink Library</Title>
       </Page.Header>
       <Page.Nav>
         <Page.NavCloseButton />

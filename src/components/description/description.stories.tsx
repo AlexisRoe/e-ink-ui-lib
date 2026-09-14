@@ -27,10 +27,10 @@ export const MultipleSiblings: Story = {
     value: "Today, 14:02",
   },
   render: () => (
-    <div>
+    <Description.Group>
       <Description label="Updated" value="Today, 14:02" />
       <Description label="Author" value="Jane Doe" />
       <Description label="Status" value="Published" />
-    </div>
+    </Description.Group>
   ),
 };

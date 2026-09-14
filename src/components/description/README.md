@@ -19,20 +19,23 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 - Renders a `label` (via the shared `Label` component) above a `value` (via the shared `Text` component).
 - Both `label` and `value` accept `ReactNode`, so arbitrary markup (not just strings) can be passed.
 - Adjacent `Description` instances (`.eink-description + .eink-description`) automatically get top margin spacing, so a stack of them reads as a list without extra wrapper markup.
+- `Description.Group` wraps multiple `Description` instances and arranges them vertically (default) or horizontally via the `orientation` prop.
 
 ---
 
 ## Code Conventions
 - Uses `cx()` from `src/utils/cx.utils.ts` for className merging.
-- BEM classes prefixed `eink-`: block `.eink-description`, elements `.eink-description__label`, `.eink-description__value`.
+- BEM classes prefixed `eink-`: block `.eink-description`, elements `.eink-description__label`, `.eink-description__value`, `.eink-description__group`.
 - Imports its own stylesheet via `import "./description.component.css"`.
 - Composes other library components (`Label`, `Text`) rather than rendering raw markup for its label/value.
+- `Description.Group` is attached as a static property (`Description.Group = Group`), so it's used as `<Description.Group>` rather than a separate import.
 
 ---
 
 ## Primary Use Cases
 - Displaying metadata fields such as "Updated: Today, 14:02", "Author: Jane Doe", or similar key-value summaries in detail views and sidebars.
 - Stacking several `Description` instances to form a simple, readable definition list without a wrapping `<dl>`.
+- Using `Description.Group` with `orientation="horizontal"` to lay out related fields side by side, e.g. a compact metadata row.
 
 ---
 

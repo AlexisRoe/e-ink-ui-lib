@@ -17,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: resolve(import.meta.dirname, "src/index.ts"),
       formats: ["es", "cjs"],
-      fileName: "e-ink-ui-lib",
+      fileName: "index",
     },
     rollupOptions: {
       external: ["react", "react-dom", "react/jsx-runtime"],
@@ -29,6 +29,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
     css: true,
+    pool: "vmThreads",
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],

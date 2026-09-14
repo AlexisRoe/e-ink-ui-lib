@@ -1,0 +1,38 @@
+# Source & tooling — only dist/ is published (see package.json "files")
+src/
+documentation/
+screenshots/
+.storybook/
+storybook-static/
+
+# Config & dev tooling
+.github/
+.vscode-test
+tsconfig.json
+tsconfig.build.json
+vite.config.ts
+vitest.setup.ts
+biome.json
+wrangler.jsonc
+.editorconfig
+.nvmrc
+.npmrc
+
+# Tests & coverage
+coverage/
+*.test.ts
+*.test.tsx
+*.stories.tsx
+
+# Build artifacts not part of the published package
+*.tsbuildinfo
+.wrangler/
+
+# CI / env
+.env
+.env.*
+!.env.example
+
+# Misc
+*.log
+.DS_Store

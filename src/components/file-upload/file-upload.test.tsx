@@ -140,7 +140,7 @@ describe("FileUpload", () => {
     expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
   });
 
-  it("does not block the form when not required, even before uploading finishes", () => {
+  it("does not block the form when not required, even before uploading finishes", async () => {
     let resolveUpload: () => void = () => {};
     const onUpload = vi.fn(
       () =>
@@ -166,7 +166,9 @@ describe("FileUpload", () => {
     fireEvent.change(input, { target: { files: [makeFile("report.pdf", "application/pdf")] } });
 
     expect(screen.getByRole("button", { name: "Save" })).toBeEnabled();
+
     resolveUpload();
+    await waitFor(() => expect(screen.getByText(/report\.pdf uploaded/i)).toBeInTheDocument());
   });
 
   it("disables the file input when disabled", () => {

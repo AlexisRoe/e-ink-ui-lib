@@ -29,7 +29,7 @@ export const Default: Story = {
       <Flex align="center" justify="space-between" gap="xl">
         <Flex column gap="sm">
           <Label>Coffee · Whole Bean</Label>
-          <Title size={2}>Ethiopia Yirgacheffe</Title>
+          <Title size="2">Ethiopia Yirgacheffe</Title>
           <Flex gap="sm" wrap>
             <Pill icon="star">Single origin</Pill>
             <Pill.Double icon="check">Organic</Pill.Double>

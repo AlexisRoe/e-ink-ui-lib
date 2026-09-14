@@ -74,7 +74,7 @@ export function Schedule({
             onClick={onBack}
           />
         ) : null}
-        <Title size={3} className="eink-schedule__title">
+        <Title size="3" className="eink-schedule__title">
           {title ?? DATE_FORMATTER.format(date)}
         </Title>
       </div>
