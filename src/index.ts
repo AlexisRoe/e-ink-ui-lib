@@ -60,6 +60,11 @@ export type {
 } from "./components/dropdown-menu/dropdown-menu.component";
 export { DropdownMenu } from "./components/dropdown-menu/dropdown-menu.component";
 export type {
+  FileUploadProps,
+  FileUploadStatus,
+} from "./components/file-upload/file-upload.component";
+export { FileUpload } from "./components/file-upload/file-upload.component";
+export type {
   FlexAlign,
   FlexDirectionProps,
   FlexGap,

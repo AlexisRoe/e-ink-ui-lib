@@ -1,0 +1,70 @@
+.eink-file-upload {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-8);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+}
+
+.eink-file-upload__label {
+  padding: 0;
+}
+
+.eink-file-upload__dropzone {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--eink-size-8);
+  padding: var(--eink-size-16);
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  cursor: pointer;
+  text-align: center;
+}
+
+.eink-file-upload__dropzone:focus-within {
+  border: var(--eink-border-thick);
+}
+
+.eink-file-upload__dropzone--uploading {
+  cursor: wait;
+}
+
+.eink-file-upload__dropzone--error {
+  border: var(--eink-border-thick);
+}
+
+.eink-file-upload__dropzone--disabled {
+  cursor: not-allowed;
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-95);
+  color: var(--eink-color-disabled);
+}
+
+.eink-file-upload__icon {
+  flex-shrink: 0;
+}
+
+.eink-file-upload__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eink-file-upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
