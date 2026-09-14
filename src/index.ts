@@ -67,6 +67,10 @@ export type {
   FlexProps,
 } from "./components/flex/flex.component";
 export { Flex } from "./components/flex/flex.component";
+export type { FormProps } from "./components/form/form.component";
+export { Form } from "./components/form/form.component";
+export type { FormFieldState, FormValues } from "./components/form/form.context";
+export { useFormContext, useFormField } from "./components/form/form.context";
 export type {
   GridColumnsProps,
   GridItemProps,
