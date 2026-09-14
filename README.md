@@ -13,14 +13,18 @@ application examples, in Storybook (`npm run storybook`).
 
 ## Contents
 
-- [Motivation](#motivation)
-- [Screenshots](#screenshots)
-- [How to start](#how-to-start)
-- [Technologies](#technologies)
-- [Architecture](#architecture)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
+- [e-ink-ui-lib](#e-ink-ui-lib)
+  - [Contents](#contents)
+  - [Motivation](#motivation)
+  - [Screenshots](#screenshots)
+  - [How to start](#how-to-start)
+    - [Local development and testing](#local-development-and-testing)
+    - [Integrating into your own project](#integrating-into-your-own-project)
+  - [Technologies](#technologies)
+  - [Architecture](#architecture)
+  - [Contributing](#contributing)
+  - [Acknowledgements](#acknowledgements)
+  - [License](#license)
 
 ## Motivation
 
@@ -51,14 +55,18 @@ live in Storybook under **Applications**.
 
 ## How to start
 
+### Local development and testing
+
 Requires Node.js `>=24.17.0`.
 
 ```bash
-git clone git@github.com:AlexisRoe/e-ink-ui-lib.git
+git clone https://github.com/AlexisRoe/e-ink-ui-lib.git
 cd e-ink-ui-lib
 npm ci
 npm run storybook
 ```
+
+### Integrating into your own project
 
 To use the library in another project once published:
 
