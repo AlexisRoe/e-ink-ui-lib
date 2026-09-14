@@ -228,6 +228,8 @@ export type { QRCodeErrorCorrectionLevel, QRCodeProps } from "./components/qrcod
 export { QRCode } from "./components/qrcode/qrcode.component";
 export type { QuoteProps } from "./components/quote/quote.component";
 export { Quote } from "./components/quote/quote.component";
+export type { RatingIcon, RatingProps } from "./components/rating/rating.component";
+export { Rating } from "./components/rating/rating.component";
 export type { ScheduleProps } from "./components/schedule/schedule.component";
 export { Schedule } from "./components/schedule/schedule.component";
 export type {
