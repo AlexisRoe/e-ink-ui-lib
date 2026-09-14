@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, JSX, ReactNode } from "react";
 
 import { cx } from "../../utils/cx.utils";
 import { Label } from "../label/label.component";
@@ -22,7 +22,7 @@ export interface DescriptionProps extends HTMLAttributes<HTMLDivElement> {
  * <Description label="Updated" value="Today, 14:02" />
  * ```
  */
-export function Description({ label, value, className, ...rest }: DescriptionProps) {
+function Description({ label, value, className, ...rest }: DescriptionProps) {
   return (
     <div className={cx("eink-description", [className ?? "", !!className])} {...rest}>
       <Label className="eink-description__label">{label}</Label>
@@ -30,3 +30,37 @@ export function Description({ label, value, className, ...rest }: DescriptionPro
     </div>
   );
 }
+
+/** Props accepted by {@link Description.Group}. */
+interface DescriptionGroup {
+  /** One or more {@link Description} instances to lay out together. */
+  children: ReactNode;
+  /** Axis the child `Description` instances are arranged on. Defaults to `"vertical"`. */
+  orientation?: "horizontal" | "vertical";
+}
+
+/**
+ * Lays out multiple {@link Description} instances together, either stacked vertically
+ * or arranged side by side horizontally.
+ *
+ * @example
+ * ```tsx
+ * <Description.Group orientation="horizontal">
+ *   <Description label="Updated" value="Today, 14:02" />
+ *   <Description label="Author" value="Jane Doe" />
+ * </Description.Group>
+ * ```
+ */
+function Group({ children, orientation = "vertical" }: DescriptionGroup): JSX.Element {
+  const isHorizontal = orientation === "horizontal";
+  const className = cx("eink-description__group", [
+    "eink-description__group_horizonal",
+    isHorizontal,
+  ]);
+
+  return <div className={className}>{children}</div>;
+}
+
+Description.Group = Group;
+
+export { Description };
