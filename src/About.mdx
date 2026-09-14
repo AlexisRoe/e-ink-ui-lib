@@ -15,7 +15,10 @@ components look correct even before an e-ink panel converts them.
 ## What's in here
 
 - **Components** — the actual UI primitives (`Components/Actions`, `Components/Data Display`,
-  `Components/Layout`, `Components/Typography`), each with usage examples and tests.
+  `Components/Layout`, `Components/Typography`, `Components/Forms`), each with usage examples and tests.
+- **Applications** — composite, full-screen examples (AI chat, todo app, smart-home dashboard, shelf
+  label, meeting room sign, hotel room sign, parcel tracking, multi-page document, user data form) built
+  entirely from the components above, showing how they combine into realistic e-ink screens.
 - **Tokens** — the shared design tokens (colors, sizes, fonts, icons) that back every component.
 - **Theme** — the `ThemeProvider` that applies the e-ink theme.
 
@@ -23,6 +26,13 @@ components look correct even before an e-ink panel converts them.
 
 - One folder per component under `src/components/<Name>/`, each with its
   implementation, styles, tests, and Storybook stories.
+- Composite application examples live under `src/applications/` as
+  Storybook-only stories, without their own implementation/test files.
 - Components accept and forward native HTML attributes where it makes sense,
   so they behave like the elements they wrap.
 - Everything is exported from `src/index.ts`.
+
+## Learn more
+
+See the [project README](https://github.com/AlexisRoe/e-ink-ui-lib#readme) for the full architecture
+overview, technology stack, how to start developing, and contribution guidelines.
