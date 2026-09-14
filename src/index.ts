@@ -266,6 +266,8 @@ export type {
   SelectProps,
 } from "./components/select/select.component";
 export { Select } from "./components/select/select.component";
+export type { SignatureProps } from "./components/signature/signature.component";
+export { Signature } from "./components/signature/signature.component";
 export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skeleton.component";
 export { Skeleton } from "./components/skeleton/skeleton.component";
 export type {

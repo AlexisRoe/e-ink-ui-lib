@@ -1,0 +1,86 @@
+.eink-signature {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  color: var(--eink-color-primary);
+}
+
+.eink-signature__label {
+  padding: 0;
+  margin-bottom: var(--eink-font-size-default);
+}
+
+.eink-signature__required {
+  vertical-align: super;
+  font-size: 0.75em;
+  margin-left: var(--eink-size-2);
+}
+
+.eink-signature__pad {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+  background-image: linear-gradient(
+    to top,
+    var(--eink-color-primary) 0,
+    var(--eink-color-primary) 1px,
+    transparent 1px
+  );
+  background-position: bottom var(--eink-size-24) left 0;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+.eink-signature__pad--disabled {
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-95);
+}
+
+.eink-signature__canvas {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.eink-signature__pad--disabled .eink-signature__canvas {
+  cursor: not-allowed;
+}
+
+.eink-signature__canvas:focus-visible {
+  outline: var(--eink-border-medium);
+  outline-offset: var(--eink-size-2);
+}
+
+.eink-signature__placeholder {
+  position: absolute;
+  left: var(--eink-size-16);
+  bottom: var(--eink-size-24);
+  transform: translateY(50%);
+  color: var(--eink-color-grey-70);
+  font-size: var(--eink-font-size-default);
+  pointer-events: none;
+}
+
+.eink-signature__sr-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.eink-signature__clear {
+  align-self: flex-end;
+  margin-top: var(--eink-size-8);
+}
