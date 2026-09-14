@@ -23,11 +23,33 @@ export const Default: Story = {
   },
 };
 
+export const Empty: Story = {
+  args: { children: "Birthday" },
+  render: (args) => {
+    function DateInputDemo() {
+      const [date, setDate] = useState("");
+      return <DateInput {...args} value={date} onChange={setDate} />;
+    }
+    return <DateInputDemo />;
+  },
+};
+
 export const Required: Story = {
   args: { children: "Birthday", required: true },
   render: (args) => {
     function DateInputDemo() {
       const [date, setDate] = useState("");
+      return <DateInput {...args} value={date} onChange={setDate} />;
+    }
+    return <DateInputDemo />;
+  },
+};
+
+export const MinMax: Story = {
+  args: { children: "Appointment", min: "2024-01-10", max: "2024-01-20" },
+  render: (args) => {
+    function DateInputDemo() {
+      const [date, setDate] = useState("2024-01-15");
       return <DateInput {...args} value={date} onChange={setDate} />;
     }
     return <DateInputDemo />;

@@ -1,4 +1,5 @@
 .eink-date-input {
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   display: flex;
@@ -19,25 +20,95 @@
   margin-left: var(--eink-size-2);
 }
 
-.eink-date-input__input {
+.eink-date-input__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--eink-size-8);
   box-sizing: border-box;
   width: 100%;
   height: var(--eink-size-48);
   font-family: inherit;
   font-size: var(--eink-font-size-default);
-  color: inherit;
-  padding: 0 var(--eink-size-8);
+  font-weight: 700;
+  color: var(--eink-color-primary);
+  padding: 0 var(--eink-size-16);
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.eink-date-input__trigger:disabled {
+  cursor: not-allowed;
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-95);
+  color: var(--eink-color-disabled);
+}
+
+.eink-date-input__trigger-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eink-date-input__icon {
+  flex-shrink: 0;
+}
+
+.eink-date-input__popup {
+  position: absolute;
+  z-index: var(--eink-z-index-modal);
+  top: calc(100% + var(--eink-size-4));
+  left: 0;
+  box-sizing: border-box;
   border: var(--eink-border-medium);
   background-color: var(--eink-color-secondary);
 }
 
-.eink-date-input__input:focus {
-  border: var(--eink-border-thick);
+.eink-date-input__columns {
+  display: flex;
 }
 
-.eink-date-input__input:disabled {
-  border-color: var(--eink-color-grey-70);
+.eink-date-input__column {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: var(--eink-size-64);
+  max-height: var(--eink-size-320);
+  overflow-y: auto;
+}
+
+.eink-date-input__column + .eink-date-input__column {
+  border-left: var(--eink-border-medium);
+}
+
+.eink-date-input__option {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--eink-size-8) 0;
+  border: none;
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  text-align: center;
+  cursor: pointer;
+}
+
+.eink-date-input__option:hover {
   background-color: var(--eink-color-grey-95);
-  color: var(--eink-color-disabled);
-  cursor: not-allowed;
+}
+
+.eink-date-input__option--selected {
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+}
+
+.eink-date-input__trigger:focus-visible,
+.eink-date-input__option:focus-visible {
+  outline: var(--eink-border-medium);
+  outline-offset: var(--eink-size-2);
 }

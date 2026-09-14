@@ -23,6 +23,17 @@ export const Default: Story = {
   },
 };
 
+export const Empty: Story = {
+  args: { children: "Alarm" },
+  render: (args) => {
+    function TimeInputDemo() {
+      const [time, setTime] = useState("");
+      return <TimeInput {...args} value={time} onChange={setTime} />;
+    }
+    return <TimeInputDemo />;
+  },
+};
+
 export const Required: Story = {
   args: { children: "Alarm", required: true },
   render: (args) => {
