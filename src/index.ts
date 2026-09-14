@@ -40,6 +40,15 @@ export type {
 export { Card } from "./components/card/card.component";
 export type { CenterProps } from "./components/center/center.component";
 export { Center } from "./components/center/center.component";
+export type {
+  ChatComposerProps,
+  ChatEntry,
+  ChatMessageProps,
+  ChatMessagesProps,
+  ChatProps,
+  ChatReasoner,
+} from "./components/chat/chat.component";
+export { Chat } from "./components/chat/chat.component";
 export type { CheckboxGroupProps, CheckboxProps } from "./components/checkbox/checkbox.component";
 export { Checkbox } from "./components/checkbox/checkbox.component";
 export type { ChipGroupProps, ChipProps } from "./components/chip/chip.component";
