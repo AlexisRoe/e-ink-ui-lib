@@ -4,35 +4,61 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # e-ink UI Lib
 
-A React component library built for e-ink screen tablets and devices.
+A React component library built for e-ink screen tablets and devices — this Storybook is its living
+documentation: every component, every design token, and every full-screen example, all in one place.
 
-E-ink displays refresh slowly and render only greys, so components in this
-library are designed around those constraints: no color-dependent state,
-no reliance on hover/transition effects, and a theme (`src/components/theme/theme.css`)
-that forces the entire tree to greyscale (`filter: grayscale(100%)`) so
-components look correct even before an e-ink panel converts them.
+## Why this exists
 
-## What's in here
+It started with a Boox Lumi e-ink tablet and a first app built on [Marco Matte's
+epaper-components](https://epaper-components.dev/). That library is great for integrated e-ink displays
+(ESP32 and similar), but working natively in React called for React components — and general-purpose
+libraries like [Mantine](https://mantine.dev/getting-started/) or [shadcn/ui](https://ui.shadcn.com/),
+while a big influence here, turned out to be heavier than a low-powered, Android-based e-ink tablet wants.
 
-- **Components** — the actual UI primitives (`Components/Actions`, `Components/Data Display`,
-  `Components/Layout`, `Components/Typography`, `Components/Forms`), each with usage examples and tests.
-- **Applications** — composite, full-screen examples (AI chat, todo app, smart-home dashboard, shelf
-  label, meeting room sign, hotel room sign, parcel tracking, multi-page document, user data form) built
-  entirely from the components above, showing how they combine into realistic e-ink screens.
-- **Tokens** — the shared design tokens (colors, sizes, fonts, icons) that back every component.
-- **Theme** — the `ThemeProvider` that applies the e-ink theme.
+E-ink displays aren't just "low-color screens": they refresh slowly, render only greys, and have no
+real concept of hover states, transitions, or color-coded UI. Most component libraries quietly assume an
+LCD/OLED panel and break those assumptions the moment they hit real e-ink hardware. Every component you
+see here is designed around those constraints from the start — no color-dependent state, no reliance on
+hover/transition effects — and the `ThemeProvider` forces the whole tree to greyscale
+(`filter: grayscale(100%)`) so what you see in this Storybook already looks like what an e-ink panel
+would show.
+
+## What to expect in this Storybook
+
+The sidebar is organized so you can go from "what's available" to "how it looks assembled" without
+leaving the browser:
+
+- **About** (this page) — the why and the map.
+- **Components** — every UI primitive, grouped into `Actions`, `Data Display`, `Forms`, `Layout` and
+  `Typography`. Each one has interactive controls (autodocs), usage examples, and prop documentation
+  generated straight from its JSDoc comments.
+- **Applications** — full, realistic screens built *only* from the components above: an AI chat, a todo
+  app, a smart-home dashboard, a coffee shelf label with QR code, a meeting room door sign, a hotel room
+  sign, a multistep parcel-tracking window, a multi-page document with progress, and a user data entry
+  form. These exist to answer the question every component library leaves open — "okay, but how do these
+  actually fit together?" — with copy-pasteable layouts instead of an abstract prop table.
+- **Tokens** — the design tokens (`--eink-size-*`, `--eink-color-*`, `--eink-border-*`, fonts) that back
+  every component's styling. Change a token here and it ripples through the whole library, rather than
+  chasing hardcoded values component by component.
+- **Theme** — the `ThemeProvider`/`useTheme` API that applies all of the above to your tree.
+
+If you're evaluating whether this library fits your project, a good path is: skim **Tokens** to see the
+visual language, browse a couple of **Applications** to see it in context, then dive into **Components**
+for the primitive you actually need.
 
 ## Conventions
 
-- One folder per component under `src/components/<Name>/`, each with its
-  implementation, styles, tests, and Storybook stories.
-- Composite application examples live under `src/applications/` as
-  Storybook-only stories, without their own implementation/test files.
-- Components accept and forward native HTML attributes where it makes sense,
-  so they behave like the elements they wrap.
-- Everything is exported from `src/index.ts`.
+- One folder per component under `src/components/<name>/`, each with its implementation, styles, tests,
+  and Storybook stories — see the [project README](https://github.com/AlexisRoe/e-ink-ui-lib#readme) for
+  the full breakdown.
+- Composite application examples live under `src/applications/` as Storybook-only stories, without their
+  own implementation/test files — they're documentation, not new components.
+- Components accept and forward native HTML attributes where it makes sense, so they behave like the
+  elements they wrap.
+- Everything usable from outside the library is exported from `src/index.ts`.
 
-## Learn more
+## Learn more / get involved
 
-See the [project README](https://github.com/AlexisRoe/e-ink-ui-lib#readme) for the full architecture
-overview, technology stack, how to start developing, and contribution guidelines.
+The [project README](https://github.com/AlexisRoe/e-ink-ui-lib#readme) has the full architecture
+overview, technology stack, how to start developing locally, and how to contribute — issues and pull
+requests are welcome.
