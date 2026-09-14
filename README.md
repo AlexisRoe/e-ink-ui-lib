@@ -111,11 +111,34 @@ the other stories under **Applications** in Storybook.
   entirely from the exported components, showing how they combine in realistic screens.
 - **`src/utils/`** — framework-agnostic helpers (e.g. the `cx` className-merge helper, form validators),
   not part of the public API unless re-exported.
+- **`src/hooks/`** — one folder per hook (`use-foo/use-foo.hook.ts` + `use-foo.hook.test.ts`), 26
+  dependency-free React hooks exported from `src/index.ts` alongside the components.
 - **`src/tokens/`** — design tokens (`--eink-size-*`, `--eink-color-*`, `--eink-border-*`) documented as
   Storybook pages; every component styles itself from these tokens instead of hardcoded values.
 - **Theme** — `src/components/theme/` exposes `ThemeProvider`/`useTheme` and `theme.css`, which forces
   the whole tree to greyscale (`filter: grayscale(100%)`) so components look correct in the browser even
   before an actual e-ink panel does its own conversion.
+
+```
+src/
+├── components/
+│   └── <name>/
+│       ├── <name>.component.tsx
+│       ├── <name>.component.css
+│       ├── <name>.test.tsx
+│       └── <name>.stories.tsx
+├── applications/        # composite example stories
+├── hooks/
+│   └── use-<name>/
+│       ├── use-<name>.hook.ts
+│       └── use-<name>.hook.test.ts
+├── utils/
+│   ├── <name>.utils.ts
+│   └── <name>.utils.test.ts
+├── tokens/               # design token Storybook pages
+├── About.mdx
+└── index.ts              # public API surface
+```
 
 ## Contributing
 
@@ -149,6 +172,9 @@ A few conventions to follow along the way:
   integrated e-ink displays (ESP32 and similar), go there instead.
 - [Mantine](https://mantine.dev/getting-started/) and [shadcn/ui](https://ui.shadcn.com/) — for API and
   component-design inspiration, scaled down for low-powered e-ink hardware.
+- [uidotdev/usehooks](https://github.com/uidotdev/usehooks) (ui.dev) — the 26 hooks under `src/hooks/`
+  are adapted from this MIT-licensed collection, which saved a lot of time reinventing well-tested React
+  hooks from scratch. Go give it a star.
 
 ## License
 
