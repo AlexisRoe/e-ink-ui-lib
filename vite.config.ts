@@ -29,6 +29,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
     css: true,
+    pool: "vmThreads",
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],
