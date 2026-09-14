@@ -6,7 +6,7 @@ import type {
   KeyboardEvent,
   ReactNode,
 } from "react";
-import { useContext, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { cx } from "../../utils/cx.utils";
 import { FormContext } from "../form/form.context";
 import "./pin.component.css";
@@ -72,7 +72,10 @@ export interface PinProps
  * controlled component with `value`/`onChange`.
  *
  * Pass `required` to render a `*` after the label and mark every box as
- * required; this does not hook into `<Form>` validation on its own.
+ * required. When bound to a `<Form>` via `name`, the component also sets its
+ * own field error whenever the code is shorter than `length` (or, if
+ * `required`, empty), which keeps `Form.SubmitButton` disabled until a full
+ * code has been entered.
  *
  * @example
  * ```tsx
@@ -101,13 +104,37 @@ export function Pin({
   );
   const digits = Array.from({ length }, (_, index) => currentValue[index] ?? "");
 
+  const validate = useCallback(
+    (next: string) => {
+      if (required && next.length === 0) return "Enter a code";
+      if (next.length > 0 && next.length < length) return `Enter all ${length} digits`;
+      return undefined;
+    },
+    [required, length],
+  );
+
   const commit = (next: string) => {
     if (name && form) {
       form.setValue(name, next);
+      const nextError = validate(next);
+      if (form.getError(name) !== nextError) {
+        form.setError(name, nextError);
+      }
     } else {
       onChange?.(next);
     }
   };
+
+  // Validate the initial/prefilled value too, so an incomplete code blocks
+  // submission from the start rather than only after the first edit.
+  useEffect(() => {
+    if (name && form) {
+      const nextError = validate(currentValue);
+      if (form.getError(name) !== nextError) {
+        form.setError(name, nextError);
+      }
+    }
+  }, [name, form, currentValue, validate]);
 
   const setDigitAt = (index: number, digit: string) => {
     const next = digits.slice();

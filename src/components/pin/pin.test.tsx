@@ -104,9 +104,52 @@ describe("Pin", () => {
 
     fireEvent.change(screen.getByLabelText("Digit 1 of 4"), { target: { value: "9" } });
     expect(screen.getByLabelText("Digit 1 of 4")).toHaveValue("9");
+    fireEvent.change(screen.getByLabelText("Digit 2 of 4"), { target: { value: "8" } });
+    fireEvent.change(screen.getByLabelText("Digit 3 of 4"), { target: { value: "7" } });
+    fireEvent.change(screen.getByLabelText("Digit 4 of 4"), { target: { value: "6" } });
 
     fireEvent.click(screen.getByRole("button", { name: "Save" }));
-    expect(onSubmit).toHaveBeenCalledWith({ pin: "9" }, expect.anything());
+    expect(onSubmit).toHaveBeenCalledWith({ pin: "9876" }, expect.anything());
+  });
+
+  it("keeps the form's submit button disabled until all digits are entered", () => {
+    const onSubmit = vi.fn();
+    render(
+      <Form initialValues={{ pin: "" }} onSubmit={onSubmit}>
+        <Pin name="pin" length={4} required useMask={false}>
+          PIN code
+        </Pin>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    const submitButton = screen.getByRole("button", { name: "Save" });
+    expect(submitButton).toBeDisabled();
+
+    fireEvent.change(screen.getByLabelText("Digit 1 of 4"), { target: { value: "1" } });
+    fireEvent.change(screen.getByLabelText("Digit 2 of 4"), { target: { value: "2" } });
+    expect(submitButton).toBeDisabled();
+
+    fireEvent.change(screen.getByLabelText("Digit 3 of 4"), { target: { value: "3" } });
+    fireEvent.change(screen.getByLabelText("Digit 4 of 4"), { target: { value: "4" } });
+    expect(submitButton).toBeEnabled();
+
+    fireEvent.click(submitButton);
+    expect(onSubmit).toHaveBeenCalledWith({ pin: "1234" }, expect.anything());
+  });
+
+  it("re-disables the submit button if a digit is removed after being complete", () => {
+    render(
+      <Form initialValues={{ pin: "1234" }}>
+        <Pin name="pin" length={4} useMask={false}>
+          PIN code
+        </Pin>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    fireEvent.keyDown(screen.getByLabelText("Digit 4 of 4"), { key: "Backspace" });
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
   });
 
   it("renders a * after the label when required", () => {

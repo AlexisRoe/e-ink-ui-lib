@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Flex } from "../flex/flex.component";
+import { Form } from "../form/form.component";
+import { useFormField } from "../form/form.context";
 import { Pin } from "./pin.component";
 
 const meta = {
@@ -95,4 +97,34 @@ export const Required: Story = {
     required: true,
     children: "PIN code",
   },
+};
+
+function PinField({ length, required }: { length: number; required?: boolean }) {
+  const { error } = useFormField("pin");
+
+  return (
+    <Flex column gap="sm">
+      <Pin name="pin" length={length} required={required} useMask={false}>
+        PIN code
+      </Pin>
+      {error ? <span>{error}</span> : null}
+    </Flex>
+  );
+}
+
+export const Validation: Story = {
+  args: {
+    value: "",
+    length: 4,
+    required: true,
+    children: "PIN code",
+  },
+  render: (args) => (
+    <Form initialValues={{ pin: "" }} onSubmit={() => {}}>
+      <Flex column gap="md">
+        <PinField length={args.length} required={args.required} />
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Flex>
+    </Form>
+  ),
 };
