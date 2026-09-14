@@ -263,6 +263,8 @@ export type { TabsContentProps, TabsItemProps, TabsProps } from "./components/ta
 export { Tabs } from "./components/tabs/tabs.component";
 export type { TextAs, TextProps } from "./components/text/text.component";
 export { Text } from "./components/text/text.component";
+export type { TextAreaProps } from "./components/text-area/text-area.component";
+export { TextArea } from "./components/text-area/text-area.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
 export type {
