@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { Navigation } from "./navigation.component";
 
@@ -71,9 +71,13 @@ describe("Navigation", () => {
     renderNavigation();
 
     const trigger = screen.getByText("Products").closest("button") as HTMLButtonElement;
-    trigger.focus();
-    fireEvent.keyDown(trigger, { key: "ArrowRight" });
-    fireEvent.keyDown(screen.getByText("New"), { key: "Escape" });
+    act(() => {
+      trigger.focus();
+      fireEvent.keyDown(trigger, { key: "ArrowRight" });
+    });
+    act(() => {
+      fireEvent.keyDown(screen.getByText("New"), { key: "Escape" });
+    });
 
     expect(screen.queryByText("New")).toBeNull();
     expect(trigger).toHaveFocus();
