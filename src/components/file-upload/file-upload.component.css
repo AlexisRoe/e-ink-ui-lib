@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--eink-size-8);
-  padding: var(--eink-size-32) var(--eink-size-16);
+  padding: 0 var(--eink-size-16);
   border: var(--eink-border-medium);
   background-color: var(--eink-color-secondary);
   color: var(--eink-color-primary);
@@ -50,12 +50,11 @@
 
 .eink-file-upload__icon {
   flex-shrink: 0;
-  margin-top: var(--eink-size-16);
+  margin-top: var(--eink-size-32);
 }
 
 .eink-file-upload__text {
   max-width: 100%;
-  margin-bottom: var(--eink-size-16);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -68,6 +67,10 @@
   white-space: nowrap;
   color: var(--eink-color-grey-40);
   font-size: 0.875em;
+}
+
+.eink-file-upload__dropzone > span:last-of-type {
+  margin-bottom: var(--eink-size-32);
 }
 
 .eink-file-upload__input {
