@@ -272,6 +272,8 @@ export type {
   TodoProps,
 } from "./components/todo/todo.component";
 export { Todo } from "./components/todo/todo.component";
+export type { ToggleProps } from "./components/toggle/toggle.component";
+export { Toggle } from "./components/toggle/toggle.component";
 export type { TreeItemProps, TreeProps } from "./components/tree/tree.component";
 export { Tree } from "./components/tree/tree.component";
 export type {
