@@ -209,6 +209,8 @@ export type {
 export { Pagination } from "./components/pagination/pagination.component";
 export type { PillProps, PillSize } from "./components/pill/pill.component";
 export { Pill } from "./components/pill/pill.component";
+export type { PinProps } from "./components/pin/pin.component";
+export { Pin } from "./components/pin/pin.component";
 export type {
   PriceGroupingBy,
   PriceProps,
