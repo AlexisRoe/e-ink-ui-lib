@@ -1,0 +1,43 @@
+.eink-date-input {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-font-size-default);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  color: var(--eink-color-primary);
+}
+
+.eink-date-input__label {
+  padding: 0;
+}
+
+.eink-date-input__required {
+  vertical-align: super;
+  font-size: 0.75em;
+  margin-left: var(--eink-size-2);
+}
+
+.eink-date-input__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--eink-size-48);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  color: inherit;
+  padding: 0 var(--eink-size-8);
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+}
+
+.eink-date-input__input:focus {
+  border: var(--eink-border-thick);
+}
+
+.eink-date-input__input:disabled {
+  border-color: var(--eink-color-grey-70);
+  background-color: var(--eink-color-grey-95);
+  color: var(--eink-color-disabled);
+  cursor: not-allowed;
+}

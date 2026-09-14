@@ -52,6 +52,8 @@ export type { ContainerProps } from "./components/container/container.component"
 export { Container } from "./components/container/container.component";
 export type { CounterProps, CounterSize } from "./components/counter/counter.component";
 export { Counter } from "./components/counter/counter.component";
+export type { DateInputProps } from "./components/date-input/date-input.component";
+export { DateInput } from "./components/date-input/date-input.component";
 export type { DescriptionProps } from "./components/description/description.component";
 export { Description } from "./components/description/description.component";
 export type { DividerProps } from "./components/divider/divider.component";
@@ -294,6 +296,8 @@ export type { TextAreaProps } from "./components/text-area/text-area.component";
 export { TextArea } from "./components/text-area/text-area.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
+export type { TimeInputProps } from "./components/time-input/time-input.component";
+export { TimeInput } from "./components/time-input/time-input.component";
 export type {
   TimelineItemProps,
   TimelineProps,
