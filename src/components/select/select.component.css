@@ -6,14 +6,6 @@
   min-width: var(--eink-size-320);
 }
 
-.eink-select__label {
-  display: inline-block;
-  font-family: inherit;
-  font-size: var(--eink-font-size-default);
-  font-weight: 700;
-  color: var(--eink-color-primary);
-}
-
 .eink-select__required {
   color: var(--eink-color-primary);
   margin-left: var(--eink-size-4);

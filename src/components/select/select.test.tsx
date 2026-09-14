@@ -11,7 +11,7 @@ describe("Select", () => {
         <Select.Option value="banana">Banana</Select.Option>
       </Select>,
     );
-    expect(screen.getByRole("button", { name: "Pick…" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Fruit" })).toHaveTextContent("Pick…");
   });
 
   it("opens the listbox and selects an option, closing afterwards", () => {
@@ -23,12 +23,13 @@ describe("Select", () => {
       </Select>,
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Pick…" }));
+    const trigger = screen.getByRole("button", { name: "Fruit" });
+    fireEvent.click(trigger);
     expect(screen.getByRole("listbox")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("option", { name: "Banana" }));
     expect(onChange).toHaveBeenCalledWith("banana");
-    expect(screen.getByRole("button", { name: "Banana" })).toBeInTheDocument();
+    expect(trigger).toHaveTextContent("Banana");
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 
@@ -39,7 +40,7 @@ describe("Select", () => {
         <Select.Option value="banana">Banana</Select.Option>
       </Select>,
     );
-    expect(screen.getByRole("button", { name: "Apple" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Fruit" })).toHaveTextContent("Apple");
   });
 
   it("supports grouped options", () => {
@@ -53,7 +54,7 @@ describe("Select", () => {
         </Select.Group>
       </Select>,
     );
-    fireEvent.click(screen.getByRole("button", { name: "Pick…" }));
+    fireEvent.click(screen.getByRole("button", { name: "Fruit" }));
     expect(screen.getByRole("option", { name: "Dragonfruit" })).toBeInTheDocument();
   });
 
@@ -66,14 +67,15 @@ describe("Select", () => {
       </Select>,
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "Pick…" }));
+    const trigger = screen.getByRole("button", { name: "Fruit" });
+    fireEvent.click(trigger);
     fireEvent.click(screen.getByRole("option", { name: "Apple" }));
     expect(onChange).toHaveBeenCalledWith(["apple"]);
     expect(screen.getByRole("listbox")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("option", { name: "Banana" }));
     expect(onChange).toHaveBeenLastCalledWith(["apple", "banana"]);
-    expect(screen.getByRole("button", { name: "2 selected" })).toBeInTheDocument();
+    expect(trigger).toHaveTextContent("2 selected");
   });
 
   it("blocks a required Form field until an option is selected", () => {
@@ -90,7 +92,7 @@ describe("Select", () => {
     fireEvent.click(screen.getByRole("button", { name: "Save" }));
     expect(onSubmit).not.toHaveBeenCalled();
 
-    fireEvent.click(screen.getByRole("button", { name: "Pick…" }));
+    fireEvent.click(screen.getByRole("button", { name: "Fruit*" }));
     fireEvent.click(screen.getByRole("option", { name: "Apple" }));
 
     fireEvent.click(screen.getByRole("button", { name: "Save" }));
@@ -103,7 +105,7 @@ describe("Select", () => {
         <Select.Option value="apple">Apple</Select.Option>
       </Select>,
     );
-    fireEvent.click(screen.getByRole("button", { name: "Pick…" }));
+    fireEvent.click(screen.getByRole("button", { name: "Fruit" }));
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 });

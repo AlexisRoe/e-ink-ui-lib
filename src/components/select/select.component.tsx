@@ -14,6 +14,7 @@ import { cx } from "../../utils/cx.utils";
 import { FormContext } from "../form/form.context";
 import { Icon } from "../icons/icon";
 import type { IconName } from "../icons/icons";
+import { Label } from "../label/label.component";
 import "./select.component.css";
 
 function normalizeValues(value: string | string[] | undefined): string[] {
@@ -313,17 +314,17 @@ export function Select({
 
   return (
     <div ref={containerRef} className={cx("eink-select", [className ?? "", !!className])} {...rest}>
-      <span id={triggerId} className="eink-select__label">
+      <Label.Form htmlFor={triggerId} className="eink-select__label">
         {label}
         {required ? <span className="eink-select__required">*</span> : null}
-      </span>
+      </Label.Form>
       <button
+        id={triggerId}
         type="button"
         className="eink-select__trigger"
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-describedby={triggerId}
         onClick={() => setOpen((current) => !current)}
       >
         <span className="eink-select__trigger-label">{triggerLabel}</span>
