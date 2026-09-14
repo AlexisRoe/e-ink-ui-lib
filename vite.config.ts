@@ -17,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: resolve(import.meta.dirname, "src/index.ts"),
       formats: ["es", "cjs"],
-      fileName: "e-ink-ui-lib",
+      fileName: "index",
     },
     rollupOptions: {
       external: ["react", "react-dom", "react/jsx-runtime"],

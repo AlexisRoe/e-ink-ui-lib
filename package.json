@@ -26,16 +26,16 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/e-ink-ui-lib.cjs",
-  "module": "./dist/e-ink-ui-lib.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/e-ink-ui-lib.js",
-      "require": "./dist/e-ink-ui-lib.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
-    "./style.css": "./dist/e-ink-ui-lib.css"
+    "./style.css": "./dist/index.css"
   },
   "scripts": {
     "dev": "vite",
