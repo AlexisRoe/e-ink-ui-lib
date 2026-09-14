@@ -62,7 +62,7 @@ function BaseState({
     >
       <div className="eink-state__content">
         <Icon name={icon} size={64} className="eink-state__icon" aria-hidden="true" />
-        <Title size={3} className="eink-state__title">
+        <Title size="3" className="eink-state__title">
           {title}
         </Title>
         {subtitle && <Text className="eink-state__subtitle">{subtitle}</Text>}

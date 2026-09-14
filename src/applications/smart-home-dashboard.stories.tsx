@@ -43,7 +43,7 @@ function DashboardDemo() {
 
   return (
     <div style={{ maxWidth: 720, padding: "1rem" }}>
-      <Title size={2} style={{ marginBottom: "var(--eink-size-md)" }}>
+      <Title size="2" style={{ marginBottom: "var(--eink-size-md)" }}>
         Living Room
       </Title>
       <Space size="16" />

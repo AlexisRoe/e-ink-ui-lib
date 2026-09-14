@@ -46,7 +46,7 @@ function UserDataFormDemo() {
 
   return (
     <Container withBorder style={{ width: 800, padding: "1rem" }}>
-      <Title size={3}>Your details</Title>
+      <Title size="3">Your details</Title>
       <Space size="16" />
       <Form<UserDataValues>
         initialValues={{

@@ -49,7 +49,7 @@ function DocumentDemo() {
         </Stepper>
       </Page.Header>
       <Page.Body>
-        <Title size={2}>Employee Handbook — Benefits</Title>
+        <Title size="2">Employee Handbook — Benefits</Title>
         <Text>
           This section covers health insurance, retirement contributions, paid time off, and other
           benefits available to full-time employees. Continue reading on the following pages, or

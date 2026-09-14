@@ -86,7 +86,7 @@ export const Step1Confirmation: Story = {
         <Space size="48" />
         <Flex column align="center" gap="md">
           <Icon name="circle-check" size={64} aria-hidden="true" />
-          <Title size={2}>Thanks for your order!</Title>
+          <Title size="2">Thanks for your order!</Title>
           <Text>A confirmation email is on its way to you.</Text>
           <Space size="8" />
           <Description.Group orientation="horizontal">
@@ -120,7 +120,7 @@ export const Step2Fulfillment: Story = {
         <Space size="48" />
         <Flex column align="center" gap="md">
           <Icon name="folder" size={64} aria-hidden="true" />
-          <Title size={2}>Your order is being packed</Title>
+          <Title size="2">Your order is being packed</Title>
           <Text>Fulfillment center, Leipzig</Text>
           <Space size="8" />
           <Timeline>
@@ -159,7 +159,7 @@ export const Step4Signature: Story = {
         <Space size="48" />
         <Flex column align="center" gap="md">
           <Icon name="edit" size={48} aria-hidden="true" />
-          <Title size={2}>Sign to confirm handover</Title>
+          <Title size="2">Sign to confirm handover</Title>
           <Text>Please sign below to confirm you received this parcel.</Text>
           <Signature placeholder="Sign here" required>
             Recipient signature

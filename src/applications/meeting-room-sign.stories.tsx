@@ -45,7 +45,7 @@ export const Default: Story = {
     <Container withBorder style={{ width: 360, padding: "1rem" }}>
       <Flex column gap="md">
         <Flex justify="space-between" align="start">
-          <Title size={2}>Room 2B</Title>
+          <Title size="2">Room 2B</Title>
           <Pill.Filled size="xl" icon="circle-off">
             Occupied
           </Pill.Filled>

@@ -24,7 +24,7 @@ export const Default: Story = {
   render: () => (
     <Container withBorder style={{ width: 400, padding: "1rem" }}>
       <Flex column gap="md">
-        <Title size={2}>Grand Ballroom</Title>
+        <Title size="2">Grand Ballroom</Title>
         <Timeline>
           <Timeline.Item time="08:00" title="Registration & breakfast" state="done">
             Foyer

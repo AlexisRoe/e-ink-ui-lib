@@ -23,7 +23,7 @@ export const Default: Story = {
   args: { children: null },
   render: () => (
     <Container withBorder fullWidth style={{ maxWidth: 800, padding: "1rem" }}>
-      <Title size={4} style={{ marginBottom: "var(--eink-size-md)" }}>
+      <Title size="4" style={{ marginBottom: "var(--eink-size-md)" }}>
         Assistant
       </Title>
       <Space />
