@@ -1,27 +1,27 @@
 .eink-timeline {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  column-gap: var(--eink-size-16);
   width: 100%;
 }
 
 .eink-timeline-item {
-  display: flex;
-  align-items: flex-start;
-  column-gap: var(--eink-size-16);
+  display: contents;
 }
 
 .eink-timeline-item__time {
-  flex-shrink: 0;
+  grid-column: 1;
+  align-self: start;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .eink-timeline-item__marker {
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-self: stretch;
-  flex-shrink: 0;
+  height: 100%;
 }
 
 .eink-timeline-item__box {
@@ -47,7 +47,7 @@
 }
 
 .eink-timeline-item__content {
-  flex: 1;
+  grid-column: 3;
   margin-bottom: var(--eink-size-24);
 }
 
