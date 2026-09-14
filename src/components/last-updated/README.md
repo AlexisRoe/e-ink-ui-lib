@@ -6,7 +6,7 @@ tags: [react, e-ink, ui-component, okf-v0.2]
 resource: "src/components/last-updated/last-updated.component.tsx"
 version: "1.0.0"
 created_by: "agent:claude-sonnet-5" (2026-09-14T10:00:00Z)
-reviewed_by: "user:a.roehrling" (pending)
+reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 ---
 
 # LastUpdated
