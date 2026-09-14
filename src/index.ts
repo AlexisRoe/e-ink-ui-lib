@@ -235,6 +235,11 @@ export type {
 export { Segmented } from "./components/segmented/segmented.component";
 export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skeleton.component";
 export { Skeleton } from "./components/skeleton/skeleton.component";
+export type {
+  SliderOrientation,
+  SliderProps,
+} from "./components/slider/slider.component";
+export { Slider } from "./components/slider/slider.component";
 export type { SpaceProps, SpaceSize } from "./components/space/space.component";
 export { Space } from "./components/space/space.component";
 export type { StateAction, StateVariantProps } from "./components/state/state.component";
