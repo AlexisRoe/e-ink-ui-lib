@@ -12,6 +12,7 @@
 
 .eink-rating__label {
   padding: 0;
+  padding-bottom: 1rem;
 }
 
 .eink-rating__control {

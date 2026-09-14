@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Flex } from "../flex/flex.component";
 import { Form } from "../form/form.component";
+import { useFormField } from "../form/form.context";
 import { Rating } from "./rating.component";
 
 const meta = {
@@ -15,6 +16,7 @@ const meta = {
     disabled: { control: "boolean" },
     withBorder: { control: "boolean" },
     withClear: { control: "boolean" },
+    required: { control: "boolean" },
   },
 } satisfies Meta<typeof Rating>;
 
@@ -134,6 +136,36 @@ export const Disabled: Story = {
     disabled: true,
     children: "How was your visit?",
   },
+};
+
+function SatisfactionField() {
+  const { error } = useFormField("satisfaction");
+
+  return (
+    <Flex column gap="sm">
+      <Rating name="satisfaction" max={5} required>
+        How was your visit?
+      </Rating>
+      {error ? <span>{error}</span> : null}
+    </Flex>
+  );
+}
+
+export const Validation: Story = {
+  args: {
+    value: 0,
+    max: 5,
+    required: true,
+    children: "How was your visit?",
+  },
+  render: () => (
+    <Form initialValues={{ satisfaction: 0 }} onSubmit={() => {}}>
+      <Flex column gap="md">
+        <SatisfactionField />
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Flex>
+    </Form>
+  ),
 };
 
 export const InAForm: Story = {

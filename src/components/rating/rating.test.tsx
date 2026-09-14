@@ -163,6 +163,54 @@ describe("Rating", () => {
     }
   });
 
+  it("keeps the form's submit button disabled until a required rating has a value", () => {
+    const onSubmit = vi.fn();
+    render(
+      <Form initialValues={{ satisfaction: 0 }} onSubmit={onSubmit}>
+        <Rating name="satisfaction" max={5} required>
+          Satisfaction
+        </Rating>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    const submitButton = screen.getByRole("button", { name: "Save" });
+    expect(submitButton).toBeDisabled();
+
+    fireEvent.click(screen.getByRole("radio", { name: "3 out of 5" }));
+    expect(submitButton).toBeEnabled();
+
+    fireEvent.click(submitButton);
+    expect(onSubmit).toHaveBeenCalledWith({ satisfaction: 3 }, expect.anything());
+  });
+
+  it("re-disables the submit button if a required rating is cleared after being filled", () => {
+    render(
+      <Form initialValues={{ satisfaction: 3 }}>
+        <Rating name="satisfaction" max={5} required withClear>
+          Satisfaction
+        </Rating>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear rating" }));
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
+  });
+
+  it("does not block the form when not required", () => {
+    render(
+      <Form initialValues={{ satisfaction: 0 }} onSubmit={() => {}}>
+        <Rating name="satisfaction" max={5}>
+          Satisfaction
+        </Rating>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+    fireEvent.click(screen.getByRole("radio", { name: "1 out of 5" }));
+    expect(screen.getByRole("button", { name: "Save" })).toBeEnabled();
+  });
+
   it("updates as a controlled component when re-rendered with a new value", () => {
     function Wrapper() {
       const [value, setValue] = useState(0);

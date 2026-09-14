@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useContext, useId } from "react";
+import { useCallback, useContext, useEffect, useId } from "react";
 import { cx } from "../../utils/cx.utils";
 import { FormContext } from "../form/form.context";
 import { Icon } from "../icons/icon";
@@ -44,6 +44,8 @@ export interface RatingProps {
   withBorder?: boolean;
   /** Renders a button to clear the rating back to `0`. Hidden by default. */
   withClear?: boolean;
+  /** When true and bound to a `<Form>` via `name`, blocks submission while the value is `0`. */
+  required?: boolean;
 }
 
 /**
@@ -68,6 +70,9 @@ export interface RatingProps {
  * border. Pass `withClear` to also render a "Clear rating" button, sized to
  * match the rating icons, that resets the value to `0`.
  *
+ * Pass `required` to block submission of the enclosing `<Form>` while the
+ * value is `0`. Only takes effect when bound via `name`.
+ *
  * @example
  * ```tsx
  * <Rating name="satisfaction" max={5}>How was your visit?</Rating>
@@ -86,6 +91,7 @@ export function Rating({
   disabled = false,
   withBorder = true,
   withClear = false,
+  required,
 }: RatingProps) {
   const form = useContext(FormContext);
   const legendId = useId();
@@ -93,14 +99,32 @@ export function Rating({
   const currentValue = Math.min(Math.max(rawValue, 0), max);
   const iconName = RATING_ICON_NAMES[icon];
 
+  const validate = useCallback(
+    (next: number) => (required && next === 0 ? "Select a rating" : undefined),
+    [required],
+  );
+
   const commit = (next: number) => {
     if (readOnly || disabled) return;
     if (name && form) {
       form.setValue(name, next);
+      const nextError = validate(next);
+      if (form.getError(name) !== nextError) {
+        form.setError(name, nextError);
+      }
     } else {
       onChange?.(next);
     }
   };
+
+  useEffect(() => {
+    if (name && form) {
+      const nextError = validate(currentValue);
+      if (form.getError(name) !== nextError) {
+        form.setError(name, nextError);
+      }
+    }
+  }, [name, form, currentValue, validate]);
 
   const handleSelect = (step: number) => {
     commit(currentValue === step ? 0 : step);
