@@ -244,6 +244,12 @@ export type {
   SegmentedProps,
 } from "./components/segmented/segmented.component";
 export { Segmented } from "./components/segmented/segmented.component";
+export type {
+  SelectGroupProps,
+  SelectOptionProps,
+  SelectProps,
+} from "./components/select/select.component";
+export { Select } from "./components/select/select.component";
 export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skeleton.component";
 export { Skeleton } from "./components/skeleton/skeleton.component";
 export type {
