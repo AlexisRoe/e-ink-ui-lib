@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { Form } from "../form/form.component";
+import { TextArea } from "../text-area/text-area.component";
 import { FileUpload } from "./file-upload.component";
 
 function makeFile(name: string, type: string) {
@@ -8,10 +9,23 @@ function makeFile(name: string, type: string) {
 }
 
 describe("FileUpload", () => {
-  it("renders a labeled dropzone with an upload prompt", () => {
-    render(<FileUpload onUpload={vi.fn()}>Attachment</FileUpload>);
+  it("renders a labeled dropzone with the configured placeholder text", () => {
+    render(
+      <FileUpload onUpload={vi.fn()} placeholder="Choose a file">
+        Attachment
+      </FileUpload>,
+    );
     expect(screen.getByText("Attachment")).toBeInTheDocument();
-    expect(screen.getByText(/click to choose a file/i)).toBeInTheDocument();
+    expect(screen.getByText("Choose a file")).toBeInTheDocument();
+  });
+
+  it("shows the accept list as a hint below the placeholder", () => {
+    render(
+      <FileUpload onUpload={vi.fn()} placeholder="Choose a file" accept={[".pdf", "image/*"]}>
+        Attachment
+      </FileUpload>,
+    );
+    expect(screen.getByText(".pdf, image/*")).toBeInTheDocument();
   });
 
   it("calls onUpload with the chosen file and shows an uploading state while pending", async () => {
@@ -22,7 +36,11 @@ describe("FileUpload", () => {
           resolveUpload = resolve;
         }),
     );
-    render(<FileUpload onUpload={onUpload}>Attachment</FileUpload>);
+    render(
+      <FileUpload onUpload={onUpload} placeholder="Choose a file">
+        Attachment
+      </FileUpload>,
+    );
 
     const input = document.querySelector('input[type="file"]') as HTMLInputElement;
     const file = makeFile("report.pdf", "application/pdf");
@@ -38,7 +56,11 @@ describe("FileUpload", () => {
 
   it("shows an error state when onUpload rejects", async () => {
     const onUpload = vi.fn(() => Promise.reject(new Error("network error")));
-    render(<FileUpload onUpload={onUpload}>Attachment</FileUpload>);
+    render(
+      <FileUpload onUpload={onUpload} placeholder="Choose a file">
+        Attachment
+      </FileUpload>,
+    );
 
     const input = document.querySelector('input[type="file"]') as HTMLInputElement;
     fireEvent.change(input, { target: { files: [makeFile("report.pdf", "application/pdf")] } });
@@ -49,7 +71,7 @@ describe("FileUpload", () => {
   it("rejects a file that doesn't match accept without calling onUpload", () => {
     const onUpload = vi.fn();
     render(
-      <FileUpload onUpload={onUpload} accept={[".pdf"]}>
+      <FileUpload onUpload={onUpload} placeholder="Choose a file" accept={[".pdf"]}>
         Attachment
       </FileUpload>,
     );
@@ -64,7 +86,7 @@ describe("FileUpload", () => {
   it("accepts a file matching a mime wildcard in accept", async () => {
     const onUpload = vi.fn(() => Promise.resolve());
     render(
-      <FileUpload onUpload={onUpload} accept={["image/*"]}>
+      <FileUpload onUpload={onUpload} placeholder="Choose a file" accept={["image/*"]}>
         Attachment
       </FileUpload>,
     );
@@ -76,12 +98,12 @@ describe("FileUpload", () => {
     await waitFor(() => expect(screen.getByText(/photo\.png uploaded/i)).toBeInTheDocument());
   });
 
-  it("blocks the enclosing Form's submit button until a file is successfully uploaded", async () => {
+  it("keeps the form's submit button disabled until a required upload finishes", async () => {
     const onSubmit = vi.fn();
     const onUpload = vi.fn(() => Promise.resolve());
     render(
       <Form initialValues={{ attachment: "" }} onSubmit={onSubmit}>
-        <FileUpload name="attachment" onUpload={onUpload}>
+        <FileUpload name="attachment" onUpload={onUpload} placeholder="Choose a file" required>
           Attachment
         </FileUpload>
         <Form.SubmitButton>Save</Form.SubmitButton>
@@ -100,11 +122,11 @@ describe("FileUpload", () => {
     expect(onSubmit).toHaveBeenCalledWith({ attachment: "report.pdf" }, expect.anything());
   });
 
-  it("keeps the form blocked when the upload fails", async () => {
+  it("keeps a required field's form blocked when the upload fails", async () => {
     const onUpload = vi.fn(() => Promise.reject(new Error("network error")));
     render(
       <Form initialValues={{ attachment: "" }}>
-        <FileUpload name="attachment" onUpload={onUpload}>
+        <FileUpload name="attachment" onUpload={onUpload} placeholder="Choose a file" required>
           Attachment
         </FileUpload>
         <Form.SubmitButton>Save</Form.SubmitButton>
@@ -118,9 +140,38 @@ describe("FileUpload", () => {
     expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
   });
 
+  it("does not block the form when not required, even before uploading finishes", () => {
+    let resolveUpload: () => void = () => {};
+    const onUpload = vi.fn(
+      () =>
+        new Promise<void>((resolve) => {
+          resolveUpload = resolve;
+        }),
+    );
+    render(
+      <Form initialValues={{ notes: "", attachment: "" }}>
+        <TextArea name="notes">Notes</TextArea>
+        <FileUpload name="attachment" onUpload={onUpload} placeholder="Choose a file">
+          Attachment
+        </FileUpload>
+        <Form.SubmitButton>Save</Form.SubmitButton>
+      </Form>,
+    );
+
+    fireEvent.change(screen.getByRole("textbox", { name: "Notes" }), {
+      target: { value: "hello" },
+    });
+
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [makeFile("report.pdf", "application/pdf")] } });
+
+    expect(screen.getByRole("button", { name: "Save" })).toBeEnabled();
+    resolveUpload();
+  });
+
   it("disables the file input when disabled", () => {
     render(
-      <FileUpload onUpload={vi.fn()} disabled>
+      <FileUpload onUpload={vi.fn()} placeholder="Choose a file" disabled>
         Attachment
       </FileUpload>,
     );

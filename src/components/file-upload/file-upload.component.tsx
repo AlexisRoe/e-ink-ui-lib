@@ -35,6 +35,8 @@ export interface FileUploadProps {
    * (`"image/png"`, `"image/*"`). When omitted, any file type is accepted.
    */
   accept?: string[];
+  /** Instruction text shown inside the dropzone while idle, e.g. `"Click to choose a file"`. */
+  placeholder: string;
   /**
    * Called with the chosen file. Awaited to send/process the file; while it
    * is pending, the control shows an "uploading" state and blocks the
@@ -43,6 +45,8 @@ export interface FileUploadProps {
   onUpload: (file: File) => Promise<void>;
   /** Disables the whole control. Defaults to `false`. */
   disabled?: boolean;
+  /** When true and bound to a `<Form>` via `name`, blocks submission until a file has been successfully uploaded. */
+  required?: boolean;
 }
 
 /**
@@ -56,18 +60,17 @@ export interface FileUploadProps {
  * disabled to prevent picking another file. If `onUpload` rejects, an error
  * state is shown instead.
  *
- * Pass `name` to bind it to the enclosing `<Form>`. Unlike other form
- * components, this binding is not optional: the field blocks
+ * Pass `name` to bind it to the enclosing `<Form>`, and `required` to block
  * `Form.SubmitButton` until a file has been chosen and successfully
- * uploaded (there is no `required` prop, since an unfinished upload can
- * never be a valid submission).
+ * uploaded. Without `required`, the field never blocks submission.
  *
  * Pass `accept` to restrict which files can be chosen; omit it to allow any
- * file type.
+ * file type. When set, the accepted types are also shown as a hint below the
+ * `placeholder` text.
  *
  * @example
  * ```tsx
- * <FileUpload name="attachment" accept={[".pdf", "image/*"]} onUpload={uploadFile}>
+ * <FileUpload name="attachment" accept={[".pdf", "image/*"]} placeholder="Click to choose a file" onUpload={uploadFile}>
  *   Attachment
  * </FileUpload>
  * ```
@@ -77,8 +80,10 @@ export function FileUpload({
   children,
   name,
   accept,
+  placeholder,
   onUpload,
   disabled = false,
+  required = false,
 }: FileUploadProps) {
   const form = useContext(FormContext);
   const inputId = useId();
@@ -87,10 +92,8 @@ export function FileUpload({
   const [message, setMessage] = useState<string>();
   const [fileName, setFileName] = useState<string>();
 
-  const blockingError = status === "success" ? undefined : (message ?? "Upload a file");
+  const blockingError = required && status !== "success" ? (message ?? "Upload a file") : undefined;
 
-  // Block the enclosing Form until a file has been chosen and successfully
-  // uploaded; there is no `required` opt-out, an unfinished upload is never valid.
   useEffect(() => {
     if (name && form) {
       if (form.getError(name) !== blockingError) {
@@ -135,9 +138,7 @@ export function FileUpload({
         ? `${fileName} uploaded`
         : status === "error"
           ? message
-          : accept && accept.length > 0
-            ? `Click to choose a file (${accept.join(", ")})`
-            : "Click to choose a file";
+          : placeholder;
 
   return (
     <div className={cx("eink-file-upload", [className ?? "", !!className])}>
@@ -153,10 +154,13 @@ export function FileUpload({
           ["eink-file-upload__dropzone--disabled", disabled || status === "uploading"],
         )}
       >
-        <Icon name="upload" aria-hidden="true" className="eink-file-upload__icon" />
+        <Icon name="upload" aria-hidden="true" size={40} className="eink-file-upload__icon" />
         <span id={statusId} role="status" aria-live="polite" className="eink-file-upload__text">
           {statusText}
         </span>
+        {status === "idle" && accept && accept.length > 0 ? (
+          <span className="eink-file-upload__hint">{accept.join(", ")}</span>
+        ) : null}
         <input
           id={inputId}
           type="file"
