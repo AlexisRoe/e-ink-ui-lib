@@ -16,6 +16,11 @@ export { BarChart } from "./components/bar-chart/bar-chart.component";
 export type { BarcodeFormat, BarcodeProps } from "./components/barcode/barcode.component";
 export { Barcode } from "./components/barcode/barcode.component";
 export type {
+  BreadCrumbsItemProps,
+  BreadCrumbsProps,
+} from "./components/breadcrumbs/breadcrumbs.component";
+export { BreadCrumbs } from "./components/breadcrumbs/breadcrumbs.component";
+export type {
   ButtonIconSlotProps,
   ButtonProps,
   IconButtonProps,
@@ -47,6 +52,13 @@ export type { DescriptionProps } from "./components/description/description.comp
 export { Description } from "./components/description/description.component";
 export type { DividerProps } from "./components/divider/divider.component";
 export { Divider } from "./components/divider/divider.component";
+export type {
+  DropdownMenuGroupProps,
+  DropdownMenuItemProps,
+  DropdownMenuProps,
+  DropdownMenuSide,
+} from "./components/dropdown-menu/dropdown-menu.component";
+export { DropdownMenu } from "./components/dropdown-menu/dropdown-menu.component";
 export type {
   FlexAlign,
   FlexDirectionProps,
@@ -156,6 +168,12 @@ export type {
 export { Modal } from "./components/modal/modal.component";
 export type { ModalProviderProps } from "./components/modal/modal.provider";
 export { ModalProvider, useModalContainer } from "./components/modal/modal.provider";
+export type {
+  NavigationItemProps,
+  NavigationOrientation,
+  NavigationProps,
+} from "./components/navigation/navigation.component";
+export { Navigation } from "./components/navigation/navigation.component";
 export type { NotificationVariant } from "./components/notification/notification.component";
 export type { NotificationProviderProps } from "./components/notification/notification.provider";
 export {
@@ -168,6 +186,23 @@ export type {
   NumberSeparatorStyle,
 } from "./components/number/number.component";
 export { Number } from "./components/number/number.component";
+export type {
+  PageBodyProps,
+  PageCollapsedMode,
+  PageFooterProps,
+  PageHeaderProps,
+  PageNavCloseButtonProps,
+  PageNavProps,
+  PageNavSide,
+  PageNavToggleProps,
+  PageProps,
+} from "./components/page/page.component";
+export { Page } from "./components/page/page.component";
+export type {
+  PaginationItemProps,
+  PaginationProps,
+} from "./components/pagination/pagination.component";
+export { Pagination } from "./components/pagination/pagination.component";
 export type { PillProps, PillSize } from "./components/pill/pill.component";
 export { Pill } from "./components/pill/pill.component";
 export type {

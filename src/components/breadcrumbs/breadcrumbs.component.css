@@ -1,0 +1,34 @@
+.eink-breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eink-breadcrumbs__item-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.eink-breadcrumbs__separator {
+  color: var(--eink-color-primary);
+  padding: 0 var(--eink-size-8);
+}
+
+.eink-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--eink-size-8);
+  border: none;
+  background: none;
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  padding: 0;
+  cursor: pointer;
+}
+
+.eink-breadcrumbs__icon {
+  flex-shrink: 0;
+}

@@ -1,0 +1,159 @@
+/*
+ * Breakpoints: mobile < 768px, tablet 768px-1023px, desktop >= 1024px.
+ */
+
+.eink-page {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav body"
+    "footer footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr;
+  block-size: 100vh;
+  inline-size: 100%;
+  overflow: auto hidden;
+  font-family: var(--eink-font-family-secondary);
+  color: var(--eink-color-primary);
+  background-color: var(--eink-color-background);
+}
+
+.eink-page--nav-right {
+  grid-template-columns: 1fr auto;
+}
+
+.eink-page--nav-closed {
+  grid-template-columns: 0 1fr;
+}
+
+.eink-page--nav-right.eink-page--nav-closed {
+  grid-template-columns: 1fr 0;
+}
+
+.eink-page--nav-closed.eink-page--nav-rail {
+  grid-template-columns: var(--eink-size-64) 1fr;
+}
+
+.eink-page--nav-right.eink-page--nav-closed.eink-page--nav-rail {
+  grid-template-columns: 1fr var(--eink-size-64);
+}
+
+.eink-page__header,
+.eink-page__footer {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: var(--eink-z-index-modal);
+  display: flex;
+  align-items: center;
+  gap: var(--eink-size-16);
+  padding: var(--eink-size-16) var(--eink-size-24);
+  background-color: var(--eink-color-background);
+}
+
+.eink-page__header--border {
+  border-bottom: var(--eink-border-medium);
+}
+
+.eink-page__footer {
+  grid-area: footer;
+  top: auto;
+  bottom: 0;
+}
+
+.eink-page__footer--border {
+  border-top: var(--eink-border-medium);
+}
+
+.eink-page__body {
+  grid-area: body;
+  overflow-y: auto;
+  padding: var(--eink-size-24);
+  min-inline-size: var(--eink-size-320);
+}
+
+.eink-page__nav {
+  grid-area: nav;
+  overflow: hidden auto;
+  inline-size: var(--eink-size-320);
+  background-color: var(--eink-color-grey-95);
+  border-right: var(--eink-border-medium);
+}
+
+.eink-page__nav--mono {
+  background-color: var(--eink-color-secondary);
+}
+
+.eink-page--nav-closed .eink-page__nav {
+  inline-size: 0;
+  border: none;
+}
+
+.eink-page--nav-closed .eink-page__nav--rail {
+  inline-size: var(--eink-size-64);
+  border-right: var(--eink-border-medium);
+}
+
+.eink-page--nav-right.eink-page--nav-closed .eink-page__nav--rail {
+  border-right: none;
+  border-left: var(--eink-border-medium);
+}
+
+.eink-page__nav--rail .eink-navigation-item__label,
+.eink-page__nav--rail .eink-navigation-item__chevron {
+  display: none;
+}
+
+.eink-page__nav--rail .eink-navigation-item__trigger {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+.eink-page__nav-close {
+  display: none;
+}
+
+/* Mobile: nav is hidden from grid flow by default; when open it becomes a
+   full-screen overlay with its own close button, since there is no room to
+   show it side-by-side with the body. */
+@media (max-width: 767px) {
+  .eink-page {
+    grid-template-areas:
+      "header"
+      "body"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .eink-page--nav-closed,
+  .eink-page--nav-right.eink-page--nav-closed {
+    grid-template-columns: 1fr;
+  }
+
+  .eink-page__header,
+  .eink-page__footer {
+    padding: var(--eink-size-12) var(--eink-size-16);
+  }
+
+  .eink-page__body {
+    padding: var(--eink-size-16);
+  }
+
+  .eink-page__nav {
+    grid-area: unset;
+    position: fixed;
+    inset: 0;
+    z-index: var(--eink-z-index-notification);
+    inline-size: 100%;
+    block-size: 100vh;
+    border: none;
+  }
+
+  .eink-page__nav-close {
+    display: inline-flex;
+    position: sticky;
+    top: var(--eink-size-16);
+    inset-inline-start: var(--eink-size-16);
+    margin: var(--eink-size-16) 0 0 var(--eink-size-16);
+  }
+}
