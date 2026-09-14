@@ -36,6 +36,14 @@ export interface SignatureProps
   disabled?: boolean;
   /** Height of the pad in pixels. Defaults to `128` (`--eink-size-128`, i.e. 8rem). */
   height?: number;
+  /** Hint text rendered above the sign line while the pad is empty. Optional. */
+  placeholder?: string;
+  /**
+   * Pre-renders a previously captured signature (SVG markup, as produced by
+   * `onChange`) onto the pad on mount — e.g. to show a signature captured
+   * earlier in a review screen. The user can still draw over it or clear it.
+   */
+  defaultValue?: string;
 }
 
 function pointFromEvent(
@@ -93,6 +101,8 @@ export function Signature({
   required = false,
   disabled = false,
   height = 128,
+  placeholder,
+  defaultValue,
   id,
   ...rest
 }: SignatureProps) {
@@ -115,6 +125,7 @@ export function Signature({
     }
   }, [name, form, blockingError]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only pre-renders defaultValue once, on mount
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -123,6 +134,15 @@ export function Signature({
     canvas.height = height * dpr;
     const ctx = canvas.getContext("2d");
     ctx?.scale(dpr, dpr);
+
+    if (defaultValue) {
+      const image = new Image();
+      image.onload = () => {
+        ctx?.drawImage(image, 0, 0, canvas.clientWidth, height);
+      };
+      image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(defaultValue)}`;
+      setHasContent(true);
+    }
   }, [height]);
 
   const commit = () => {
@@ -206,23 +226,23 @@ export function Signature({
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
         />
-        {!hasContent ? (
-          <span className="eink-signature__placeholder" aria-hidden="true">
-            Sign here
-          </span>
+        {!hasContent && placeholder ? (
+          <Label className="eink-signature__placeholder" aria-hidden="true">
+            {placeholder}
+          </Label>
         ) : null}
         <span id={hintId} className="eink-signature__sr-hint">
           Draw with a pen, stylus, or your finger to sign.
         </span>
       </div>
-      <Button.Naked
+      <Button.Outlined
         type="button"
         className="eink-signature__clear"
         onClick={handleClear}
-        disabled={disabled || !hasContent}
+        disabled={disabled}
       >
         Clear
-      </Button.Naked>
+      </Button.Outlined>
     </div>
   );
 }

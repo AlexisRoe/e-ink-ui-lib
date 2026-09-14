@@ -46,8 +46,13 @@ describe("Signature", () => {
     expect(screen.getByRole("img", { name: "Signature pad, empty" })).toBeInTheDocument();
   });
 
-  it("disables the clear button while empty", () => {
+  it("keeps the clear button enabled while empty", () => {
     render(<Signature>Signature</Signature>);
+    expect(screen.getByRole("button", { name: "Clear" })).not.toBeDisabled();
+  });
+
+  it("disables the clear button when the whole field is disabled", () => {
+    render(<Signature disabled>Signature</Signature>);
     expect(screen.getByRole("button", { name: "Clear" })).toBeDisabled();
   });
 

@@ -8,6 +8,7 @@ const meta = {
   component: Signature,
   tags: ["autodocs"],
   argTypes: {
+    placeholder: { control: "text" },
     required: { control: "boolean" },
     disabled: { control: "boolean" },
     height: { control: "number" },
@@ -18,7 +19,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { children: "Signature" },
+  args: { children: "Signature", placeholder: "Sign here" },
 };
 
 export const Required: Story = {
@@ -27,6 +28,22 @@ export const Required: Story = {
 
 export const Disabled: Story = {
   args: { children: "Signature", disabled: true },
+};
+
+const SAMPLE_SIGNATURE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 128">
+  <path d="M30,90 C50,40 70,40 85,70 C95,90 100,95 110,70 C120,45 125,40 135,60 C142,74 150,90 160,60 C168,36 175,50 185,80 C192,100 198,95 205,60" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M220,95 L250,35" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M230,55 C250,45 270,45 280,60 C288,72 275,85 260,80 C248,76 250,62 265,58 C280,54 300,60 310,80" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>`;
+
+/**
+ * Passing `defaultValue` pre-renders a previously captured signature (SVG
+ * markup, the same shape `onChange` produces) onto the pad — e.g. to show
+ * what was signed earlier on a review screen. The user can still draw over
+ * it or clear it.
+ */
+export const WithExistingSignature: Story = {
+  args: { children: "Signature", defaultValue: SAMPLE_SIGNATURE_SVG },
 };
 
 /**
