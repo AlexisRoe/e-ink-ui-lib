@@ -1,0 +1,137 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Hooks/Showcase" />
+
+# Hooks
+
+A huge thank-you to the contributors of [uidotdev/usehooks](https://github.com/uidotdev/usehooks)
+(ui.dev). The 26 hooks documented on this page were adapted from that project so this repo didn't have
+to reinvent a set of solid, well-tested React hooks from scratch. The original collection has more hooks
+than are ported here — go have a look, and if you find it useful, give it a star. It's MIT licensed
+(Copyright (c) 2023 ui.dev), which is what makes this port possible.
+
+These are plain React hooks, dependency-free (React + browser APIs only), available directly from the
+package root:
+
+```tsx
+import { useToggle, useLocalStorage, useWindowSize } from "e-ink-ui-lib";
+```
+
+## State
+
+- **`useCounter(startingValue?, options?)`** — bounded numeric counter with increment/decrement/set/reset.
+  ```tsx
+  const [count, { increment, decrement, reset }] = useCounter(0, { min: 0, max: 10 });
+  ```
+- **`useDebounce(value, delay)`** — returns `value`, updated only after `delay` ms of inactivity.
+  ```tsx
+  const debouncedQuery = useDebounce(query, 300);
+  ```
+- **`useThrottle(value, interval?)`** — returns `value`, updated at most once per `interval` ms.
+  ```tsx
+  const throttledScrollY = useThrottle(scrollY, 200);
+  ```
+- **`useToggle(initialValue?)`** — boolean state with a toggle function that also accepts an explicit value.
+  ```tsx
+  const [isOpen, toggleOpen] = useToggle(false);
+  ```
+- **`useHistoryState(initialPresent)`** — undo/redo state container.
+  ```tsx
+  const { state, set, undo, redo, canUndo, canRedo } = useHistoryState("");
+  ```
+- **`usePrevious(value)`** — returns the value from the previous render.
+  ```tsx
+  const previousCount = usePrevious(count);
+  ```
+- **`useIsFirstRender()`** — `true` only on the first render.
+  ```tsx
+  const isFirstRender = useIsFirstRender();
+  ```
+
+## Storage
+
+- **`useLocalStorage(key, initialValue?)`** — `useState`-like API backed by `localStorage`, synced across tabs.
+  ```tsx
+  const [name, setName] = useLocalStorage("name", "Ada");
+  ```
+- **`useSessionStorage(key, initialValue?)`** — same as `useLocalStorage`, backed by `sessionStorage`.
+  ```tsx
+  const [draft, setDraft] = useSessionStorage("draft", "");
+  ```
+
+## Browser APIs
+
+- **`useCopyToClipboard()`** — copies text to the clipboard, with a legacy fallback.
+  ```tsx
+  const [copiedText, copyToClipboard] = useCopyToClipboard();
+  ```
+- **`useGeolocation(options?)`** — tracks the device's geolocation.
+  ```tsx
+  const { latitude, longitude, loading, error } = useGeolocation();
+  ```
+- **`useNetworkState()`** — tracks online/offline status and connection info.
+  ```tsx
+  const { online, effectiveType } = useNetworkState();
+  ```
+- **`useOrientation()`** — tracks screen orientation angle and type.
+  ```tsx
+  const { angle, type } = useOrientation();
+  ```
+- **`usePreferredLanguage()`** — tracks `navigator.language`.
+  ```tsx
+  const language = usePreferredLanguage();
+  ```
+- **`useVisibilityChange()`** — `true` while the document is visible.
+  ```tsx
+  const isVisible = useVisibilityChange();
+  ```
+- **`useFetch<T>(url, options?)`** — fetches JSON, aborting in-flight requests on unmount or `url` change.
+  ```tsx
+  const { data, error, loading } = useFetch<User[]>("/api/users");
+  ```
+
+## DOM / sensors
+
+- **`useIntersectionObserver<T>(options?)`** — ref callback + `IntersectionObserverEntry`.
+  ```tsx
+  const [ref, entry] = useIntersectionObserver<HTMLDivElement>({ threshold: 0.5 });
+  ```
+- **`useMeasure<T>()`** — ref callback + live `{ width, height }` via `ResizeObserver`.
+  ```tsx
+  const [ref, { width, height }] = useMeasure<HTMLDivElement>();
+  ```
+- **`useLockBodyScroll()`** — locks `document.body` scrolling while mounted.
+  ```tsx
+  useLockBodyScroll();
+  ```
+- **`useWindowScroll()`** — tracks window scroll position, exposes a typed `scrollTo`.
+  ```tsx
+  const [{ x, y }, scrollTo] = useWindowScroll();
+  ```
+- **`useWindowSize()`** — tracks `window.innerWidth`/`innerHeight`.
+  ```tsx
+  const { width, height } = useWindowSize();
+  ```
+- **`useEventListener(eventName, handler, element?, options?)`** — attaches an event listener with automatic cleanup.
+  ```tsx
+  useEventListener("keydown", (e) => console.log(e.key));
+  ```
+- **`useKeyPress(targetKey)`** — `true` while `targetKey` is held down.
+  ```tsx
+  const isEscapePressed = useKeyPress("Escape");
+  ```
+- **`usePageLeave(onPageLeave)`** — fires when the mouse leaves the browser viewport.
+  ```tsx
+  usePageLeave(() => console.log("bye!"));
+  ```
+
+## Effects / timing
+
+- **`useInterval(callback, delay)`** — declarative `setInterval`; `delay: null` pauses.
+  ```tsx
+  useInterval(() => setTick((t) => t + 1), 1000);
+  ```
+- **`useTimeout(callback, delay)`** — declarative `setTimeout`; `delay: null` cancels.
+  ```tsx
+  useTimeout(() => setVisible(false), 3000);
+  ```
