@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/e-ink-ui-lib.svg)](https://www.npmjs.com/package/e-ink-ui-lib)
 [![License: MIT](https://img.shields.io/badge/license-MIT-informational.svg)](LICENSE)
 
-My first very own UI library. This one is meant for e-ink screen tablets and devices, built with React. Its intentionally built for e-ink tablet like a Boox Lumi II. If you want to develop for integrated e-ink displays (e.x. ESP32), please have a look into [Marco Mattes cool library](https://epaper-components.dev/) for e-ink ready components.
+My first very own UI library. This one is meant for e-ink screen tablets and devices, built with React. It is intentionally built for e-ink tablet like a Boox Lumi II. If you want to develop for integrated e-ink displays (e.g. ESP32), please have a look into [Marco Mattes cool library](https://epaper-components.dev/) for e-ink ready components.
 
 75+ components across Actions, Data Display, Forms, Layout and Typography — browse them all, plus full
 application examples, in Storybook (`npm run storybook`).
@@ -28,9 +28,9 @@ application examples, in Storybook (`npm run storybook`).
 
 ## Motivation
 
-To be honest, it started when I got my Boox Lumi e-ink tablet. Creating my first application with [e-ink library by Marco Mattes](https://epaper-components.dev/). Than I wanted to use native components in react. The library is heavenly influced by his library of awesome components, honestly have a look. But also working with [Mantine](https://mantine.dev/getting-started/) and [shadcn](https://ui.shadcn.com/) had a big influence how I did things here.
+To be honest, it started when I got my Boox Lumi e-ink tablet. Creating my first application with [e-ink library by Marco Mattes](https://epaper-components.dev/). Then I wanted to use native components in react. The library is heavily influenced by his library of awesome components, honestly have a look. But also working with [Mantine](https://mantine.dev/getting-started/) and [shadcn](https://ui.shadcn.com/) had a big influence how I did things here.
 
-Since Mantine or shadcn, seem to be a bit to heavy for low powered android based e-ink tablets or devices, I developed this lib.
+Since Mantine or shadcn, seem to be a bit too heavy for low powered android based e-ink tablets or devices, I developed this lib.
 
 E-ink displays are not just "low-color screens" — they refresh slowly, render only greys, and have no
 meaningful concept of hover states, transitions, or color-coded UI. Most component libraries assume an
