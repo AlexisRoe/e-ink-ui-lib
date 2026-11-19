@@ -45,7 +45,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
           registry-url: https://registry.npmjs.org
-      # Staged publishing needs npm >= 11.15.0; verify instead of installing blindly.
+      # Staged publishing needs npm >= 11.15.0, but the Node pinned in .nvmrc bundles an
+      # older npm. Install an exact, pinned version, then verify it below.
+      - name: Install pinned npm
+        run: npm install --global npm@11.21.3
       - name: Check npm version
         run: |
           npm --version
