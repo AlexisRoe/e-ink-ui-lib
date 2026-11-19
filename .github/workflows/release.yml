@@ -1,8 +1,9 @@
 name: Release
 
-# Publishes to npm via Trusted Publishing (OIDC). No NPM_TOKEN is stored anywhere.
+# Stages the release on npm via Trusted Publishing (OIDC). No NPM_TOKEN is stored anywhere.
 # Flow: bump version in a PR -> merge -> push tag vX.Y.Z on main -> approve the
-# `npm-publish` environment -> this workflow publishes with provenance.
+# `npm-publish` environment -> this workflow stages the package with provenance ->
+# a maintainer approves the stage with 2FA on npmjs.com (or `npm stage approve <id>`).
 
 on:
   push:
@@ -44,17 +45,19 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
           registry-url: https://registry.npmjs.org
-      # Trusted publishing needs npm >= 11.5.1; verify instead of installing blindly.
+      # Staged publishing needs npm >= 11.15.0; verify instead of installing blindly.
       - name: Check npm version
         run: |
           npm --version
-          node -e "const [a,b,c]=process.argv[1].split('.').map(Number);process.exit(a>11||(a===11&&(b>5||(b===5&&c>=1)))?0:1)" "$(npm --version)"
+          node -e "const [a,b]=process.argv[1].split('.').map(Number);process.exit(a>11||(a===11&&b>=15)?0:1)" "$(npm --version)"
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
       - run: npm run security
-      - run: npm publish --access public --provenance
+      # Uploads the release to npm's staging area only. It goes live after a
+      # maintainer approves it with 2FA (npmjs.com or `npm stage approve <id>`).
+      - run: npm stage publish --provenance
 
   github-release:
     needs: publish
@@ -67,4 +70,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.ref_name }}
           REPO: ${{ github.repository }}
-        run: gh release create "$TAG" --repo "$REPO" --generate-notes --verify-tag
+        # Draft: publish it manually once the npm stage has been approved.
+        run: gh release create "$TAG" --repo "$REPO" --generate-notes --verify-tag --draft
