@@ -1,0 +1,101 @@
+.eink-heatmap {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--eink-size-8);
+  color: var(--eink-color-primary);
+  font-family: var(--eink-font-family-secondary);
+  font-size: var(--eink-font-size-default);
+}
+
+.eink-heatmap__grid {
+  display: flex;
+  gap: var(--eink-size-4);
+}
+
+.eink-heatmap__column,
+.eink-heatmap__row-labels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--eink-size-4);
+}
+
+.eink-heatmap__column {
+  width: var(--eink-size-24);
+}
+
+.eink-heatmap__column-label {
+  display: block;
+  width: var(--eink-size-24);
+  height: var(--eink-size-24);
+  line-height: var(--eink-size-24);
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.eink-heatmap__row-label {
+  display: block;
+  height: var(--eink-size-24);
+  line-height: var(--eink-size-24);
+  white-space: nowrap;
+}
+
+.eink-heatmap__row-labels {
+  width: var(--eink-size-48);
+  margin-right: var(--eink-size-4);
+}
+
+.eink-heatmap__cell {
+  box-sizing: border-box;
+  display: inline-block;
+  width: var(--eink-size-24);
+  height: var(--eink-size-24);
+  padding: 0;
+  border: var(--eink-border-thin);
+  background-color: var(--eink-color-secondary);
+  cursor: pointer;
+}
+
+.eink-heatmap__cell--hidden {
+  border-color: transparent;
+  background-color: transparent;
+  cursor: default;
+}
+
+.eink-heatmap__cell--level-0 {
+  background-color: var(--eink-color-secondary);
+}
+
+.eink-heatmap__cell--level-1 {
+  background-color: var(--eink-color-grey-90);
+}
+
+.eink-heatmap__cell--level-2 {
+  background-color: var(--eink-color-grey-70);
+}
+
+.eink-heatmap__cell--level-3 {
+  background-color: var(--eink-color-grey-50);
+}
+
+.eink-heatmap__cell--level-4 {
+  background-color: var(--eink-color-grey-30);
+}
+
+.eink-heatmap__cell--level-5 {
+  background-color: var(--eink-color-primary);
+}
+
+.eink-heatmap__cell--selected {
+  border: var(--eink-border-thick);
+}
+
+.eink-heatmap__legend {
+  display: flex;
+  align-items: center;
+  gap: var(--eink-size-8);
+}
+
+.eink-heatmap__legend--indented {
+  margin-left: calc(var(--eink-size-48) + var(--eink-size-4));
+}

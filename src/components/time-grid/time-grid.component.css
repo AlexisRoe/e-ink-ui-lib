@@ -1,0 +1,72 @@
+.eink-time-grid {
+  box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+  color: var(--eink-color-primary);
+  background-color: var(--eink-color-background);
+  font-family: var(--eink-font-family-main);
+}
+
+.eink-time-grid__body {
+  position: relative;
+  display: flex;
+}
+
+.eink-time-grid__hour {
+  position: absolute;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  border-top: var(--eink-border-thin);
+}
+
+.eink-time-grid__hour-label {
+  display: inline-block;
+  padding: var(--eink-size-2) var(--eink-size-8);
+  font-family: var(--eink-font-family-secondary);
+  font-size: var(--eink-font-size-default);
+  background-color: var(--eink-color-background);
+}
+
+.eink-time-grid__track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--eink-size-128);
+  right: var(--eink-size-8);
+}
+
+.eink-time-grid__block {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: var(--eink-size-4) var(--eink-size-8);
+  border: var(--eink-border-medium);
+  background-color: var(--eink-color-secondary);
+  color: var(--eink-color-primary);
+  font-family: inherit;
+  font-size: var(--eink-font-size-default);
+  text-align: left;
+  cursor: pointer;
+}
+
+.eink-time-grid__block--done {
+  background-color: var(--eink-color-grey-90);
+  color: var(--eink-color-grey-40);
+  text-decoration: line-through;
+}
+
+.eink-time-grid__block--emphasis {
+  background-color: var(--eink-color-primary);
+  color: var(--eink-color-secondary);
+}
+
+.eink-time-grid__now {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: var(--eink-border-thick);
+  border-color: var(--eink-color-primary);
+  pointer-events: none;
+}
