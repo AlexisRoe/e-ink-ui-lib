@@ -3,6 +3,7 @@
 [![PR Checks](https://github.com/AlexisRoe/e-ink-ui-lib/actions/workflows/pr.yml/badge.svg)](https://github.com/AlexisRoe/e-ink-ui-lib/actions/workflows/pr.yml)
 [![npm version](https://img.shields.io/npm/v/e-ink-ui-lib.svg)](https://www.npmjs.com/package/e-ink-ui-lib)
 [![License: MIT](https://img.shields.io/badge/license-MIT-informational.svg)](LICENSE)
+[![Security by design](https://img.shields.io/badge/security-by%20design-success.svg)](#security-by-design)
 
 My first very own UI library. This one is meant for e-ink screen tablets and devices, built with React. It is intentionally built for e-ink tablet like a Boox Lumi II. If you want to develop for integrated e-ink displays (e.g. ESP32), please have a look into [Marco Mattes cool library](https://epaper-components.dev/) for e-ink ready components.
 
@@ -22,6 +23,7 @@ application examples, in Storybook (`npm run storybook`).
     - [Integrating into your own project](#integrating-into-your-own-project)
   - [Technologies](#technologies)
   - [Architecture](#architecture)
+  - [Security by design](#security-by-design)
   - [Contributing](#contributing)
   - [Releasing](#releasing)
   - [Acknowledgements](#acknowledgements)
@@ -148,6 +150,61 @@ src/
 ├── About.mdx
 └── index.ts              # public API surface
 ```
+
+## Security by design
+
+Security was not bolted on after the first release — this repository was built with security in mind from
+the start. A UI library ends up inside other people's applications, so its supply chain has to be
+trustworthy. Here is what was done to harden the repository, its dependencies and the deployment.
+
+### Repository
+
+- **Private vulnerability reporting** — [`SECURITY.md`](SECURITY.md) defines a disclosure process through
+  GitHub security advisories (no public issues), with response targets and supported versions.
+- **Static analysis** — [CodeQL](.github/workflows/codeql.yml) scans every PR and push to `main`, plus a
+  weekly scheduled scan.
+- **Secret scanning** — [gitleaks](https://github.com/gitleaks/gitleaks) checks the full git history on every PR.
+- **Least-privilege CI** — workflows default to `contents: read` (the release workflow to `permissions: {}`);
+  elevated scopes are granted per job only where needed. Checkouts use `persist-credentials: false`, so no
+  token stays behind in the workspace.
+- **Pinned actions** — every GitHub Action is pinned to a full commit SHA (not a movable tag), so a
+  compromised or re-tagged action cannot change what runs in CI.
+- **Quality gates** — every PR must pass lint, typecheck, tests with coverage and the build.
+
+### Dependencies
+
+- **Minimal footprint** — only three runtime dependencies (`@tabler/icons-react`, `jsbarcode`,
+  `qrcode-generator`); the 26 hooks are adapted in-house instead of pulling in another package.
+- **Exact versions** — `.npmrc` sets `save-exact=true` and `package-lock=true`, and CI installs with
+  `npm ci`, so builds are reproducible and no version drifts silently.
+- **Audit and signature checks** — `npm run security` fails on high-severity advisories in production
+  dependencies and verifies registry signatures and provenance attestations (`npm audit signatures`). It
+  runs on every PR and again before every release.
+- **Dependency review** — pull requests that introduce vulnerable dependencies (high severity or above)
+  are blocked by GitHub's dependency review.
+- **Controlled updates** — [Dependabot](.github/dependabot.yml) updates npm packages and GitHub Actions
+  weekly, grouped into minor/patch PRs. A 7-day cooldown keeps freshly published versions out until the
+  community has had time to spot a compromised release.
+- **Engine enforcement** — `engine-strict=true` and a pinned `.nvmrc` keep local and CI toolchains aligned.
+
+### Deployment
+
+- **No stored npm token** — releases are published with
+  [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC). There is no long-lived
+  secret to leak.
+- **Provenance** — packages are published with `--provenance`, so every version on npm links back to the
+  exact commit and workflow run that built it.
+- **Staged publishing with 2FA** — CI only uploads to npm's staging area; a maintainer must approve each
+  release with 2FA before it goes live.
+- **Human approval gate** — the release job runs in the `npm-publish` GitHub environment and needs manual
+  approval.
+- **Release integrity checks** — the workflow refuses to publish unless the tag matches the
+  `package.json` version and the tagged commit is on `main`, and it re-runs lint, typecheck, tests and the
+  security audit first.
+- **Minimal published artifact** — only `dist/` is published (`files` in `package.json`, plus
+  `.npmignore`); sources, configs, CI files and env files never ship.
+
+See [Releasing](#releasing) for the full release process.
 
 ## Contributing
 
