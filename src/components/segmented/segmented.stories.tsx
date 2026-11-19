@@ -8,6 +8,7 @@ const meta = {
   component: Segmented,
   tags: ["autodocs"],
   argTypes: {
+    value: { control: "text" },
     defaultId: { control: "text" },
     fullWidth: { control: "boolean" },
   },
@@ -96,4 +97,17 @@ function TabsWithCard() {
 
 export const AsTabs: Story = {
   render: () => <TabsWithCard />,
+};
+
+export const Controlled: Story = {
+  render: (args) => {
+    const [view, setView] = useState("day");
+    return (
+      <Segmented {...args} value={view} onChange={setView}>
+        <Segmented.Item id="day">Day</Segmented.Item>
+        <Segmented.Item id="week">Week</Segmented.Item>
+        <Segmented.Item id="month">Month</Segmented.Item>
+      </Segmented>
+    );
+  },
 };

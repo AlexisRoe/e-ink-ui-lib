@@ -13,7 +13,12 @@ const SegmentedContext = createContext<SegmentedContextValue | null>(null);
 
 /** Props accepted by {@link Segmented}. */
 export interface SegmentedProps extends Omit<HTMLAttributes<HTMLElement>, "onChange"> {
-  /** `id` of the {@link Segmented.Item} highlighted when the control first renders. */
+  /**
+   * Controlled selection: `id` of the highlighted {@link Segmented.Item}. When set, clicks only
+   * report through `onChange` and the parent owns the state.
+   */
+  value?: string;
+  /** `id` of the {@link Segmented.Item} highlighted when the control first renders (uncontrolled). */
   defaultId?: string;
   /** Stretches the control to 100% width, with segments evenly distributed. Defaults to `false`. */
   fullWidth?: boolean;
@@ -79,20 +84,23 @@ function SegmentedItem({ className, id, children, ...rest }: SegmentedItemProps)
 export function Segmented({
   className,
   children,
+  value,
   defaultId,
   fullWidth = false,
   onChange,
   ...rest
 }: SegmentedProps) {
-  const [value, setValue] = useState<string | null>(defaultId ?? null);
+  const [internal, setInternal] = useState<string | null>(defaultId ?? null);
+  const controlled = value !== undefined;
+  const current = controlled ? value : internal;
 
   const select = (itemId: string) => {
-    setValue(itemId);
+    if (!controlled) setInternal(itemId);
     onChange?.(itemId);
   };
 
   return (
-    <SegmentedContext.Provider value={{ value, select }}>
+    <SegmentedContext.Provider value={{ value: current, select }}>
       <nav
         className={cx(
           "eink-segmented",

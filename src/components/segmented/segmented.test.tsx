@@ -61,4 +61,20 @@ describe("Segmented", () => {
     renderSegmented();
     expect(document.querySelector(".eink-segmented")).not.toHaveClass("eink-segmented--full-width");
   });
+
+  it("follows the controlled value and only reports clicks", () => {
+    const onChange = vi.fn();
+    const { rerender } = renderSegmented({ value: "day", onChange });
+    fireEvent.click(screen.getByText("Week"));
+    expect(onChange).toHaveBeenCalledWith("week");
+    expect(screen.getByText("Day")).toHaveClass("eink-segmented__item--selected");
+    expect(screen.getByText("Week")).not.toHaveClass("eink-segmented__item--selected");
+    rerender(
+      <Segmented value="week" onChange={onChange}>
+        <Segmented.Item id="day">Day</Segmented.Item>
+        <Segmented.Item id="week">Week</Segmented.Item>
+      </Segmented>,
+    );
+    expect(screen.getByText("Week")).toHaveClass("eink-segmented__item--selected");
+  });
 });

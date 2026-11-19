@@ -98,6 +98,12 @@ export type {
   GridProps,
 } from "./components/grid/grid.component";
 export { Grid } from "./components/grid/grid.component";
+export type {
+  HeatmapCell,
+  HeatmapLevel,
+  HeatmapProps,
+} from "./components/heatmap/heatmap.component";
+export { Heatmap } from "./components/heatmap/heatmap.component";
 export type { HighlightProps } from "./components/highlight/highlight.component";
 export { Highlight } from "./components/highlight/highlight.component";
 export type { IconProps } from "./components/icons/icon";
@@ -169,6 +175,8 @@ export type { ImageFit, ImageProps } from "./components/image/image.component";
 export { Image } from "./components/image/image.component";
 export type { InputProps, InputType } from "./components/input/input.component";
 export { Input } from "./components/input/input.component";
+export type { InvertedProps } from "./components/inverted/inverted.component";
+export { Inverted } from "./components/inverted/inverted.component";
 export type { KeypadProps } from "./components/keypad/keypad.component";
 export { Keypad } from "./components/keypad/keypad.component";
 export type { LabelProps } from "./components/label/label.component";
@@ -309,6 +317,8 @@ export type { TextAreaProps } from "./components/text-area/text-area.component";
 export { TextArea } from "./components/text-area/text-area.component";
 export type { ThemeContextValue, ThemeProviderProps } from "./components/theme/theme.provider";
 export { ThemeProvider, useTheme } from "./components/theme/theme.provider";
+export type { TimeGridItem, TimeGridProps } from "./components/time-grid/time-grid.component";
+export { TimeGrid } from "./components/time-grid/time-grid.component";
 export type { TimeInputProps } from "./components/time-input/time-input.component";
 export { TimeInput } from "./components/time-input/time-input.component";
 export type {

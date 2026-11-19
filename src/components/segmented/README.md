@@ -17,6 +17,7 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 
 ## Key Features
 - `Segmented` renders a `<nav>` containing a `<ul>` of `Segmented.Item` buttons, tracking which one is currently selected via an internal React context (not exported as part of the public API).
+- `value` makes the selection controlled: clicks only report through `onChange` and the parent decides which item is highlighted, so the control can follow navigation triggered elsewhere.
 - `defaultId` sets which item's `id` is highlighted on first render.
 - `fullWidth` stretches the control to 100% width with segments evenly distributed (via CSS grid, `grid-auto-columns: 1fr`).
 - `onChange(id)` is called with the clicked item's `id` whenever a segment is selected.
@@ -41,7 +42,7 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 ## Limits & Restrictions
 - `Segmented.Item` can only be used inside a `Segmented` — it reads its selected/click behavior via context and has no standalone behavior outside that context.
 - `onChange` is the only prop on `SegmentedProps` that is excluded/redefined from the native `HTMLAttributes<HTMLElement>` (`onChange` is otherwise not a native attribute on `<nav>`, but is explicitly typed here).
-- Selection state is uncontrolled internally (`useState`) seeded once from `defaultId`; there is no controlled `value` prop to drive selection from outside after mount.
+- Without `value` the selection is uncontrolled (`useState`) and seeded once from `defaultId`; with `value` set, `defaultId` is ignored.
 
 ---
 
