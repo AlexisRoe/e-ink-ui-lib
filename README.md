@@ -23,6 +23,7 @@ application examples, in Storybook (`npm run storybook`).
   - [Technologies](#technologies)
   - [Architecture](#architecture)
   - [Contributing](#contributing)
+  - [Releasing](#releasing)
   - [Acknowledgements](#acknowledgements)
   - [License](#license)
 
@@ -172,6 +173,45 @@ A few conventions to follow along the way:
   reimplementing it.
 - See [`CLAUDE.md`](CLAUDE.md) for the full set of project conventions — it's the same file Claude Code
   reads before touching this repo, so it's kept up to date.
+
+## Releasing
+
+Releases are published to npm by the [`release.yml`](.github/workflows/release.yml) workflow using
+[npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC, no stored npm token) and
+[staged publishing](https://docs.npmjs.com/staged-publishing): CI uploads the package to npm's staging
+area with provenance, and a maintainer approves it with 2FA before it goes live.
+
+1. **Bump the version** on a branch off `main`: `npm version <patch|minor|major> --no-git-tag-version`.
+   Open a PR and merge it once CI is green.
+2. **Tag `main`** — the tag must be `v` + the `package.json` version, or the workflow fails:
+
+   ```bash
+   git checkout main && git pull
+   git tag vX.Y.Z
+   git push origin vX.Y.Z
+   ```
+
+3. **Approve the GitHub deployment**: in the Actions tab, open the *Release* run and approve the
+   `npm-publish` environment. The workflow then verifies the tag, runs lint, typecheck, tests and the
+   security audit, and runs `npm stage publish --provenance`.
+4. **Approve the stage on npm with 2FA** — on npmjs.com (package page), or via the CLI:
+
+   ```bash
+   npm stage list e-ink-ui-lib
+   npm stage download <stage-id>   # optional: inspect the tarball
+   npm stage approve <stage-id>    # or: npm stage reject <stage-id>
+   ```
+
+5. **Publish the draft GitHub release** (created by the workflow) once the package is live.
+6. **Verify**: the npm page shows the provenance badge, and
+   `npm install e-ink-ui-lib@X.Y.Z && npm audit signatures` succeeds in a scratch project.
+
+Troubleshooting:
+
+- `ENEEDAUTH`: check the trusted-publisher entry on npm (workflow file `release.yml`, environment
+  `npm-publish`, case-sensitive) and that it hasn't expired (it must complete a first run within 2 days).
+- Tag mismatch / "not on main": delete the tag (`git push origin :refs/tags/vX.Y.Z`), fix, and retag.
+- Staging needs npm >= 11.15.0; the workflow fails early if the runner's npm is older.
 
 ## Acknowledgements
 
