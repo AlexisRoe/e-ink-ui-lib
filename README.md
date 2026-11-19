@@ -213,9 +213,6 @@ Troubleshooting:
 - Tag mismatch / "not on main": delete the tag (`git push origin :refs/tags/vX.Y.Z`), fix, and retag.
 - Staging needs npm >= 11.15.0; the workflow fails early if the runner's npm is older.
 
-One-time setup (already done): GitHub environment `npm-publish` with a required reviewer and `v*` tag
-restriction, a `v*` tag ruleset, and the npm trusted publisher with only `npm stage publish` allowed.
-
 ## Acknowledgements
 
 - [Marco Matte's epaper-components](https://epaper-components.dev/) — the library that got me hooked on
