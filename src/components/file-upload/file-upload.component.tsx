@@ -18,6 +18,8 @@ function isFileAccepted(file: File, accept: string[] | undefined): boolean {
   });
 }
 
+const DEFAULT_UPLOAD_ERROR = "Upload failed, try again";
+
 /** Props accepted by {@link FileUpload}. */
 export interface FileUploadProps {
   /** Label rendered above the dropzone. */
@@ -43,6 +45,12 @@ export interface FileUploadProps {
    * enclosing `<Form>`'s submission. Rejecting marks the field as errored.
    */
   onUpload: (file: File) => Promise<void>;
+  /**
+   * Message shown when `onUpload` rejects, or a function mapping the rejection
+   * reason to a message (e.g. to show `error.message`). Defaults to
+   * `"Upload failed, try again"`.
+   */
+  errorMessage?: string | ((error: unknown) => string);
   /** Disables the whole control. Defaults to `false`. */
   disabled?: boolean;
   /** When true and bound to a `<Form>` via `name`, blocks submission until a file has been successfully uploaded. */
@@ -82,6 +90,7 @@ export function FileUpload({
   accept,
   placeholder,
   onUpload,
+  errorMessage = DEFAULT_UPLOAD_ERROR,
   disabled = false,
   required = false,
 }: FileUploadProps) {
@@ -125,9 +134,9 @@ export function FileUpload({
       if (name && form) {
         form.setValue(name, file.name);
       }
-    } catch {
+    } catch (error) {
       setStatus("error");
-      setMessage("Upload failed, try again");
+      setMessage(typeof errorMessage === "function" ? errorMessage(error) : errorMessage);
     }
   };
 

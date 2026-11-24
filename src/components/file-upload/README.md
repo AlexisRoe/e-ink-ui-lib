@@ -44,7 +44,7 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 - Handles a single file per interaction — `event.target.files?.[0]` is read and the input is cleared afterward, so only one file can be "selected" at a time even though the underlying `<input>` doesn't set `multiple`.
 - `required` only blocks form submission when the component is also bound via `name` inside a `<Form>`; without `name`, `required` has no blocking effect.
 - File type restriction (`accept`) is enforced only client-side via `isFileAccepted`; there is no server-side validation built in.
-- `onUpload` must return a `Promise`; rejecting it is the only way to surface an "Upload failed, try again" error state.
+- `onUpload` must return a `Promise`; rejecting it is the only way to surface an error state. The message defaults to "Upload failed, try again"; `errorMessage` (string or `(error) => string`) overrides it, e.g. to show the rejection reason.
 - No component-specific restrictions beyond standard theme token usage.
 
 ---
