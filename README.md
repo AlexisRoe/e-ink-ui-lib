@@ -102,6 +102,26 @@ function App() {
 For more realistic, full-screen compositions like this one, see `Applications/Smart Home Dashboard` and
 the other stories under **Applications** in Storybook.
 
+#### Combined provider and test helpers
+
+`EinkProvider` nests `ThemeProvider`, `NotificationProvider` and `ModalProvider` for you:
+
+```tsx
+<EinkProvider notificationDuration={4000}>
+  <App />
+</EinkProvider>
+```
+
+For Vitest/Jest with jsdom, `e-ink-ui-lib/testing` provides `stubMatchMedia()` (jsdom has no
+`matchMedia`) and `renderWithProviders(ui)`. It needs `@testing-library/react` (optional peer dependency).
+
+```tsx
+import { renderWithProviders, stubMatchMedia } from "e-ink-ui-lib/testing";
+
+stubMatchMedia(); // e.g. in your test setup file
+renderWithProviders(<MyScreen />);
+```
+
 #### Fonts and Content Security Policy
 
 `style.css` references the bundled fonts (Inter, JetBrains Mono) as real files next to it in

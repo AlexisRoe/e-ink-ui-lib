@@ -259,6 +259,11 @@ export type {
   ProgressBarStepperProps,
 } from "./components/progress-bar/progress-bar.component";
 export { ProgressBar } from "./components/progress-bar/progress-bar.component";
+export type { EinkProviderProps } from "./components/provider/provider.component";
+export {
+  DEFAULT_NOTIFICATION_DURATION_MS,
+  EinkProvider,
+} from "./components/provider/provider.component";
 export type { QRCodeErrorCorrectionLevel, QRCodeProps } from "./components/qrcode/qrcode.component";
 export { QRCode } from "./components/qrcode/qrcode.component";
 export type { QuoteProps } from "./components/quote/quote.component";
