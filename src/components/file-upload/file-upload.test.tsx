@@ -68,6 +68,36 @@ describe("FileUpload", () => {
     await waitFor(() => expect(screen.getByText(/upload failed/i)).toBeInTheDocument());
   });
 
+  it("shows a custom errorMessage string when onUpload rejects", async () => {
+    render(
+      <FileUpload
+        onUpload={() => Promise.reject(new Error("network error"))}
+        errorMessage="Server unreachable"
+        placeholder="Choose a file"
+      >
+        Attachment
+      </FileUpload>,
+    );
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [makeFile("report.pdf", "application/pdf")] } });
+    await waitFor(() => expect(screen.getByText("Server unreachable")).toBeInTheDocument());
+  });
+
+  it("derives the error message from the rejection reason when errorMessage is a function", async () => {
+    render(
+      <FileUpload
+        onUpload={() => Promise.reject(new Error("invalid export"))}
+        errorMessage={(error) => (error instanceof Error ? error.message : "Failed")}
+        placeholder="Choose a file"
+      >
+        Attachment
+      </FileUpload>,
+    );
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [makeFile("report.pdf", "application/pdf")] } });
+    await waitFor(() => expect(screen.getByText("invalid export")).toBeInTheDocument());
+  });
+
   it("rejects a file that doesn't match accept without calling onUpload", () => {
     const onUpload = vi.fn();
     render(

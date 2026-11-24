@@ -67,3 +67,7 @@ export const AvatarWithBlock: Story = {
     </div>
   ),
 };
+
+export const Group: Story = {
+  render: () => <Skeleton.Group count={3} aria-label="Loading content" />,
+};

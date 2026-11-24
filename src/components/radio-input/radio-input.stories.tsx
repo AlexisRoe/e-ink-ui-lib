@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Flex } from "../flex/flex.component";
 import { Form } from "../form/form.component";
+import { Pill } from "../pill/pill.component";
 import { RadioInput } from "./radio-input.component";
 
 const meta = {
@@ -75,5 +76,18 @@ export const InAForm: Story = {
       </RadioInput.Group>
       <Form.SubmitButton>Save</Form.SubmitButton>
     </Form>
+  ),
+};
+
+export const WithSuffix: Story = {
+  name: "With suffix",
+  args: { value: "a", children: "" },
+  render: () => (
+    <RadioInput.Group label="Answer" defaultValue="a">
+      <RadioInput value="a" suffix={<Pill>Correct</Pill>}>
+        Option A
+      </RadioInput>
+      <RadioInput value="b">Option B</RadioInput>
+    </RadioInput.Group>
   ),
 };

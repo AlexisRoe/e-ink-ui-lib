@@ -8,6 +8,16 @@
   cursor: pointer;
 }
 
+.eink-checkbox--with-suffix {
+  display: flex;
+  width: 100%;
+}
+
+.eink-checkbox__suffix {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .eink-checkbox:has(.eink-checkbox__input:disabled) {
   cursor: not-allowed;
   color: var(--eink-color-disabled);

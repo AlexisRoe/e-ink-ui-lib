@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { Flex } from "../flex/flex.component";
 import { Form } from "../form/form.component";
+import { Pill } from "../pill/pill.component";
 import { Checkbox } from "./checkbox.component";
 
 const meta = {
@@ -89,4 +90,9 @@ export const InAForm: Story = {
       <Form.SubmitButton>Save</Form.SubmitButton>
     </Form>
   ),
+};
+
+export const WithSuffix: Story = {
+  name: "With suffix",
+  args: { children: "Use a strong password", suffix: <Pill>Correct</Pill>, defaultChecked: true },
 };

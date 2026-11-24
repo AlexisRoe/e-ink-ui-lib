@@ -44,3 +44,15 @@ export const Detailed: Story = {
     </List>
   ),
 };
+
+export const WrappedItems: Story = {
+  render: (args) => (
+    <List {...args} style={{ maxWidth: "20rem" }}>
+      <List.Item>
+        A long item that wraps onto several lines keeps its marker aligned with the first line of
+        text instead of floating in the middle.
+      </List.Item>
+      <List.Item>Short item</List.Item>
+    </List>
+  ),
+};

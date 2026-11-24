@@ -156,3 +156,13 @@ export const Sizes: Story = {
     </div>
   ),
 };
+
+export const AlignStart: Story = {
+  name: "Align start",
+  args: {
+    children: "Left-aligned label",
+    align: "start",
+    fullWidth: true,
+    iconRight: "arrow-right",
+  },
+};

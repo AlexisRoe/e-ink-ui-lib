@@ -1,7 +1,7 @@
 ---
 type: hooks
 title: "Hooks"
-description: "26 dependency-free React hooks (state, storage, browser/device APIs, DOM sensors, effects/timing), ported from uidotdev/usehooks for use across this library's components and consuming apps."
+description: "26 dependency-free React hooks (state, storage, browser/device APIs, DOM sensors, effects/timing) ported from uidotdev/usehooks, plus 3 library-specific hooks (useNow, useHashRoute, useDownload)."
 tags: [react, e-ink, hooks, okf-v0.2]
 resource: "src/hooks/"
 version: "1.0.0"
@@ -272,6 +272,36 @@ Declarative `setTimeout`; pass `delay: null` to cancel.
 
 ```tsx
 useTimeout(() => setVisible(false), 3000);
+```
+
+### Library-specific hooks
+
+These three are not part of uidotdev/usehooks; they were extracted from a consuming app.
+
+#### `useNow(intervalMs)`
+
+Current time in epoch ms, refreshed every `intervalMs` (`null` pauses). Built on `useInterval`.
+
+```tsx
+const now = useNow(60_000);
+```
+
+#### `useHashRoute(parse?)` and `navigate(route, options?)`
+
+Minimal hash router on `useSyncExternalStore`. `useHashRoute` returns the hash without `#` (or your `parse` result); `navigate("/path")` sets the hash and scrolls the page body to the top (`{ scrollToTop: false }` to skip).
+
+```tsx
+const route = useHashRoute(); // "/lessons/3"
+navigate("/exam");
+```
+
+#### `useDownload()`
+
+Returns `downloadFile(content, fileName, type?)`, which saves text, bytes or a `Blob` through a temporary `<a download>`.
+
+```tsx
+const download = useDownload();
+download(JSON.stringify(data), "export.json", "application/json");
 ```
 
 ---

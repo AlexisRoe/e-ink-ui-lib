@@ -5,6 +5,10 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
+  experimental: {
+    // Fonts are emitted as files next to dist/index.css instead of base64 data URIs.
+    renderBuiltUrl: (filename, { type }) => (type === "asset" ? `./${filename}` : undefined),
+  },
   plugins: [
     react(),
     dts({
@@ -15,12 +19,16 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(import.meta.dirname, "src/index.ts"),
+      entry: {
+        index: resolve(import.meta.dirname, "src/index.ts"),
+        testing: resolve(import.meta.dirname, "src/testing/index.ts"),
+      },
       formats: ["es", "cjs"],
-      fileName: "index",
+      fileName: (format, entryName) => `${entryName}.${format === "es" ? "js" : "cjs"}`,
+      cssFileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: ["react", "react-dom", "react/jsx-runtime", "@testing-library/react"],
     },
     sourcemap: true,
   },

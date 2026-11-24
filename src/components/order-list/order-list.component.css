@@ -1,0 +1,19 @@
+.eink-order-list > .eink-list__item {
+  align-items: center;
+}
+
+.eink-order-list > .eink-list__item::before {
+  margin-top: 0;
+}
+
+.eink-order-list__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.eink-order-list__controls {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--eink-size-8);
+}

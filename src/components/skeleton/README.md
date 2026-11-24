@@ -16,6 +16,7 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 ---
 
 ## Key Features
+- `Skeleton.Group` renders a stack of skeletons (`count` or custom `children`) as one `role="status"`, `aria-busy` region with a single `aria-label`; skeletons inside it are `aria-hidden`
 - Renders a 2px solid bordered box filled with diagonal strokes (via the shared `PatternOverlay` component) as a placeholder for content that hasn't loaded yet.
 - Three variants: `"rectangle"` (default, fixed height, full width), `"round"` (circular, fixed height with `aspect-ratio: 1/1` and `border-radius: 50%`), and `"square"` (fixed height with `aspect-ratio: 1/1`).
 - Always renders at 100% of its parent's width (for `rectangle`) or a fixed height with an auto/aspect-ratio-derived width (for `round`/`square`); consumers size it further via `style` or `className`.

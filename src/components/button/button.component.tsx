@@ -25,6 +25,19 @@ type ButtonSizeProps = {
   size?: ButtonSize;
 };
 
+/** Content alignment accepted by the text button variants. */
+export type ButtonAlign = "center" | "start";
+
+/** Props shared by every text button variant, for content alignment. */
+type ButtonAlignProps = {
+  /**
+   * Horizontal alignment of icon and label inside the button: `"center"`
+   * (default) or `"start"` (aligned to the start edge).
+   * Most useful together with `fullWidth`, e.g. for link-like list buttons.
+   */
+  align?: ButtonAlign;
+};
+
 /** Props shared by every button variant, for the optional disabled `mono` rendering. */
 type ButtonMonoProps = {
   /**
@@ -39,6 +52,7 @@ type ButtonMonoProps = {
 type ButtonVariantProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> &
   ButtonIconSlotProps &
   ButtonSizeProps &
+  ButtonAlignProps &
   ButtonMonoProps & {
     children: ReactNode;
   };
@@ -175,6 +189,7 @@ export function Button({
   iconLeft,
   iconRight,
   size = "md",
+  align = "center",
   fullWidth,
   loading = false,
   flipIntervalMs = DEFAULT_LOADING_FLIP_INTERVAL_MS,
@@ -189,6 +204,7 @@ export function Button({
       type="button"
       className={cx(
         `eink-button eink-button--filled eink-button--${size}`,
+        ["eink-button--align-start", align === "start"],
         ["eink-button--full-width", !!fullWidth],
         ["eink-button--loading", loading],
         ["eink-button--mono", !!mono],
@@ -221,6 +237,7 @@ function Outlined({
   iconLeft,
   iconRight,
   size = "md",
+  align = "center",
   fullWidth,
   loading = false,
   flipIntervalMs = DEFAULT_LOADING_FLIP_INTERVAL_MS,
@@ -235,6 +252,7 @@ function Outlined({
       type="button"
       className={cx(
         `eink-button eink-button--outlined eink-button--${size}`,
+        ["eink-button--align-start", align === "start"],
         ["eink-button--full-width", !!fullWidth],
         ["eink-button--loading", loading],
         ["eink-button--mono", !!mono],
@@ -266,6 +284,7 @@ function Naked({
   iconLeft,
   iconRight,
   size = "md",
+  align = "center",
   mono,
   ...rest
 }: ButtonVariantProps) {
@@ -274,6 +293,7 @@ function Naked({
       type="button"
       className={cx(
         `eink-button eink-button--naked eink-button--${size}`,
+        ["eink-button--align-start", align === "start"],
         ["eink-button--mono", !!mono],
         [className ?? "", !!className],
       )}

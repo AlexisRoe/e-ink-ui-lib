@@ -102,6 +102,55 @@ function App() {
 For more realistic, full-screen compositions like this one, see `Applications/Smart Home Dashboard` and
 the other stories under **Applications** in Storybook.
 
+#### Combined provider and test helpers
+
+`EinkProvider` nests `ThemeProvider`, `NotificationProvider` and `ModalProvider` for you:
+
+```tsx
+<EinkProvider notificationDuration={4000}>
+  <App />
+</EinkProvider>
+```
+
+For Vitest/Jest with jsdom, `e-ink-ui-lib/testing` provides `stubMatchMedia()` (jsdom has no
+`matchMedia`) and `renderWithProviders(ui)`. It needs `@testing-library/react` (optional peer dependency).
+
+```tsx
+import { renderWithProviders, stubMatchMedia } from "e-ink-ui-lib/testing";
+
+stubMatchMedia(); // e.g. in your test setup file
+renderWithProviders(<MyScreen />);
+```
+
+#### Fonts and Content Security Policy
+
+`style.css` references the bundled fonts (Inter, JetBrains Mono) as real files next to it in
+`dist/` (`url(./Inter-….ttf)`) instead of inlining them as base64 `data:` URIs. Bundlers such as
+Vite or webpack resolve and emit them automatically. If you copy `style.css` manually, copy the
+`.ttf` files with it. A strict CSP only needs `font-src 'self'`; `data:` is not required.
+
+#### Strict CSP and Trusted Types
+
+The library itself uses no `eval`, `new Function`, `innerHTML` or `dangerouslySetInnerHTML`, so it works
+under a strict Content Security Policy (with `font-src 'self'`, see above) and under
+`require-trusted-types-for 'script'` without any Trusted Types policy of its own.
+
+Trusted Types only becomes relevant for code your app adds. A typical case is registering a service
+worker (PWA): with `require-trusted-types-for 'script'` the browser rejects
+`navigator.serviceWorker.register("/sw.js")` unless a `default` policy approves the script URL. Keep that
+policy in the app and as narrow as possible, for example:
+
+```ts
+trustedTypes?.createPolicy("default", {
+  createScriptURL: (input) => {
+    if (input === "/sw.js") return input;
+    throw new TypeError(`Script URL not allowed: ${input}`);
+  },
+});
+```
+
+The library does not ship this policy because the allowed URLs are specific to each app.
+
 ## Technologies
 
 - [React](https://react.dev/) 19 + TypeScript

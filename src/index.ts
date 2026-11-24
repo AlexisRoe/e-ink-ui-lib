@@ -21,6 +21,7 @@ export type {
 } from "./components/breadcrumbs/breadcrumbs.component";
 export { BreadCrumbs } from "./components/breadcrumbs/breadcrumbs.component";
 export type {
+  ButtonAlign,
   ButtonIconSlotProps,
   ButtonProps,
   IconButtonProps,
@@ -226,6 +227,11 @@ export { Number } from "./components/number/number.component";
 export type { NumberInputProps } from "./components/number-input/number-input.component";
 export { NumberInput } from "./components/number-input/number-input.component";
 export type {
+  OrderListLabels,
+  OrderListProps,
+} from "./components/order-list/order-list.component";
+export { OrderList } from "./components/order-list/order-list.component";
+export type {
   PageBodyProps,
   PageCollapsedMode,
   PageFooterProps,
@@ -259,6 +265,11 @@ export type {
   ProgressBarStepperProps,
 } from "./components/progress-bar/progress-bar.component";
 export { ProgressBar } from "./components/progress-bar/progress-bar.component";
+export type { EinkProviderProps } from "./components/provider/provider.component";
+export {
+  DEFAULT_NOTIFICATION_DURATION_MS,
+  EinkProvider,
+} from "./components/provider/provider.component";
 export type { QRCodeErrorCorrectionLevel, QRCodeProps } from "./components/qrcode/qrcode.component";
 export { QRCode } from "./components/qrcode/qrcode.component";
 export type { QuoteProps } from "./components/quote/quote.component";
@@ -270,6 +281,8 @@ export type {
 export { RadioInput } from "./components/radio-input/radio-input.component";
 export type { RatingIcon, RatingProps } from "./components/rating/rating.component";
 export { Rating } from "./components/rating/rating.component";
+export type { RichTextProps, RichTextSegment } from "./components/rich-text/rich-text.component";
+export { parseRichText, RichText } from "./components/rich-text/rich-text.component";
 export type { ScheduleProps } from "./components/schedule/schedule.component";
 export { Schedule } from "./components/schedule/schedule.component";
 export type {
@@ -285,7 +298,11 @@ export type {
 export { Select } from "./components/select/select.component";
 export type { SignatureProps } from "./components/signature/signature.component";
 export { Signature } from "./components/signature/signature.component";
-export type { SkeletonProps, SkeletonVariant } from "./components/skeleton/skeleton.component";
+export type {
+  SkeletonGroupProps,
+  SkeletonProps,
+  SkeletonVariant,
+} from "./components/skeleton/skeleton.component";
 export { Skeleton } from "./components/skeleton/skeleton.component";
 export type {
   SliderOrientation,
@@ -352,11 +369,14 @@ export { useCopyToClipboard } from "./hooks/use-copy-to-clipboard/use-copy-to-cl
 export type { CustomCounterActions, UseCounterOptions } from "./hooks/use-counter/use-counter.hook";
 export { useCounter } from "./hooks/use-counter/use-counter.hook";
 export { useDebounce } from "./hooks/use-debounce/use-debounce.hook";
+export { useDownload } from "./hooks/use-download/use-download.hook";
 export { useEventListener } from "./hooks/use-event-listener/use-event-listener.hook";
 export type { FetchState } from "./hooks/use-fetch/use-fetch.hook";
 export { useFetch } from "./hooks/use-fetch/use-fetch.hook";
 export type { GeolocationState } from "./hooks/use-geolocation/use-geolocation.hook";
 export { useGeolocation } from "./hooks/use-geolocation/use-geolocation.hook";
+export type { NavigateOptions } from "./hooks/use-hash-route/use-hash-route.hook";
+export { navigate, useHashRoute } from "./hooks/use-hash-route/use-hash-route.hook";
 export type { HistoryState } from "./hooks/use-history-state/use-history-state.hook";
 export { useHistoryState } from "./hooks/use-history-state/use-history-state.hook";
 export { useIntersectionObserver } from "./hooks/use-intersection-observer/use-intersection-observer.hook";
@@ -369,6 +389,7 @@ export type { Measurement } from "./hooks/use-measure/use-measure.hook";
 export { useMeasure } from "./hooks/use-measure/use-measure.hook";
 export type { NetworkState } from "./hooks/use-network-state/use-network-state.hook";
 export { useNetworkState } from "./hooks/use-network-state/use-network-state.hook";
+export { useNow } from "./hooks/use-now/use-now.hook";
 export type { OrientationState } from "./hooks/use-orientation/use-orientation.hook";
 export { useOrientation } from "./hooks/use-orientation/use-orientation.hook";
 export { usePageLeave } from "./hooks/use-page-leave/use-page-leave.hook";
@@ -386,8 +407,11 @@ export type {
 export { useWindowScroll } from "./hooks/use-window-scroll/use-window-scroll.hook";
 export type { WindowSize } from "./hooks/use-window-size/use-window-size.hook";
 export { useWindowSize } from "./hooks/use-window-size/use-window-size.hook";
+export type { Rng } from "./utils/array.utils";
+export { move, scramble, shuffle } from "./utils/array.utils";
 export type { CalendarAppointment } from "./utils/calendar.utils";
 export type { ChartDataset, ChartReferenceLine } from "./utils/chart.utils";
+export { downloadFile } from "./utils/download.utils";
 export type {
   QRCodeContactValue,
   QRCodeEmailValue,

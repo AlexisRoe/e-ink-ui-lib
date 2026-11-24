@@ -1,7 +1,7 @@
 /* ---------------- Font faces ---------------- */
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("../../assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf")
+  src: url("../../assets/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf?no-inline")
     format("truetype-variations");
   font-weight: 100 800;
   font-style: normal;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("../../assets/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf")
+  src: url("../../assets/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf?no-inline")
     format("truetype-variations");
   font-weight: 100 800;
   font-style: italic;
@@ -19,7 +19,8 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../../assets/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype-variations");
+  src: url("../../assets/Inter/Inter-VariableFont_opsz,wght.ttf?no-inline")
+    format("truetype-variations");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -27,7 +28,7 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../../assets/Inter/Inter-Italic-VariableFont_opsz,wght.ttf")
+  src: url("../../assets/Inter/Inter-Italic-VariableFont_opsz,wght.ttf?no-inline")
     format("truetype-variations");
   font-weight: 100 900;
   font-style: italic;

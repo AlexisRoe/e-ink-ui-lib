@@ -53,4 +53,14 @@ describe("Alert", () => {
     render(<Alert title="Heads up" />);
     expect(screen.getByRole("status")).toBeInTheDocument();
   });
+
+  it("renders markup in the description", () => {
+    render(<Alert title="Heads up" description={<strong>Bold text</strong>} />);
+    expect(screen.getByText("Bold text").tagName).toBe("STRONG");
+  });
+
+  it("renders an action slot", () => {
+    render(<Alert title="Update" action={<button type="button">Reload</button>} />);
+    expect(screen.getByRole("button", { name: "Reload" })).toBeInTheDocument();
+  });
 });

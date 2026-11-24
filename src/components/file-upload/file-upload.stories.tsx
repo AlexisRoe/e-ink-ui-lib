@@ -77,3 +77,13 @@ export const InAForm: Story = {
     </Form>
   ),
 };
+
+export const CustomErrorMessage: Story = {
+  name: "Custom error message",
+  args: {
+    onUpload: simulateUpload,
+    placeholder: "Choose an empty file to see the error",
+    errorMessage: (error) => (error instanceof Error ? error.message : "Upload failed"),
+    children: "Attachment",
+  },
+};

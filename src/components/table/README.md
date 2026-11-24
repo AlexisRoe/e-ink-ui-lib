@@ -22,6 +22,7 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 - Rows are individually `selectable` (defaults to `true`) and/or `disabled` (defaults to `false`); disabled rows are dimmed with a grey background, or — when the table has `mono` enabled — show a diagonal black-stripe pattern (via `PatternOverlay`) instead
 - `Table.Body` renders a configurable `emptyLabel` (defaults to a `list` icon) in a single full-width cell spanning every declared column when it has no rows; `Table` itself gets an `eink-table--empty` modifier (dashed bottom border) when no rows exist anywhere
 - `stickyHeader` pins the header row to the top of the nearest scroll container
+- `wrap` lets cells wrap (word breaking, hyphenation) instead of truncating; `scrollable` wraps the table in a horizontal scroll container at natural width; `Table.HeaderCell` takes a `width` for column sizing
 - Table-wide sequential row indexing is computed automatically across multiple `Table.Body` sections, so each `Table.Row` gets a unique index even when split across bodies
 
 ---
