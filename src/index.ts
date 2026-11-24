@@ -396,6 +396,8 @@ export type {
 export { useWindowScroll } from "./hooks/use-window-scroll/use-window-scroll.hook";
 export type { WindowSize } from "./hooks/use-window-size/use-window-size.hook";
 export { useWindowSize } from "./hooks/use-window-size/use-window-size.hook";
+export type { Rng } from "./utils/array.utils";
+export { move, scramble, shuffle } from "./utils/array.utils";
 export type { CalendarAppointment } from "./utils/calendar.utils";
 export type { ChartDataset, ChartReferenceLine } from "./utils/chart.utils";
 export type {
