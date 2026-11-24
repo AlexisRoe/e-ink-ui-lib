@@ -102,6 +102,13 @@ function App() {
 For more realistic, full-screen compositions like this one, see `Applications/Smart Home Dashboard` and
 the other stories under **Applications** in Storybook.
 
+#### Fonts and Content Security Policy
+
+`style.css` references the bundled fonts (Inter, JetBrains Mono) as real files next to it in
+`dist/` (`url(./Inter-….ttf)`) instead of inlining them as base64 `data:` URIs. Bundlers such as
+Vite or webpack resolve and emit them automatically. If you copy `style.css` manually, copy the
+`.ttf` files with it. A strict CSP only needs `font-src 'self'`; `data:` is not required.
+
 ## Technologies
 
 - [React](https://react.dev/) 19 + TypeScript
