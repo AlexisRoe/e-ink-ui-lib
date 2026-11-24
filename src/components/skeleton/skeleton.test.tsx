@@ -24,4 +24,34 @@ describe("Skeleton", () => {
     expect(skeleton).toHaveClass("custom");
     expect(skeleton).toHaveStyle({ height: "120px" });
   });
+
+  describe("Skeleton.Group", () => {
+    it("announces one status region with the default of three skeletons", () => {
+      const { container } = render(<Skeleton.Group aria-label="Loading lessons" />);
+      expect(screen.getAllByRole("status")).toHaveLength(1);
+      expect(screen.getByRole("status", { name: "Loading lessons" })).toHaveAttribute(
+        "aria-busy",
+        "true",
+      );
+      expect(container.querySelectorAll(".eink-skeleton")).toHaveLength(3);
+    });
+
+    it("renders `count` skeletons", () => {
+      const { container } = render(<Skeleton.Group count={5} />);
+      expect(container.querySelectorAll(".eink-skeleton")).toHaveLength(5);
+    });
+
+    it("renders custom children instead of the default skeletons", () => {
+      const { container } = render(
+        <Skeleton.Group>
+          <Skeleton variant="round" />
+        </Skeleton.Group>,
+      );
+      expect(container.querySelectorAll(".eink-skeleton")).toHaveLength(1);
+      expect(container.querySelector(".eink-skeleton--round")).toHaveAttribute(
+        "aria-hidden",
+        "true",
+      );
+    });
+  });
 });
