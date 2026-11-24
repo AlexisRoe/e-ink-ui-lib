@@ -135,3 +135,22 @@ import { useToggle, useLocalStorage, useWindowSize } from "e-ink-ui-lib";
   ```tsx
   useTimeout(() => setVisible(false), 3000);
   ```
+
+## Library-specific
+
+Not part of uidotdev/usehooks; extracted from a consuming app.
+
+- **`useNow(intervalMs)`** — current time in epoch ms, refreshed every `intervalMs`; `null` pauses.
+  ```tsx
+  const now = useNow(60_000);
+  ```
+- **`useHashRoute(parse?)` / `navigate(route, options?)`** — minimal hash router; `navigate` scrolls to the top unless `{ scrollToTop: false }`.
+  ```tsx
+  const route = useHashRoute(); // "/lessons/3"
+  navigate("/exam");
+  ```
+- **`useDownload()`** — returns `downloadFile(content, fileName, type?)` to save text or a `Blob` as a file.
+  ```tsx
+  const download = useDownload();
+  download(JSON.stringify(data), "export.json", "application/json");
+  ```

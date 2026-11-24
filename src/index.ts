@@ -369,11 +369,14 @@ export { useCopyToClipboard } from "./hooks/use-copy-to-clipboard/use-copy-to-cl
 export type { CustomCounterActions, UseCounterOptions } from "./hooks/use-counter/use-counter.hook";
 export { useCounter } from "./hooks/use-counter/use-counter.hook";
 export { useDebounce } from "./hooks/use-debounce/use-debounce.hook";
+export { useDownload } from "./hooks/use-download/use-download.hook";
 export { useEventListener } from "./hooks/use-event-listener/use-event-listener.hook";
 export type { FetchState } from "./hooks/use-fetch/use-fetch.hook";
 export { useFetch } from "./hooks/use-fetch/use-fetch.hook";
 export type { GeolocationState } from "./hooks/use-geolocation/use-geolocation.hook";
 export { useGeolocation } from "./hooks/use-geolocation/use-geolocation.hook";
+export type { NavigateOptions } from "./hooks/use-hash-route/use-hash-route.hook";
+export { navigate, useHashRoute } from "./hooks/use-hash-route/use-hash-route.hook";
 export type { HistoryState } from "./hooks/use-history-state/use-history-state.hook";
 export { useHistoryState } from "./hooks/use-history-state/use-history-state.hook";
 export { useIntersectionObserver } from "./hooks/use-intersection-observer/use-intersection-observer.hook";
@@ -386,6 +389,7 @@ export type { Measurement } from "./hooks/use-measure/use-measure.hook";
 export { useMeasure } from "./hooks/use-measure/use-measure.hook";
 export type { NetworkState } from "./hooks/use-network-state/use-network-state.hook";
 export { useNetworkState } from "./hooks/use-network-state/use-network-state.hook";
+export { useNow } from "./hooks/use-now/use-now.hook";
 export type { OrientationState } from "./hooks/use-orientation/use-orientation.hook";
 export { useOrientation } from "./hooks/use-orientation/use-orientation.hook";
 export { usePageLeave } from "./hooks/use-page-leave/use-page-leave.hook";
@@ -407,6 +411,7 @@ export type { Rng } from "./utils/array.utils";
 export { move, scramble, shuffle } from "./utils/array.utils";
 export type { CalendarAppointment } from "./utils/calendar.utils";
 export type { ChartDataset, ChartReferenceLine } from "./utils/chart.utils";
+export { downloadFile } from "./utils/download.utils";
 export type {
   QRCodeContactValue,
   QRCodeEmailValue,
