@@ -206,4 +206,42 @@ describe("Table", () => {
     );
     expect(getByText("Nothing here")).toBeInTheDocument();
   });
+
+  it("applies the wrap modifier", () => {
+    const { container } = render(
+      <Table wrap>
+        <Table.Head>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+        </Table.Head>
+        <Table.Body />
+      </Table>,
+    );
+    expect(container.querySelector("table")).toHaveClass("eink-table--wrap");
+  });
+
+  it("wraps the table in a scroll container when scrollable", () => {
+    const { container } = render(
+      <Table scrollable>
+        <Table.Head>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+        </Table.Head>
+        <Table.Body />
+      </Table>,
+    );
+    expect(container.querySelector(".eink-table-scroll > table")).toHaveClass(
+      "eink-table--scrollable",
+    );
+  });
+
+  it("sets the column width on a header cell", () => {
+    const { container } = render(
+      <Table>
+        <Table.Head>
+          <Table.HeaderCell width="40%">Name</Table.HeaderCell>
+        </Table.Head>
+        <Table.Body />
+      </Table>,
+    );
+    expect(container.querySelector("th")).toHaveStyle({ width: "40%" });
+  });
 });

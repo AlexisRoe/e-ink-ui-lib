@@ -37,7 +37,13 @@ function DiagonalStripes({ columnCount }: { columnCount: number }) {
 }
 
 /** Props accepted by {@link Table.HeaderCell}. */
-export type TableHeaderCellProps = ThHTMLAttributes<HTMLTableCellElement>;
+export interface TableHeaderCellProps extends ThHTMLAttributes<HTMLTableCellElement> {
+  /**
+   * Column width, e.g. `"55%"` or `"12rem"`. Columns without a width share the
+   * remaining space equally. Only needed on one header cell per column.
+   */
+  width?: string | number;
+}
 
 /**
  * Single column heading of a {@link Table}, rendered in the inverted header
@@ -48,9 +54,13 @@ export type TableHeaderCellProps = ThHTMLAttributes<HTMLTableCellElement>;
  * <Table.HeaderCell>Name</Table.HeaderCell>
  * ```
  */
-function TableHeaderCell({ className, children, ...rest }: TableHeaderCellProps) {
+function TableHeaderCell({ className, children, width, style, ...rest }: TableHeaderCellProps) {
   return (
-    <th className={cx("eink-table-header-cell", [className ?? "", !!className])} {...rest}>
+    <th
+      className={cx("eink-table-header-cell", [className ?? "", !!className])}
+      style={width === undefined ? style : { width, ...style }}
+      {...rest}
+    >
       {children}
     </th>
   );
@@ -245,6 +255,16 @@ export interface TableProps extends Omit<HTMLAttributes<HTMLTableElement>, "onSe
   mono?: boolean;
   /** Whether the header row stays pinned to the top of the nearest scroll container. Defaults to `false`. */
   stickyHeader?: boolean;
+  /**
+   * Whether header and data cells wrap long text (with word breaking and
+   * hyphenation) instead of truncating it with an ellipsis. Defaults to `false`.
+   */
+  wrap?: boolean;
+  /**
+   * Whether the table sits in a horizontally scrollable container and keeps
+   * its natural width instead of squeezing columns. Defaults to `false`.
+   */
+  scrollable?: boolean;
 }
 
 /**
@@ -335,6 +355,8 @@ export function Table({
   preselectedIndexes,
   mono = false,
   stickyHeader = false,
+  wrap = false,
+  scrollable = false,
   ...rest
 }: TableProps) {
   const [selectedIndexes, setSelectedIndexes] = useState<Set<number>>(
@@ -361,19 +383,25 @@ export function Table({
     { current: 0 },
   );
 
+  const table = (
+    <table
+      className={cx(
+        "eink-table",
+        ["eink-table--sticky-header", stickyHeader],
+        ["eink-table--empty", !hasRows],
+        ["eink-table--wrap", wrap],
+        ["eink-table--scrollable", scrollable],
+        [className ?? "", !!className],
+      )}
+      {...rest}
+    >
+      {processedChildren}
+    </table>
+  );
+
   return (
     <TableContext.Provider value={{ selectedIndexes, toggleRow }}>
-      <table
-        className={cx(
-          "eink-table",
-          ["eink-table--sticky-header", stickyHeader],
-          ["eink-table--empty", !hasRows],
-          [className ?? "", !!className],
-        )}
-        {...rest}
-      >
-        {processedChildren}
-      </table>
+      {scrollable ? <div className="eink-table-scroll">{table}</div> : table}
     </TableContext.Provider>
   );
 }

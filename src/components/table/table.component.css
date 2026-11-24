@@ -110,3 +110,37 @@
   height: 100%;
   color: var(--eink-color-primary);
 }
+
+/* ---------------- Wrap / scrollable ---------------- */
+
+.eink-table--wrap .eink-table-header-cell {
+  width: auto;
+}
+
+.eink-table--wrap .eink-table-header-cell,
+.eink-table--wrap .eink-table-cell {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.eink-table--wrap .eink-table-cell,
+.eink-table--scrollable .eink-table-cell {
+  max-width: none;
+}
+
+.eink-table-scroll {
+  overflow-x: auto;
+}
+
+.eink-table--scrollable .eink-table-header-cell {
+  width: auto;
+}
+
+.eink-table--scrollable {
+  table-layout: auto;
+  min-width: 100%;
+  width: max-content;
+}

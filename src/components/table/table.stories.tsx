@@ -207,3 +207,47 @@ export const TruncatedContent: Story = {
     </div>
   ),
 };
+
+export const WrappedContent: Story = {
+  args: { wrap: true },
+  render: (args) => (
+    <div style={{ width: 320 }}>
+      <Table {...args}>
+        <Table.Head>
+          <Table.HeaderCell width="35%">Name</Table.HeaderCell>
+          <Table.HeaderCell>Description</Table.HeaderCell>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>Anna König</Table.Cell>
+            <Table.Cell>
+              A very long description that wraps onto several lines instead of being truncated
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    </div>
+  ),
+};
+
+export const Scrollable: Story = {
+  args: { scrollable: true },
+  render: (args) => (
+    <div style={{ width: 320 }}>
+      <Table {...args}>
+        <Table.Head>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Description</Table.HeaderCell>
+          <Table.HeaderCell>Department</Table.HeaderCell>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>Anna König</Table.Cell>
+            <Table.Cell>A description that keeps its natural width</Table.Cell>
+            <Table.Cell>Editorial department</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    </div>
+  ),
+};
