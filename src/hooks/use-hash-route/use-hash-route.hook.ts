@@ -30,15 +30,26 @@ export function useHashRoute<T>(parse?: (hash: string) => T): T | string {
 
 /** Options accepted by {@link navigate}. */
 export interface NavigateOptions {
-  /** Scrolls the window and every scrolled ancestor of `<main>` (e.g. `Page.Body`) to the top. Defaults to `true`. */
+  /** Scrolls the window and the scrolled `<main>` containers (e.g. `Page.Body`) to the top, see {@link scrollToTop}. Defaults to `true`. */
   scrollToTop?: boolean;
 }
 
-function scrollToTop(): void {
+/**
+ * Scrolls the window and every scroll container around the page content back
+ * to the top. The containers are found from `<main>` upwards, including
+ * `<main>` itself, because `Page.Body` is a `<main>` that scrolls on its own.
+ *
+ * @example
+ * ```tsx
+ * <Button onClick={scrollToTop}>Back to top</Button>
+ * ```
+ */
+export function scrollToTop(): void {
   window.scrollTo?.(0, 0);
-  const main = document.querySelector("main");
-  for (let element = main?.parentElement; element; element = element.parentElement) {
-    if (element.scrollTop > 0) element.scrollTop = 0;
+  for (const main of document.querySelectorAll("main")) {
+    for (let element: Element | null = main; element; element = element.parentElement) {
+      if (element.scrollTop > 0) element.scrollTop = 0;
+    }
   }
 }
 

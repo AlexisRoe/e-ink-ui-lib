@@ -295,6 +295,8 @@ const route = useHashRoute(); // "/lessons/3"
 navigate("/exam");
 ```
 
+`scrollToTop()` is exported as well, e.g. for a "back to top" button; it resets `Page.Body` and every other scrolled `<main>` container.
+
 #### `useDownload()`
 
 Returns `downloadFile(content, fileName, type?)`, which saves text, bytes or a `Blob` through a temporary `<a download>`.

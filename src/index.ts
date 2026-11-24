@@ -376,7 +376,7 @@ export { useFetch } from "./hooks/use-fetch/use-fetch.hook";
 export type { GeolocationState } from "./hooks/use-geolocation/use-geolocation.hook";
 export { useGeolocation } from "./hooks/use-geolocation/use-geolocation.hook";
 export type { NavigateOptions } from "./hooks/use-hash-route/use-hash-route.hook";
-export { navigate, useHashRoute } from "./hooks/use-hash-route/use-hash-route.hook";
+export { navigate, scrollToTop, useHashRoute } from "./hooks/use-hash-route/use-hash-route.hook";
 export type { HistoryState } from "./hooks/use-history-state/use-history-state.hook";
 export { useHistoryState } from "./hooks/use-history-state/use-history-state.hook";
 export { useIntersectionObserver } from "./hooks/use-intersection-observer/use-intersection-observer.hook";
