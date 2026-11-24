@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { navigate, useHashRoute } from "./use-hash-route.hook";
+import { navigate, scrollToTop, useHashRoute } from "./use-hash-route.hook";
 
 describe("useHashRoute / navigate", () => {
   beforeEach(() => {
@@ -43,6 +43,30 @@ describe("useHashRoute / navigate", () => {
     expect(wrapper.scrollTop).toBe(120);
     navigate("/b");
     expect(wrapper.scrollTop).toBe(0);
+    wrapper.remove();
+  });
+
+  it("scrolls a <main> that is itself the scroll container (Page.Body)", () => {
+    const main = document.createElement("main");
+    document.body.append(main);
+    main.scrollTop = 300;
+    navigate("/c");
+    expect(main.scrollTop).toBe(0);
+    main.remove();
+  });
+
+  it("scrollToTop resets every scrolled main and ancestor", () => {
+    const wrapper = document.createElement("div");
+    const outer = document.createElement("main");
+    const inner = document.createElement("main");
+    outer.append(inner);
+    wrapper.append(outer);
+    document.body.append(wrapper);
+    wrapper.scrollTop = 10;
+    outer.scrollTop = 20;
+    inner.scrollTop = 30;
+    scrollToTop();
+    expect([wrapper.scrollTop, outer.scrollTop, inner.scrollTop]).toEqual([0, 0, 0]);
     wrapper.remove();
   });
 });
