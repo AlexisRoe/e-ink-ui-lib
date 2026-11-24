@@ -21,6 +21,7 @@ export type {
 } from "./components/breadcrumbs/breadcrumbs.component";
 export { BreadCrumbs } from "./components/breadcrumbs/breadcrumbs.component";
 export type {
+  ButtonAlign,
   ButtonIconSlotProps,
   ButtonProps,
   IconButtonProps,

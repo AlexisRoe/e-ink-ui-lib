@@ -233,4 +233,19 @@ describe("Button.IconNaked", () => {
     const button = screen.getByRole("button", { name: "Close" });
     expect(button).toHaveClass("eink-button--naked", "eink-button--icon", "eink-button--md");
   });
+
+  it("left-aligns content with align='start' on every text variant", () => {
+    render(
+      <>
+        <Button align="start">A</Button>
+        <Button.Outlined align="start">B</Button.Outlined>
+        <Button.Naked align="start">C</Button.Naked>
+        <Button>D</Button>
+      </>,
+    );
+    for (const name of ["A", "B", "C"]) {
+      expect(screen.getByRole("button", { name })).toHaveClass("eink-button--align-start");
+    }
+    expect(screen.getByRole("button", { name: "D" })).not.toHaveClass("eink-button--align-start");
+  });
 });

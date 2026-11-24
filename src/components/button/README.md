@@ -18,6 +18,7 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 ## Key Features
 - `Button` (filled: black background, white label, inverts on press) plus static variants `Button.Outlined` (transparent with 2px border, inverts on press), `Button.Naked` (no background/border, inverts on press), `Button.Icon`, `Button.IconOutlined`, `Button.IconNaked` (icon-only equivalents)
 - Three sizes (`ButtonSize`: `"sm" | "md" | "xl"`, default `"md"`), each with its own padding/font-size and icon pixel size (14/16/24px)
+- Optional `align="start"` (text variants) left-aligns icon and label, useful with `fullWidth` for link-like buttons; default `"center"`
 - Optional `iconLeft` or `iconRight` (text variants only) — mutually exclusive at the type level via `ButtonIconSlotProps`
 - `fullWidth` option (text `Button`/`Button.Outlined` only) to stretch to the container width
 - `loading` state (text `Button`/`Button.Outlined` only) that shows an `hourglass-high` icon in place of any left/right icon, flipping 180 degrees every `flipIntervalMs` (default 2000ms) via a plain inline-style toggle (not a CSS transition/animation, since those are disabled globally by the theme); disables the button by default while loading unless `disabled` is explicitly set

@@ -138,6 +138,11 @@
 
 /* ---------------- Full width ---------------- */
 
+.eink-button--align-start {
+  justify-content: flex-start;
+  text-align: start;
+}
+
 .eink-button--full-width {
   display: flex;
   width: 100%;
