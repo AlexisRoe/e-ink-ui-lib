@@ -139,6 +139,12 @@ export interface RadioInputProps
   children: ReactNode;
   /** Value reported to the enclosing {@link RadioInput.Group} when this option is chosen. */
   value: string;
+  /**
+   * Content pinned to the trailing edge of the row, such as a `Pill` showing a
+   * result. It becomes part of the option's accessible name. When set, the
+   * option fills the available width.
+   */
+  suffix?: ReactNode;
 }
 
 /**
@@ -157,7 +163,15 @@ export interface RadioInputProps
  * </RadioInput.Group>
  * ```
  */
-export function RadioInput({ className, value, children, disabled, id, ...rest }: RadioInputProps) {
+export function RadioInput({
+  className,
+  value,
+  children,
+  disabled,
+  suffix,
+  id,
+  ...rest
+}: RadioInputProps) {
   const group = useContext(RadioGroupContext);
   if (!group) {
     throw new Error("RadioInput must be used within a RadioInput.Group");
@@ -170,7 +184,14 @@ export function RadioInput({ className, value, children, disabled, id, ...rest }
   const handleChange = () => group.select(value);
 
   return (
-    <label htmlFor={inputId} className={cx("eink-radio-input", [className ?? "", !!className])}>
+    <label
+      htmlFor={inputId}
+      className={cx(
+        "eink-radio-input",
+        ["eink-radio-input--with-suffix", suffix !== undefined],
+        [className ?? "", !!className],
+      )}
+    >
       <input
         {...rest}
         id={inputId}
@@ -187,6 +208,7 @@ export function RadioInput({ className, value, children, disabled, id, ...rest }
         <span className="eink-radio-input__dot" />
       </span>
       <span className="eink-radio-input__label">{children}</span>
+      {suffix !== undefined ? <span className="eink-radio-input__suffix">{suffix}</span> : null}
     </label>
   );
 }

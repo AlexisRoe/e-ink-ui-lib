@@ -93,4 +93,15 @@ describe("RadioInput.Group", () => {
       screen.getByRole("radio", { name: "Small" }).closest(".eink-radio-group__items"),
     ).toHaveClass("eink-radio-group__items--horizontal");
   });
+
+  it("renders a suffix next to the label", () => {
+    render(
+      <RadioInput.Group label="Answer">
+        <RadioInput value="a" suffix={<span>Correct</span>}>
+          Option
+        </RadioInput>
+      </RadioInput.Group>,
+    );
+    expect(screen.getByRole("radio", { name: "Option Correct" })).toBeInTheDocument();
+  });
 });

@@ -136,6 +136,12 @@ export interface CheckboxProps
   onChange?: (checked: boolean) => void;
   /** When true, renders a `*` after the label and sets the native `required` state. */
   required?: boolean;
+  /**
+   * Content pinned to the trailing edge of the row, such as a `Pill` showing a
+   * result. It becomes part of the checkbox's accessible name. When set, the
+   * checkbox fills the available width.
+   */
+  suffix?: ReactNode;
 }
 
 /**
@@ -169,6 +175,7 @@ export function Checkbox({
   onChange,
   disabled,
   required,
+  suffix,
   id,
   ...rest
 }: CheckboxProps) {
@@ -201,7 +208,14 @@ export function Checkbox({
   };
 
   return (
-    <label htmlFor={inputId} className={cx("eink-checkbox", [className ?? "", !!className])}>
+    <label
+      htmlFor={inputId}
+      className={cx(
+        "eink-checkbox",
+        ["eink-checkbox--with-suffix", suffix !== undefined],
+        [className ?? "", !!className],
+      )}
+    >
       <input
         {...rest}
         id={inputId}
@@ -223,6 +237,7 @@ export function Checkbox({
         {children}
         {required ? <span className="eink-checkbox__required">*</span> : null}
       </span>
+      {suffix !== undefined ? <span className="eink-checkbox__suffix">{suffix}</span> : null}
     </label>
   );
 }

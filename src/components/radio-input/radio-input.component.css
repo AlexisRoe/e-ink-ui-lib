@@ -8,6 +8,16 @@
   cursor: pointer;
 }
 
+.eink-radio-input--with-suffix {
+  display: flex;
+  width: 100%;
+}
+
+.eink-radio-input__suffix {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
 .eink-radio-input:has(.eink-radio-input__input:disabled) {
   cursor: not-allowed;
   color: var(--eink-color-disabled);

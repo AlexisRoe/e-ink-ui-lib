@@ -119,4 +119,10 @@ describe("Checkbox", () => {
       expect(screen.getByRole("checkbox", { name: "Cheese" })).toBeDisabled();
     });
   });
+
+  it("renders a suffix inside the label and its accessible name", () => {
+    render(<Checkbox suffix={<span>Correct</span>}>Option</Checkbox>);
+    expect(screen.getByRole("checkbox", { name: "Option Correct" })).toBeInTheDocument();
+    expect(screen.getByText("Correct").parentElement).toHaveClass("eink-checkbox__suffix");
+  });
 });
