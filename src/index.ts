@@ -227,6 +227,11 @@ export { Number } from "./components/number/number.component";
 export type { NumberInputProps } from "./components/number-input/number-input.component";
 export { NumberInput } from "./components/number-input/number-input.component";
 export type {
+  OrderListLabels,
+  OrderListProps,
+} from "./components/order-list/order-list.component";
+export { OrderList } from "./components/order-list/order-list.component";
+export type {
   PageBodyProps,
   PageCollapsedMode,
   PageFooterProps,
