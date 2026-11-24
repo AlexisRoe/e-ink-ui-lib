@@ -9,7 +9,7 @@
 
 .eink-list__item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--eink-size-12);
   font-family: inherit;
   font-size: var(--eink-font-size-default);
@@ -22,6 +22,8 @@
   height: var(--eink-size-10);
   background-color: var(--eink-color-primary);
   flex-shrink: 0;
+  /* Centre the marker on the first line, also when the item text wraps. */
+  margin-top: calc((1lh - var(--eink-size-10)) / 2);
 }
 
 .eink-list--ordered {
