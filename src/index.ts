@@ -276,6 +276,8 @@ export type {
 export { RadioInput } from "./components/radio-input/radio-input.component";
 export type { RatingIcon, RatingProps } from "./components/rating/rating.component";
 export { Rating } from "./components/rating/rating.component";
+export type { RichTextProps, RichTextSegment } from "./components/rich-text/rich-text.component";
+export { parseRichText, RichText } from "./components/rich-text/rich-text.component";
 export type { ScheduleProps } from "./components/schedule/schedule.component";
 export { Schedule } from "./components/schedule/schedule.component";
 export type {
