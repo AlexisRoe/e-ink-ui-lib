@@ -17,7 +17,8 @@ reviewed_by: "user:a.roehrling" (2026-09-14T18:19:01.260Z)
 
 ## Key Features
 - Three variants (`AlertVariant`): `"info"` (white bar), `"warning"` (bar with a diagonal-line `PatternOverlay`), and `"error"` (solid black bar) — defaults to `"info"`
-- Required `title`, optional `description` shown below it
+- Required `title`, optional `description` (any `ReactNode`, so markup like `Highlight` works) shown below it
+- Optional `action` slot (e.g. a `Button`) at the trailing edge, for prompts such as "update available"
 - Optional leading icon (`icon` prop, any `IconName`) rendered next to the title; when present, the description is indented to align under the title text
 - Sets `role="alert"` for the `"error"` variant and `role="status"` for `"info"`/`"warning"`, for assistive-technology announcement semantics
 - Accepts a `className` prop for consumer-supplied extra classes

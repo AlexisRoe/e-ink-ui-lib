@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "../button/button.component";
 import { Alert } from "./alert.component";
 
 const meta = {
@@ -79,5 +80,15 @@ export const ErrorWithIcon: Story = {
     icon: "alert-circle",
     title: "Sync failed",
     description: "Check your connection and try again.",
+  },
+};
+
+export const WithAction: Story = {
+  name: "With action",
+  args: {
+    icon: "refresh",
+    title: "Update available",
+    description: "Reload to get the latest version.",
+    action: <Button>Reload</Button>,
   },
 };
